@@ -34,7 +34,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
                 _movementDatas.Add(model, new DataMovementState(model));
             }
 
-            model.isPatrolling = true;
+            model.IsPatrolling = true;
         }
 
         public override void ExecuteState(EntityModel model)
@@ -89,7 +89,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 
         public override void ExitState(EntityModel model)
         {
-            model.isPatrolling = false;
+            model.IsPatrolling = false;
         }
     }
 

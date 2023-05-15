@@ -19,7 +19,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
             _entitiesData[model].Controller.EnemyRoulette.RouletteAction();
 
             _entitiesData[model].exclamationSing.SetActive(true);
-            _entitiesData[model].isChasing = true;
+            _entitiesData[model].IsChasing = true;
         }
         
         public override void ExecuteState(EntityModel model)
@@ -46,7 +46,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
             _entitiesData.Remove(model);
             
             
-            model.isChasing = false;
+            model.IsChasing = false;
         }
     }
 }

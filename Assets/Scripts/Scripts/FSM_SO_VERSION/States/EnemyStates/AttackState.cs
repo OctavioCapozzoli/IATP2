@@ -26,7 +26,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
             _allAttackDatas[model].TargetLayer = _allAttackDatas[model].EnemyModel.GetTarget().gameObject.layer;
             
             
-            model.isAttacking = true;
+            model.IsAttacking = true;
             
         }
 
@@ -48,7 +48,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
             
             
             
-            model.isAttacking = false;
+            model.IsAttacking = false;
         }
         
         

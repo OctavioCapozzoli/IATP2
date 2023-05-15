@@ -8,7 +8,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.Conditions
     {
         public override bool CompleteCondition(EntityModel model)
         {
-            return model.isJumping;
+            return model.IsJumping;
         }
     }
 }

@@ -37,24 +37,24 @@ namespace _Main.Scripts.Entities.Player
 
             if (horizontalInput != 0 || verticalInput != 0)
             {
-                _model.isWalking = true;
-                _model.isIdle = false;
-                _model.isJumping = false;
+                _model.IsWalking = true;
+                _model.IsIdle = false;
+                _model.IsJumping = false;
             }
             else
             {
-                _model.isWalking = false;
-                _model.isIdle = true;
-                _model.isJumping = false;
+                _model.IsWalking = false;
+                _model.IsIdle = true;
+                _model.IsJumping = false;
             }
         }
         void CheckJumpControls()
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                _model.isJumping = true;
-                _model.isIdle = false;
-                _model.isWalking = false;
+                _model.IsJumping = true;
+                _model.IsIdle = false;
+                _model.IsWalking = false;
             }
         }
     }

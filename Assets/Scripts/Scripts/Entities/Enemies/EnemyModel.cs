@@ -76,7 +76,7 @@ namespace _Main.Scripts.Entities.Enemies
 
         public override EntityModel GetModel() => this;
 
-        public override bool IsDead()
+        public override bool IsEntityDead()
         {
             return _healthController.CurrentHealth <= 0;
         }
@@ -99,15 +99,15 @@ namespace _Main.Scripts.Entities.Enemies
 
             if (Physics.Raycast(transform.position + Vector3.up, diff.normalized, data.SightRange, data.TargetLayer))
             {
-                isAllert = true;
-                isSeeingTarget = true;
+                IsAllert = true;
+                IsSeeingTarget = true;
                 return true;
             }
             else
             {
 
-                isAllert = false;
-                isSeeingTarget = false;
+                IsAllert = false;
+                IsSeeingTarget = false;
 
                 return false;
             }

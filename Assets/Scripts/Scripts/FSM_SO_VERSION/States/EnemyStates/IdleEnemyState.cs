@@ -8,7 +8,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
     {
         public override void EnterState(EntityModel model)
         {
-            model.isIdle = true;
+            model.IsIdle = true;
         }
 
         public override void ExecuteState(EntityModel model)
@@ -18,7 +18,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 
         public override void ExitState(EntityModel model)
         {
-            model.isIdle = false;
+            model.IsIdle = false;
         }
     }
 }

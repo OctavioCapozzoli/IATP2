@@ -9,7 +9,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
     {
         public override void EnterState(EntityModel model)
         {
-            model.isDead = true;
+            model.IsDead = true;
         }
 
         public override void ExecuteState(EntityModel model)
@@ -19,7 +19,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 
         public override void ExitState(EntityModel model)
         {
-            model.isDead = false;
+            model.IsDead = false;
         }
     }
 }

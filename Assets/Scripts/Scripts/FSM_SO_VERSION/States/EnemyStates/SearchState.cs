@@ -47,7 +47,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 
 
             _searchDatas[model].Model.questionSing.SetActive(true);
-            myModel.isSearching = true;
+            myModel.IsSearching = true;
         }
 
 
@@ -61,7 +61,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
             }
             else
             {
-                _searchDatas[model].Model.isAllert = false;
+                _searchDatas[model].Model.IsAllert = false;
             }
         }
 
@@ -70,7 +70,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 
             _searchDatas[model].Model.questionSing.SetActive(false);
             _searchDatas.Remove(model);
-            model.isSearching = false;
+            model.IsSearching = false;
         }
     }
 }

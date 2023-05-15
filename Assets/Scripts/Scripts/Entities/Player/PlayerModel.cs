@@ -72,7 +72,7 @@ namespace _Main.Scripts.Entities.Player
         {
             _healthController.Heal(healingPoint);
         }
-        public override bool IsDead()
+        public override bool IsEntityDead()
         {
             return _healthController.CurrentHealth <= 0;
         }

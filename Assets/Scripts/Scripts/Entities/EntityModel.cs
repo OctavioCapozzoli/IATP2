@@ -32,6 +32,7 @@ namespace _Main.Scripts.Entities
         public bool IsAllert { get => isAllert; set => isAllert = value; }
         public bool IsWalking { get => isWalking; set => isWalking = value; }
         public bool IsJumping { get => isJumping; set => isJumping = value; }
+        public bool IsDead { get => isDead; set => isDead = value; }
         #endregion
 
         public float rotSpeed;
@@ -46,7 +47,7 @@ namespace _Main.Scripts.Entities
         public abstract Rigidbody GetRigidbody();
         public abstract EntityModel GetModel();
         public abstract StateData[] GetStates();
-        public abstract bool IsDead();
+        public abstract bool IsEntityDead();
         public abstract void Die();
         public abstract Vector3 GetFoward();
         public abstract float GetSpeed();
