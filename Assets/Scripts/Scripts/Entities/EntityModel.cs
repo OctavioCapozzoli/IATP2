@@ -6,19 +6,33 @@ namespace _Main.Scripts.Entities
     public abstract class EntityModel : MonoBehaviour
     {
 
-        public bool isIdle;
-        public bool isPatrolling;
-        public bool isSeeingTarget;
-        public bool isChasing;
-        public bool isAttacking;
-        public bool isSearching;
-        public bool isAllert;
+        #region FSM variables
+        bool isIdle;
+        bool isPatrolling;
+        bool isSeeingTarget;
+        bool isChasing;
+        bool isAttacking;
+        bool isSearching;
+        bool isAllert;
 
-        public bool isWalking;
-        public bool isJumping;
-        public bool isDead;
+        bool isWalking;
+        bool isJumping;
+        bool isDead;
+        #endregion
 
         public Rigidbody _Rb { get; set; }
+
+        #region Encapsulated FSM variables
+        public bool IsIdle { get => isIdle; set => isIdle = value; }
+        public bool IsPatrolling { get => isPatrolling; set => isPatrolling = value; }
+        public bool IsSeeingTarget { get => isSeeingTarget; set => isSeeingTarget = value; }
+        public bool IsChasing { get => isChasing; set => isChasing = value; }
+        public bool IsAttacking { get => isAttacking; set => isAttacking = value; }
+        public bool IsSearching { get => isSearching; set => isSearching = value; }
+        public bool IsAllert { get => isAllert; set => isAllert = value; }
+        public bool IsWalking { get => isWalking; set => isWalking = value; }
+        public bool IsJumping { get => isJumping; set => isJumping = value; }
+        #endregion
 
         public float rotSpeed;
 

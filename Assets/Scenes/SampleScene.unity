@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -366,10 +366,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.07215047
+  m_Radius: 0.1
   m_Height: 0.5811261
   m_Direction: 1
-  m_Center: {x: 0, y: 0.29919553, z: -0.54453576}
+  m_Center: {x: -0.2, y: 0.29919553, z: -0.54453576}
 --- !u!54 &805562523
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -384,7 +384,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &832575517
 GameObject:
@@ -874,6 +874,9 @@ GameObject:
   - component: {fileID: 5866666021483810674}
   - component: {fileID: 805562523}
   - component: {fileID: 805562522}
+  - component: {fileID: 5866666021483810677}
+  - component: {fileID: 5866666021483810676}
+  - component: {fileID: 5866666021483810675}
   m_Layer: 0
   m_Name: Bocchi
   m_TagString: Untagged
@@ -2372,6 +2375,64 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &5866666021483810675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149585022898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6004129c42614df0b6545bf4d1cf5ad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5866666021483810676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149585022898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbedf99ffb46443783c41ea33d1dc548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isIdle: 0
+  isPatrolling: 0
+  isSeeingTarget: 0
+  isChasing: 0
+  isAttacking: 0
+  isSearching: 0
+  isAllert: 0
+  isWalking: 0
+  isJumping: 0
+  isDead: 0
+  rotSpeed: 5
+  fsmStates:
+  - {fileID: 11400000, guid: 88d4f7e9abb431d4b992e39c57b0f9ef, type: 2}
+  - {fileID: 11400000, guid: aae73e7c87e77ae4482d039b5485658a, type: 2}
+  maxSpeed: 2
+  jumpForce: 1
+  maxLife: 100
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 8
+  groundCheckLength: 0.5
+--- !u!114 &5866666021483810677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149585022898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4291048f9e034846b84866f51d62c9d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialState: {fileID: 11400000, guid: 88d4f7e9abb431d4b992e39c57b0f9ef, type: 2}
 --- !u!4 &5956880084897658891
 Transform:
   m_ObjectHideFlags: 0
