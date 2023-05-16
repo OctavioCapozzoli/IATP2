@@ -39,20 +39,17 @@ namespace _Main.Scripts.Entities.Player
             {
                 _model.IsWalking = true;
                 _model.IsIdle = false;
-                _model.IsJumping = false;
             }
             else
             {
                 _model.IsWalking = false;
                 _model.IsIdle = true;
-                _model.IsJumping = false;
             }
         }
         void CheckJumpControls()
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                _model.IsJumping = true;
                 _model.IsIdle = false;
                 _model.IsWalking = false;
             }

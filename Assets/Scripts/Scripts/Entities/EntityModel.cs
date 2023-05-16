@@ -16,7 +16,6 @@ namespace _Main.Scripts.Entities
         bool isAllert;
 
         bool isWalking;
-        bool isJumping;
         bool isDead;
         #endregion
 
@@ -31,7 +30,6 @@ namespace _Main.Scripts.Entities
         public bool IsSearching { get => isSearching; set => isSearching = value; }
         public bool IsAllert { get => isAllert; set => isAllert = value; }
         public bool IsWalking { get => isWalking; set => isWalking = value; }
-        public bool IsJumping { get => isJumping; set => isJumping = value; }
         public bool IsDead { get => isDead; set => isDead = value; }
         #endregion
 
