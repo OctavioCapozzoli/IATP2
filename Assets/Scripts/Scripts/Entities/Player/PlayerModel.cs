@@ -15,6 +15,8 @@ namespace _Main.Scripts.Entities.Player
         [SerializeField] private float maxLife = 100;
         [SerializeField] private LayerMask groundMask;
         [SerializeField] float groundCheckLength;
+        [SerializeField] ProjectileScript projectile;
+        [SerializeField] Transform projectilePosition;
 
 
         private PlayerView _view;
@@ -71,6 +73,11 @@ namespace _Main.Scripts.Entities.Player
         public override void Heal(int healingPoint)
         {
             _healthController.Heal(healingPoint);
+        }
+
+        public void InstantiateFireball()
+        {
+           Instantiate(projectile, projectilePosition);
         }
         public override bool IsEntityDead()
         {

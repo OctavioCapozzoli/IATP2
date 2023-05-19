@@ -28,6 +28,7 @@ namespace _Main.Scripts.Entities.Player
             {
                 CheckMovementControls();
                 CheckJumpControls();
+                CheckSpecialControl();
             }
         }
         void CheckMovementControls()
@@ -52,6 +53,18 @@ namespace _Main.Scripts.Entities.Player
             {
                 _model.IsIdle = false;
                 _model.IsWalking = false;
+            }
+        }
+
+        void CheckSpecialControl()
+        {
+            if (Input.GetKeyDown(KeyCode.H) && _model.IsIdle)
+            {
+                _model.IsAttacking = true;
+            }
+            else
+            {
+                _model.IsAttacking = false;
             }
         }
     }

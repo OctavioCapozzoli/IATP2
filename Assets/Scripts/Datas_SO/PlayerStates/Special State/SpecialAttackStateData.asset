@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58d626f229597984d995e88da515ed1a, type: 3}
-  m_Name: IdleStateDataPlayer
+  m_Name: SpecialAttackStateData
   m_EditorClassIdentifier: 
-  <State>k__BackingField: {fileID: 11400000, guid: a7979eaaefe852d46b13073c2df828be,
+  <State>k__BackingField: {fileID: 11400000, guid: 011417f9fe726e44aab94c5ac4fbc677,
     type: 2}
   <StateConditions>k__BackingField:
-  - {fileID: 11400000, guid: 8140193916868824da43cfb9044687ed, type: 2}
-  - {fileID: 11400000, guid: f5ddca869670d1e4faed831c762de089, type: 2}
+  - {fileID: 11400000, guid: 91b838b356a76bf4db6d1d2b0b009a93, type: 2}
   <ExitStates>k__BackingField:
-  - {fileID: 11400000, guid: aae73e7c87e77ae4482d039b5485658a, type: 2}
-  - {fileID: 11400000, guid: 06dadcb24063b9549a93e8e3814cc05c, type: 2}
+  - {fileID: 11400000, guid: 88d4f7e9abb431d4b992e39c57b0f9ef, type: 2}

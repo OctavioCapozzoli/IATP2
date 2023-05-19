@@ -30,5 +30,9 @@ namespace _Main.Scripts.Entities.Player
             _animator.SetBool("isFalling", isFalling);
         }
 
+        public void PlayerSpecialAttackAnimation()
+        {
+            _animator.SetTrigger("isSpecial");
+        }
     }
 }
