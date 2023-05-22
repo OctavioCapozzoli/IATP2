@@ -1,19 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using _Main.Scripts.Entities;
 using _Main.Scripts.Entities.Player;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
 {
-    [CreateAssetMenu(fileName = "HadoukenState", menuName = "_main/States/PlayerStates/HadoukenState", order = 0)]
+    [CreateAssetMenu(fileName = "SpecialAttackState", menuName = "_main/States/PlayerStates/SpecialAttackState", order = 0)]
 
-    public class HadoukenStatePlayer : State
+    public class SpecialAttackStatePlayer : State
     {
         public override void EnterState(EntityModel model)
         {
-           PlayerModel playerModel = model as PlayerModel;
-           playerModel.View.PlayerSpecialAttackAnimation();
+            PlayerModel playerModel = model as PlayerModel;
+            playerModel.View.PlayerSpecialAttackAnimation();
         }
 
         public override void ExecuteState(EntityModel model)

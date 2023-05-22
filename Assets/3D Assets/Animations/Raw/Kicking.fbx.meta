@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9e9bf8293771964468d21d73b0ca0cc1
+guid: 6b7ffa337b3b53041a455f5d94d2ae6d
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Bocchi Quad Punch
+      name: Bocchi Kicking
       takeName: mixamo.com
       internalID: 1827226128182048838
       firstFrame: 0
-      lastFrame: 49
+      lastFrame: 42
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -66,7 +66,7 @@ ModelImporter:
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 49
+      lastFrame: 42
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
