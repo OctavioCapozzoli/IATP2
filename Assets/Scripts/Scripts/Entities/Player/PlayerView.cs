@@ -15,24 +15,34 @@ namespace _Main.Scripts.Entities.Player
             _animator.SetBool("isMoving", isMoving);
         }
 
-        public void PlayerJumpAnimation(bool isJumping)
+        #region Regular Attacks (Combo)
+        public void PlayerComboAttack1()
         {
-            _animator.SetBool("isJumping", isJumping);
+            _animator.SetTrigger("onRegularAttack");
         }
+        public void PlayerComboAttack2()
+        {
+            _animator.SetTrigger("onRegAttackAnim2");
+        }
+        public void PlayerComboAttack3()
+        {
+            _animator.SetTrigger("onRegAttackAnim3");
+        }
+        #endregion
 
-        public void PlayerGroundedAnimation(bool isGrounded)
+        #region Special Attacks
+        public void PlayerSpecialAttack1()
         {
-            _animator.SetBool("isGrounded", isGrounded);
+            _animator.SetTrigger("PlayerSpecialAttack1");
         }
-
-        public void PlayerFallingAnimation(bool isFalling)
+        public void PlayerSpecialAttack2()
         {
-            _animator.SetBool("isFalling", isFalling);
+            _animator.SetTrigger("PlayerSpecialAttack2");
         }
-
-        public void PlayerSpecialAttackAnimation()
+        public void PlayerSpecialAttack3()
         {
-            _animator.SetTrigger("isSpecial");
+            _animator.SetTrigger("PlayerSpecialAttack3");
         }
+        #endregion
     }
 }

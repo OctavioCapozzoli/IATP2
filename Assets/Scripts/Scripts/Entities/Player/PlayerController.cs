@@ -28,7 +28,7 @@ namespace _Main.Scripts.Entities.Player
             {
                 CheckMovementControls();
                 CheckJumpControls();
-                CheckSpecialControl();
+                CheckRegularAttackInput();
             }
         }
         void CheckMovementControls()
@@ -56,9 +56,9 @@ namespace _Main.Scripts.Entities.Player
             }
         }
 
-        void CheckSpecialControl()
+        void CheckRegularAttackInput()
         {
-            if (Input.GetKeyDown(KeyCode.H) && _model.IsIdle)
+            if (Input.GetKeyDown(KeyCode.J) && _model.IsIdle)
             {
                 _model.IsAttacking = true;
             }

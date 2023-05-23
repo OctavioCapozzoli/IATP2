@@ -42,8 +42,8 @@ namespace _Main.Scripts.Entities.Player
         public void CheckGround()
         {
             _isGrounded = Physics.CheckSphere(transform.position, groundCheckLength, groundMask);
-            View.PlayerGroundedAnimation(_isGrounded);
-            View.PlayerFallingAnimation(!_isGrounded);
+            //View.PlayerGroundedAnimation(_isGrounded);
+            //View.PlayerFallingAnimation(!_isGrounded);
         }
 
         public override void Move(Vector3 direction)
