@@ -35,6 +35,11 @@ namespace _Main.Scripts.Entities
 
         public float rotSpeed;
 
+        public GameObject leftHandCollider;
+        public GameObject rightHandCollider;
+        public GameObject leftFootCollider;
+        public GameObject rightFootCollider;
+
         public abstract void Move(Vector3 direction);
         public abstract void LookDir(Vector3 direction);
 
@@ -49,5 +54,40 @@ namespace _Main.Scripts.Entities
         public abstract void Die();
         public abstract Vector3 GetFoward();
         public abstract float GetSpeed();
+
+        #region Attack Colliders Activation/Deactivation
+        public virtual void TurnOnLeftHandCollider()
+        {
+            leftHandCollider.SetActive(true);
+        }
+        public virtual void TurnOffLeftHandCollider()
+        {
+            leftHandCollider.SetActive(false);
+        }
+        public virtual void TurnOnRightHandCollider()
+        {
+            rightHandCollider.SetActive(true);
+        }
+        public virtual void TurnOffRightHandCollider()
+        {
+            rightHandCollider.SetActive(false);
+        }
+        public virtual void TurnOnLeftFootCollider()
+        {
+            leftFootCollider.SetActive(true);
+        }
+        public virtual void TurnOffLeftFootCollider()
+        {
+            leftFootCollider.SetActive(false);
+        }
+        public virtual void TurnOnRightFootCollider()
+        {
+            rightFootCollider.SetActive(true);
+        }
+        public virtual void TurnOffRightFootCollider()
+        {
+            rightFootCollider.SetActive(false);
+        }
+        #endregion
     }
 }

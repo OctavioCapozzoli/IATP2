@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d626f229597984d995e88da515ed1a, type: 3}
   m_Name: IdleStateDataPlayer
   m_EditorClassIdentifier: 
-  <State>k__BackingField: {fileID: 11400000, guid: a7979eaaefe852d46b13073c2df828be,
+  <State>k__BackingField: {fileID: 11400000, guid: 3f042b5b89eaa904e8d65da8b8b63e89,
     type: 2}
   <StateConditions>k__BackingField:
   - {fileID: 11400000, guid: 8140193916868824da43cfb9044687ed, type: 2}

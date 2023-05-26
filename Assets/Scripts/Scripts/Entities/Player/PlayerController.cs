@@ -6,7 +6,7 @@ namespace _Main.Scripts.Entities.Player
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] StateData initialState;
-        
+
         private FsmScript _playerFsm;
         private StateData _currentState;
         private PlayerModel _model;
