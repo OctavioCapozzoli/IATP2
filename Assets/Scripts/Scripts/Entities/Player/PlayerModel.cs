@@ -20,6 +20,7 @@ namespace _Main.Scripts.Entities.Player
 
 
         private PlayerView _view;
+        PlayerController _controller;
         private HealthController _healthController;
         bool _isGrounded;
 
@@ -28,11 +29,13 @@ namespace _Main.Scripts.Entities.Player
 
         public bool IsGrounded { get => _isGrounded; set => _isGrounded = value; }
         public PlayerView View { get => _view; set => _view = value; }
+        public PlayerController Controller { get => _controller; set => _controller = value; }
 
         void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
             _view = GetComponent<PlayerView>();
+            _controller = GetComponent<PlayerController>();
             _healthController = new HealthController(maxLife);
             _healthController.OnDie += Die;
         }
@@ -77,7 +80,7 @@ namespace _Main.Scripts.Entities.Player
 
         public void InstantiateFireball()
         {
-           Instantiate(projectile, projectilePosition);
+            Instantiate(projectile, projectilePosition);
         }
         public override bool IsEntityDead()
         {

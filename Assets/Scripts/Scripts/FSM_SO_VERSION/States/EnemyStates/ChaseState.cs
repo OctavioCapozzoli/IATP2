@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using _Main.Scripts.Entities;
 using _Main.Scripts.Entities.Enemies;
-using _Main.Scripts.Roulette_Wheel.EnemyRouletteWheel;
+using _Main.Scripts.Roulette_Wheel.EntitiesRouletteWheel;
 using UnityEngine;
 
 namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates

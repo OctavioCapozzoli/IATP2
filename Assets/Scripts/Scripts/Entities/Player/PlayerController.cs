@@ -1,4 +1,5 @@
 ﻿using _Main.Scripts.FSM_SO_VERSION;
+using _Main.Scripts.Roulette_Wheel.EntitiesRouletteWheel;
 using UnityEngine;
 
 namespace _Main.Scripts.Entities.Player
@@ -10,6 +11,9 @@ namespace _Main.Scripts.Entities.Player
         private FsmScript _playerFsm;
         private StateData _currentState;
         private PlayerModel _model;
+        PlayerRouletteWheel _playerSpecialAttacksRouletteWheel;
+
+        public PlayerRouletteWheel PlayerSpecialAttacksRouletteWheel { get => _playerSpecialAttacksRouletteWheel; set => _playerSpecialAttacksRouletteWheel = value; }
 
         private void Awake()
         {
@@ -18,6 +22,7 @@ namespace _Main.Scripts.Entities.Player
         private void Start()
         {
             _playerFsm = new FsmScript(_model, initialState);
+            _playerSpecialAttacksRouletteWheel = new PlayerRouletteWheel(_model);
         }
         private void Update()
         {
@@ -29,6 +34,7 @@ namespace _Main.Scripts.Entities.Player
                 CheckMovementControls();
                 CheckJumpControls();
                 CheckRegularAttackInput();
+                CheckSpecialAttackInput();
             }
         }
         void CheckMovementControls()
@@ -66,6 +72,16 @@ namespace _Main.Scripts.Entities.Player
             {
                 _model.IsAttacking = false;
             }
+        }
+
+        void CheckSpecialAttackInput()
+        {
+            if (Input.GetKeyDown(KeyCode.Q)) //TODO luego se puede agregar la condición
+                                             // de mana suficiente para ejecutar el ataque especial
+            {
+                _model.IsSpecialAttacking = true;
+            }
+            else _model.IsSpecialAttacking = false;
         }
     }
 }

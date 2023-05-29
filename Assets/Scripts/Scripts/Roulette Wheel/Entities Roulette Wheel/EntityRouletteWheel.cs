@@ -1,6 +1,6 @@
 using _Main.Scripts.Entities;
 
-namespace _Main.Scripts.Roulette_Wheel.EnemyRouletteWheel
+namespace _Main.Scripts.Roulette_Wheel.EntitiesRouletteWheel
 {
     public abstract class EntityRouletteWheel
     {

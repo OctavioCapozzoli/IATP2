@@ -1,10 +1,10 @@
-using System.Collections.Generic;
 using _Main.Scripts.Entities;
 using _Main.Scripts.Entities.Enemies;
 using _Main.Scripts.Tree;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace _Main.Scripts.Roulette_Wheel.EnemyRouletteWheel
+namespace _Main.Scripts.Roulette_Wheel.EntitiesRouletteWheel
 {
     public class EnemyRouletteWheel : EntityRouletteWheel
     {
@@ -12,15 +12,15 @@ namespace _Main.Scripts.Roulette_Wheel.EnemyRouletteWheel
         private Dictionary<ActionNode, int> _sbRouletteWheelNodes = new Dictionary<ActionNode, int>();
         private EntityModel _model;
         private EnemyController _enemyController;
-        
-        
+
+
         public EnemyRouletteWheel(EntityModel model, EnemyController enemyController) : base(model)
         {
             _model = model;
             _enemyController = enemyController;
         }
 
-        
+
         public override void CreateRouletteWheel()
         {
             _sbRouletteWheel = new Roulette();

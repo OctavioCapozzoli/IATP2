@@ -17,6 +17,7 @@ namespace _Main.Scripts.Entities
 
         bool isWalking;
         bool isDead;
+        bool isSpecialAttacking;
         #endregion
 
         public Rigidbody _Rb { get; set; }
@@ -31,6 +32,7 @@ namespace _Main.Scripts.Entities
         public bool IsAllert { get => isAllert; set => isAllert = value; }
         public bool IsWalking { get => isWalking; set => isWalking = value; }
         public bool IsDead { get => isDead; set => isDead = value; }
+        public bool IsSpecialAttacking { get => isSpecialAttacking; set => isSpecialAttacking = value; }
         #endregion
 
         public float rotSpeed;

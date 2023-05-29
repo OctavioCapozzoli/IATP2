@@ -1410,6 +1410,17 @@ PrefabInstance:
       propertyPath: rightHandCollider
       value: 
       objectReference: {fileID: 438159734}
+    - target: {fileID: 8310361122902013613, guid: cf9c22b7fe5d0de4f8d2b214df05793a,
+        type: 3}
+      propertyPath: fsmStates.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310361122902013613, guid: cf9c22b7fe5d0de4f8d2b214df05793a,
+        type: 3}
+      propertyPath: fsmStates.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 06dadcb24063b9549a93e8e3814cc05c,
+        type: 2}
     - target: {fileID: 8885717288899116409, guid: cf9c22b7fe5d0de4f8d2b214df05793a,
         type: 3}
       propertyPath: m_Icon

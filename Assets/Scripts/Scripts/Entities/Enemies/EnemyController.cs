@@ -1,5 +1,5 @@
 ﻿using _Main.Scripts.FSM_SO_VERSION;
-using _Main.Scripts.Roulette_Wheel.EnemyRouletteWheel;
+using _Main.Scripts.Roulette_Wheel.EntitiesRouletteWheel;
 using _Main.Scripts.Steering_Behaviours;
 using UnityEngine;
 

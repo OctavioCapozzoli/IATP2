@@ -31,17 +31,21 @@ namespace _Main.Scripts.Entities.Player
         #endregion
 
         #region Special Attacks
-        public void PlayerSpecialAttack1()
+
+        public void FireballSpecialAttack()
         {
-            _animator.SetTrigger("PlayerSpecialAttack1");
+            Debug.Log("Player Special Attack 1");
+            _animator.SetTrigger("onSpecialAttack1");
         }
-        public void PlayerSpecialAttack2()
+        public void GuitarSmashSpecialAttack()
         {
-            _animator.SetTrigger("PlayerSpecialAttack2");
+            Debug.Log("Player Special Attack 2");
+            _animator.SetTrigger("onSpecialAttack2");
         }
-        public void PlayerSpecialAttack3()
+        public void FirePunchesSpecialAttack()
         {
-            _animator.SetTrigger("PlayerSpecialAttack3");
+            Debug.Log("Player Special Attack 3");
+            _animator.SetTrigger("onSpecialAttack3");
         }
         #endregion
     }

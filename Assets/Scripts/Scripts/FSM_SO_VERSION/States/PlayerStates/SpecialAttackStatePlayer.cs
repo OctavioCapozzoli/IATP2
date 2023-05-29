@@ -16,18 +16,12 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
         public override void EnterState(EntityModel model)
         {
             playerModel = model as PlayerModel;
-            //En este estado debe activarse una ruleta en el awake,
-            //para decidir el tipo de ataque especial que se va a utilizar
-            //(A mayor daño menor probabilidad de salir)
-            playerModel.View.PlayerSpecialAttack1();
+            playerModel.Controller.PlayerSpecialAttacksRouletteWheel.RouletteAction();
         }
 
         public override void ExecuteState(EntityModel model)
         {
-            if (Input.GetKeyDown(KeyCode.J) && playerModel.IsIdle)
-            {
 
-            }
         }
         public override void ExitState(EntityModel model)
         {
