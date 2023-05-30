@@ -9,6 +9,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.Conditions.EnemyConditions
     {
         public override bool CompleteCondition(EntityModel model)
         {
+            if (model.IsAttacking) return false;
             return model.IsIdle;
         }
     }

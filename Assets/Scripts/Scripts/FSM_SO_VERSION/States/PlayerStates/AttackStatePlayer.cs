@@ -14,84 +14,71 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
     public class AttackStatePlayer : State
     {
         PlayerModel playerModel;
-        float initComboCooldownTimer = 1f;
-
-        bool isComboReset;
-        PlayerAttackComboState currentComboState;
-
-        float currentComboCooldownTimer;
+        PlayerAttackComboState playerCurrentState;
+        float maxComboTimer = 1f;
+        float currentComboTimer = 0;
 
         public override void EnterState(EntityModel model)
         {
+            Debug.Log("Enter");
             playerModel = model as PlayerModel;
-            currentComboCooldownTimer = initComboCooldownTimer;
-            currentComboState = PlayerAttackComboState.NONE;
-            playerModel.View.PlayerComboAttack1();
-
+            CheckComboAnim();
+            ResetCombo();
         }
 
         public override void ExecuteState(EntityModel model)
         {
-            currentComboCooldownTimer -= Time.deltaTime;
-            currentComboState++;
-            //if (currentComboCooldownTimer > 0 && currentComboCooldownTimer <= initComboCooldownTimer)
-            if (Input.GetKeyDown(KeyCode.J))
+            Debug.Log("Execute");
+            currentComboTimer -= Time.deltaTime;
+            if(currentComboTimer > 0)
             {
-                Debug.Log("H key pressed");
-                if (currentComboState == PlayerAttackComboState.PUNCH_1)
+                if(Input.GetKeyDown(KeyCode.J))
                 {
-                    playerModel.View.PlayerComboAttack1();
-                }
-                else if (currentComboState == PlayerAttackComboState.PUNCH_2)
-                {
-                    playerModel.View.PlayerComboAttack2();
-                }
-                else if (currentComboState == PlayerAttackComboState.PUNCH_3)
-                {
-                    playerModel.View.PlayerComboAttack3();
+                    Debug.Log("player current state" + playerCurrentState);
+                    playerCurrentState++;
+                    CheckComboAnim();
+                    currentComboTimer = maxComboTimer;
                 }
             }
-            //}
-            //else
-            //{
-            //model.IsAttacking = false;
-            //model.IsIdle = true;
-            //}
-            //ResetComboState();
-            //else if (!Input.GetKeyDown(KeyCode.J) && currentComboCooldown <= 0f)
-            //    ResetComboState();
+            else
+            {
+                model.IsAttacking = false;
+            }
 
+            //CheckTimerOff();
         }
+
         public override void ExitState(EntityModel model)
         {
+            Debug.Log("Exit");
         }
 
-        void ComboAttacks()
+        void CheckComboAnim()
         {
-
-            //if (currentComboState == PlayerAttackComboState.PUNCH_3) return;
-
-            Debug.Log("Combo state" + currentComboState);
-
-
-        }
-        void ResetComboState()
-        {
-            if (isComboReset)
+            if (playerCurrentState == PlayerAttackComboState.PUNCH_1) playerModel.View.PlayerComboAttack1();
+            else if (playerCurrentState == PlayerAttackComboState.PUNCH_2) playerModel.View.PlayerComboAttack2();
+            else if (playerCurrentState == PlayerAttackComboState.PUNCH_3)
             {
-                //Debug.Log("Reset entered");
-                currentComboCooldownTimer -= Time.deltaTime;
-
-                if (currentComboCooldownTimer <= 0f)
-                {
-
-                    currentComboState = PlayerAttackComboState.NONE;
-
-                    isComboReset = false;
-                    currentComboCooldownTimer = initComboCooldownTimer;
-
-                }
+                playerModel.View.PlayerComboAttack3();
+                playerModel.IsAttacking = false;
             }
+
+        }
+
+        void CheckTimerOff()
+        {
+            if (currentComboTimer <= 0)
+            {
+                Debug.Log("Menor a cero");
+                ResetCombo();
+
+            }
+        }
+
+        public void ResetCombo()
+        {
+            currentComboTimer = maxComboTimer;
+            playerCurrentState = PlayerAttackComboState.NONE;   
         }
 
     }

@@ -68,10 +68,6 @@ namespace _Main.Scripts.Entities.Player
             {
                 _model.IsAttacking = true;
             }
-            else
-            {
-                _model.IsAttacking = false;
-            }
         }
 
         void CheckSpecialAttackInput()
