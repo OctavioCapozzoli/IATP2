@@ -17,6 +17,7 @@ namespace _Main.Scripts.Entities.Player
         [SerializeField] float groundCheckLength;
         [SerializeField] ProjectileScript projectile;
         [SerializeField] Transform projectilePosition;
+        [SerializeField] GameObject guitarPrefab;
 
 
         private PlayerView _view;
@@ -81,6 +82,16 @@ namespace _Main.Scripts.Entities.Player
         public void InstantiateFireball()
         {
             Instantiate(projectile, projectilePosition);
+        }
+
+        public void EnableGuitar()
+        {
+            guitarPrefab.SetActive(true);
+        }
+
+        public void DisableGuitar()
+        {
+            guitarPrefab.SetActive(false);
         }
         public override bool IsEntityDead()
         {
