@@ -15,7 +15,7 @@ namespace _Main.Scripts.Entities.Player
         [SerializeField] private float maxLife = 100;
         [SerializeField] private LayerMask groundMask;
         [SerializeField] float groundCheckLength;
-        [SerializeField] ProjectileScript projectile;
+        [SerializeField] GameObject projectile;
         [SerializeField] Transform projectilePosition;
 
 
@@ -77,7 +77,7 @@ namespace _Main.Scripts.Entities.Player
 
         public void InstantiateFireball()
         {
-           Instantiate(projectile, projectilePosition);
+            GameObject fireball = Instantiate(projectile, projectilePosition.position, projectilePosition.rotation);
         }
         public override bool IsEntityDead()
         {
