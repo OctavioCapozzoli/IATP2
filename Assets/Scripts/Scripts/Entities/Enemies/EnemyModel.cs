@@ -1,8 +1,9 @@
-﻿using System;
-using _Main.Scripts.Entities.Enemies.Data;
+﻿using _Main.Scripts.Entities.Enemies.Data;
 using _Main.Scripts.Entities.Player;
 using _Main.Scripts.FSM_SO_VERSION;
 using _Main.Scripts.Steering_Behaviours.Steering_Behaviours;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace _Main.Scripts.Entities.Enemies
@@ -27,7 +28,7 @@ namespace _Main.Scripts.Entities.Enemies
 
         public GameObject exclamationSing;
         public GameObject questionSing;
-        
+
         public float cooldownAttack;
         private void Awake()
         {
@@ -45,12 +46,23 @@ namespace _Main.Scripts.Entities.Enemies
             _healthController.OnDie += Die;
         }
 
+        public void SetWayPoints(List<Node> _waypoints)
+        {
+
+            var list = new List<Vector3>();
+            for (int i = 0; i < _waypoints.Count; i++)
+            {
+                list.Add(_waypoints[i].transform.position);
+            }
+            //SetWayPoints(list);
+        }
+
         public override void Move(Vector3 direction)
         {
             direction.y = 0;
             direction += _obstacleAvoidance.GetDir() * multiplier;
             _rb.velocity = direction.normalized * (data.MovementSpeed * Time.deltaTime);
-            
+
             transform.forward = Vector3.Lerp(transform.forward, direction, rotSpeed * Time.deltaTime);
             _enemyView.PlayRunAnimation(_rb.velocity.magnitude);
         }
