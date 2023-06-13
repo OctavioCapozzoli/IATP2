@@ -7,23 +7,32 @@ public class AgentController : MonoBehaviour
 {
     [SerializeField] TestEnemyModel model;
     public Box box;
-    public Node goalNode;
+    Node goalNode;
     public Node startNode;
     public float radius;
     Collider[] _colliders;
     public LayerMask maskNodes;
     public LayerMask maskObs;
     List<Vector3> lastPathTest;
+    [SerializeField] Vector3 detectionArea;
+    [SerializeField] LayerMask nodeLayermask;
+    List<Vector3> wpList;
+    public List<Node> wpNodeList;
 
     [Header("Vector")]
     public float range;
 
     AStar<Node> _ast;
 
+    public List<Vector3> WpList { get => wpList; set => wpList = value; }
+
     private void Awake()
     {
         _ast = new AStar<Node>();
         _colliders = new Collider[10];
+    }
+    private void Start()
+    {
     }
     private void Update()
     {
@@ -35,9 +44,18 @@ public class AgentController : MonoBehaviour
         Debug.Log("Running AStar Script");
         var start = startNode;
         if (start == null) return;
-
+        Collider[] coll = Physics.OverlapSphere(new Vector3(Random.Range(0, 2), 0, Random.Range(0, 2)), .1f, nodeLayermask);
+        if(coll.Length > 0)
+        {
+            goalNode = coll[0].gameObject.GetComponent<Node>();
+            Debug.Log("Node found at: " + goalNode.transform.position);
+        }
+        else
+        {
+            Debug.Log("Node not found");
+            return;
+        }
         var path = _ast.Run(start, Satisfies, GetConections, GetCost, Heuristic, 500);
-
         model.SetWayPoints(path);
         box.SetWayPoints(path);
     }
@@ -58,26 +76,19 @@ public class AgentController : MonoBehaviour
         if (Physics.Linecast(curr, box.transform.position, maskObs)) return false;
         return true;
     }
-    List<Vector3> GetConections(Vector3 curr)
-    {
-        //EJEMPLO SI ESTO ESTA EN EL PARCIAL... Seras el equivalente a M
-        var list = new List<Vector3>();
-        for (int x = -1; x <= 1; x++)
-        {
-            for (int y = -1; y <= 1; y++)
-            {
-                //if (x == y) continue;
-                if (x == y || x == -y) continue;
-                var newPos = curr + new Vector3(x, 0, y);
-                if (InView(curr, newPos)) //ESTO ESTA MUY MUCHO MAS MALLL 
-                {
-                    list.Add(newPos);
-                }
-            }
-        }
-
-        return list;
-    }
+    //List<Vector3> GetConections(Vector3 curr)
+    //{
+    //    wpList = new List<Vector3>();
+    //    wpNodeList = new List<GameObject>();
+    //    Collider[] coll = Physics.OverlapBox(model.transform.position, detectionArea, Quaternion.identity, nodeLayermask);
+    //    foreach (var c in coll)
+    //    {
+    //        wpList.Add(c.gameObject.transform.position);
+    //        wpNodeList.Add(c.gameObject);
+    //    }
+    //    Debug.Log("List of connections: " + wpList);
+    //    return wpList;
+    //}
     bool InView(Vector3 from, Vector3 to)
     {
         Debug.Log("CLEAN");
@@ -165,13 +176,7 @@ public class AgentController : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        if (lastPathTest != null)
-        {
-            Gizmos.color = Color.green;
-            for (int i = 0; i < lastPathTest.Count - 2; i++)
-            {
-                Gizmos.DrawLine(lastPathTest[i], lastPathTest[i + 1]);
-            }
-        }
+        Gizmos.DrawWireCube(model.transform.position, detectionArea);
     }
+
 }

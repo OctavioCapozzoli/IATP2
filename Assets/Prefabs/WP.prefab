@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4484768532170444367}
   - component: {fileID: 2884621562165342708}
   - component: {fileID: 74259112440693622}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WP
   m_TagString: Waypoint
   m_Icon: {fileID: 0}

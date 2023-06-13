@@ -10,6 +10,7 @@ public class TestEnemyModel : MonoBehaviour
     public bool readyToMove;
     int _nextPoint = 0;
     Animator _anim;
+    [SerializeField] AgentController agentController;
     private void Awake()
     {
         //_anim = GetComponent<Animator>();
