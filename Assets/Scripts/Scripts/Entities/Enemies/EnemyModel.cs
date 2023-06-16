@@ -52,7 +52,7 @@ namespace _Main.Scripts.Entities.Enemies
             var list = new List<Vector3>();
             for (int i = 0; i < _waypoints.Count; i++)
             {
-                list.Add(_waypoints[i].transform.position);
+                list.Add(_waypoints[i].worldPosition);
             }
             //SetWayPoints(list);
         }

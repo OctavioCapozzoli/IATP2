@@ -5,26 +5,29 @@ using System.Collections.Generic;
 using UnityEngine;
 public class AgentController : MonoBehaviour
 {
+    [SerializeField] GameObject agent;
+    [SerializeField] Grid grid;
     [SerializeField] TestEnemyModel model;
-    public Box box;
-    Node goalNode;
+    public GameObject box;
+    public Node goalNode;
     public Node startNode;
     public float radius;
     Collider[] _colliders;
     public LayerMask maskNodes;
     public LayerMask maskObs;
-    List<Vector3> lastPathTest;
     [SerializeField] Vector3 detectionArea;
     [SerializeField] LayerMask nodeLayermask;
-    List<Vector3> wpList;
-    public List<Node> wpNodeList;
+
+    Pathfinding pathfinder;
+    //List<Vector3> wpList;
+    //public List<Node> wpNodeList;
 
     [Header("Vector")]
     public float range;
 
     AStar<Node> _ast;
 
-    public List<Vector3> WpList { get => wpList; set => wpList = value; }
+    //public List<Vector3> WpList { get => wpList; set => wpList = value; }
 
     private void Awake()
     {
@@ -33,32 +36,94 @@ public class AgentController : MonoBehaviour
     }
     private void Start()
     {
+
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T)) AStarRun();
+        //if (Input.GetKeyDown(KeyCode.T)) AStarRun();
+        if (Input.GetKeyDown(KeyCode.T)) PathfinderRun();
     }
 
+    void PathfinderRun()
+    {
+        startNode = SetConditionalNode(agent.transform.position).GetComponent<Node>();
+        var start = startNode;
+        if (start == null)
+        {
+            Debug.Log("StartNode is null");
+            return;
+        }
+
+        var node = SetConditionalNode(box.transform.position);
+        if (node != null) goalNode = node.GetComponent<Node>();
+        if (goalNode == null)
+        {
+            Debug.Log("GoalNode is null");
+            return;
+        }
+
+        //else return;
+        //else
+        //{
+        //    Debug.Log("Node not found");
+        //    return;
+
+        //}
+        if (startNode != null && goalNode != null)
+        {
+            Debug.Log("Start and end node succesfully set!" + startNode.worldPosition + goalNode.worldPosition);
+            pathfinder = new Pathfinding(goalNode.transform, grid);
+            pathfinder.FindPath(startNode.transform.position, goalNode.transform.position);
+            Debug.Log("Path set up" + pathfinder.finalPath.Count);
+            model.SetWayPoints(pathfinder.finalPath);
+            box.GetComponent<Box>().SetWayPoints(pathfinder.finalPath);
+        }
+    }
     public void AStarRun()
     {
         Debug.Log("Running AStar Script");
+
+        startNode = SetConditionalNode(agent.transform.position).GetComponent<Node>();
         var start = startNode;
-        if (start == null) return;
-        Collider[] coll = Physics.OverlapSphere(new Vector3(Random.Range(0, 2), 0, Random.Range(0, 2)), .1f, nodeLayermask);
-        if(coll.Length > 0)
+        if (start == null)
         {
-            goalNode = coll[0].gameObject.GetComponent<Node>();
-            Debug.Log("Node found at: " + goalNode.transform.position);
-        }
-        else
-        {
-            Debug.Log("Node not found");
+            Debug.Log("StartNode is null");
             return;
         }
-        var path = _ast.Run(start, Satisfies, GetConections, GetCost, Heuristic, 500);
-        model.SetWayPoints(path);
-        box.SetWayPoints(path);
+
+        var node = SetConditionalNode(box.transform.position);
+        if (node != null) goalNode = node.GetComponent<Node>();
+        if (goalNode == null)
+        {
+            Debug.Log("GoalNode is null");
+            return;
+        }
+
+        //else return;
+        //else
+        //{
+        //    Debug.Log("Node not found");
+        //    return;
+
+        //}
+        if (startNode != null && goalNode != null)
+        {
+            Debug.Log("Start and end node succesfully set!" + startNode.worldPosition + goalNode.worldPosition);
+            var path = _ast.Run(start, Satisfies, GetConections, GetCost, Heuristic, 500);
+            Debug.Log("Path set up" + path.Count);
+            model.SetWayPoints(path);
+            box.GetComponent<Box>().SetWayPoints(path);
+        }
     }
+
+    GameObject SetConditionalNode(Vector3 pos)
+    {
+        GameObject node = null;
+        Collider[] coll = Physics.OverlapSphere(pos, 1f, nodeLayermask);
+        if (coll.Length > 0) return node = coll[0].gameObject;
+        else return null;
+    }
+
     public void AStarPlusRun()
     {
         var start = startNode;
@@ -66,7 +131,7 @@ public class AgentController : MonoBehaviour
         var path = _ast.Run(start, Satisfies, GetConections, GetCost, Heuristic, 500);
         path = _ast.CleanPath(path, InView);
         model.SetWayPoints(path);
-        box.SetWayPoints(path);
+        box.GetComponent<Box>().SetWayPoints(path);
     }
 
     bool Satisfies(Vector3 curr)
@@ -117,7 +182,7 @@ public class AgentController : MonoBehaviour
     bool InView(Node from, Node to)
     {
         Debug.Log("CLEAN");
-        if (Physics.Linecast(from.transform.position, to.transform.position, maskObs)) return false;
+        if (Physics.Linecast(from.worldPosition, to.worldPosition, maskObs)) return false;
         //Distance
         //Angle
         return true;
@@ -126,25 +191,26 @@ public class AgentController : MonoBehaviour
     {
         float multiplierDistance = 2;
         float cost = 0;
-        cost += Vector3.Distance(curr.transform.position, goalNode.transform.position) * multiplierDistance;
+        cost += Vector3.Distance(curr.worldPosition, goalNode.worldPosition) * multiplierDistance;
         return cost;
     }
     float GetCost(Node parent, Node son)
     {
+        son = goalNode;
         float multiplierDistance = 1;
         //float multiplierEnemies = 20;
         float multiplierTrap = 20;
 
         float cost = 0;
-        cost += Vector3.Distance(parent.transform.position, son.transform.position) * multiplierDistance;
-        if (son.hasTrap)
-            cost += multiplierTrap;
+        cost += Vector3.Distance(parent.worldPosition, son.worldPosition) * multiplierDistance;
+        //if (son.hasTrap)
+        cost += multiplierTrap;
         //cost += 100 * multiplierEnemies;
         return cost;
     }
     List<Node> GetConections(Node curr)
     {
-        return curr.neightbourds;
+        return curr.Neighbors;
     }
     bool Satisfies(Node curr)
     {

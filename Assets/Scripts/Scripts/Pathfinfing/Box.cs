@@ -10,7 +10,7 @@ public class Box : MonoBehaviour, IPoints
     {
         if (newPoints.Count == 0) return;
         obj.SetActive(true);
-        var pos = newPoints[newPoints.Count - 1].transform.position;
+        var pos = newPoints[newPoints.Count - 1].worldPosition;
         pos.y = transform.position.y;
         transform.position = pos;
     }

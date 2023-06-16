@@ -1,31 +1,49 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Node : MonoBehaviour
+public class Node : MonoBehaviour, IHeapItem<Node>
 {
-    public List<Node> neightbourds;//<- Esto es lo unico que importa
+
+    public bool isWalkable;
+    public Vector3 worldPosition;
+    public int gCost, hCost;
 
 
-    //Si utilizan este codigo con los raycast en el start/update/realtime son un punto menos por raycast.
-    public bool hasTrap;
-    Material mat;
+    public int gridX, gridY, movementPenalty;
 
-    //private void Update()
-    //{
-    //    //if (hasTrap)
-    //    //    mat.color = Color.red;
-    //    //else
-    //    //    mat.color = Color.white;
-    //}
-    //void GetNeightbourd(Vector3 dir)
-    //{
-    //    RaycastHit hit;
-    //    if (Physics.Raycast(transform.position, dir, out hit, 2.2f))
-    //    {
-    //        var node = hit.collider.GetComponent<Node>();
-    //        if (node != null)
-    //            neightbourds.Add(node);
-    //    }
-    //}
+    public Node parent;
+    int heapIndex;
+    [SerializeField] List<Node> neighbors = new List<Node>();
+
+    public void InitNode(bool _isWalkable, Vector3 _worldPosition, int _gridX, int _gridY, int _movementPenalty)
+    {
+        isWalkable = _isWalkable;
+        worldPosition = _worldPosition;
+
+        movementPenalty = _movementPenalty;
+
+        gridX = _gridX;
+        gridY = _gridY;
+    }
+
+    public int fCost
+    {
+        get
+        {
+            return gCost + hCost;
+        }
+    }
+
+    public int HeapIndex { get { return heapIndex; } set { heapIndex = value; } }
+
+    public List<Node> Neighbors { get => neighbors; set => neighbors = value; }
+
+    int IComparable<Node>.CompareTo(Node nodeToCompare)
+    {
+        int compare = fCost.CompareTo(nodeToCompare.fCost);
+        if (compare == 0) compare = hCost.CompareTo(nodeToCompare.hCost);
+        return -compare;
+    }
 }

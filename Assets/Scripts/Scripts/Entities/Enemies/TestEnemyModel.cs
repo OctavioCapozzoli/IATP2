@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,8 +28,9 @@ public class TestEnemyModel : MonoBehaviour
         var list = new List<Vector3>();
         for (int i = 0; i < newPoints.Count; i++)
         {
-            list.Add(newPoints[i].transform.position);
+            list.Add(newPoints[i].worldPosition);
         }
+        Debug.Log("List: " + list);
         SetWayPoints(list);
     }
     public void SetWayPoints(List<Vector3> newPoints)
@@ -40,6 +42,7 @@ public class TestEnemyModel : MonoBehaviour
         var pos = waypoints[_nextPoint];
         pos.y = transform.position.y;
         transform.position = pos;
+        Debug.Log("Setting up wps");
         readyToMove = true;
     }
     public void Run()
