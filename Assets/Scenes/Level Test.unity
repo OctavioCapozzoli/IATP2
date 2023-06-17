@@ -22907,7 +22907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints: []
-  speed: 10
+  speed: 1
   speedRot: 10
   readyToMove: 0
   agentController: {fileID: 965514817}
