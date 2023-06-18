@@ -22,7 +22,7 @@ MonoBehaviour:
   <RestPatrolTime>k__BackingField: 2
   <MaxLife>k__BackingField: 10
   <MovementSpeed>k__BackingField: 350
-  <SightRange>k__BackingField: 20
+  <SightRange>k__BackingField: 50
   <TotalSightDegrees>k__BackingField: 180
   <Damage>k__BackingField: 10
   <DistanceToAttack>k__BackingField: 2

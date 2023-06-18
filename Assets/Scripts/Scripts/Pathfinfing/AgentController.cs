@@ -41,26 +41,36 @@ public class AgentController : MonoBehaviour
     private void Update()
     {
         //if (Input.GetKeyDown(KeyCode.T)) AStarRun();
-        if (Input.GetKeyDown(KeyCode.T)) PathfinderRun();
+        if (Input.GetKeyDown(KeyCode.T)) PathfinderRunv2();
     }
+    void PathfinderRunv2()
+    {
+        startNode = grid.GetNodeFromWorldPoint(agent.transform.position);
+        goalNode = grid.GetNodeFromWorldPoint(box.transform.position);
+        pathfinder = new Pathfinding(grid);
+        pathfinder.FindPath(agent.transform.position, box.transform.position);
+        model.SetWayPoints(grid.path);
 
+    }
     void PathfinderRun()
     {
-        startNode = SetConditionalNode(agent.transform.position).GetComponent<Node>();
-        var start = startNode;
+        //startNode = SetConditionalNode(agent.transform.position).GetComponent<Node>();
+        var start = grid.GetNodeFromWorldPoint(agent.transform.position);
         if (start == null)
         {
             Debug.Log("StartNode is null");
             return;
         }
 
-        var node = SetConditionalNode(box.transform.position);
-        if (node != null) goalNode = node.GetComponent<Node>();
-        if (goalNode == null)
-        {
-            Debug.Log("GoalNode is null");
-            return;
-        }
+        goalNode = grid.GetNodeFromWorldPoint(box.transform.position);
+
+        //var node = SetConditionalNode(box.transform.position);
+        //if (node != null) goalNode = node.GetComponent<Node>();
+        //if (goalNode == null)
+        //{
+        //    Debug.Log("GoalNode is null");
+        //    return;
+        //}
 
         //else return;
         //else
@@ -69,15 +79,14 @@ public class AgentController : MonoBehaviour
         //    return;
 
         //}
-        if (startNode != null && goalNode != null)
-        {
-            Debug.Log("Start and end node succesfully set!" + startNode.worldPosition + goalNode.worldPosition);
-            pathfinder = new Pathfinding(goalNode.transform, grid);
-            pathfinder.FindPath(startNode.transform.position, goalNode.transform.position);
-            Debug.Log("Path set up" + pathfinder.finalPath.Count);
-            model.SetWayPoints(pathfinder.finalPath);
-            box.GetComponent<Box>().SetWayPoints(pathfinder.finalPath);
-        }
+        //if (startNode != null && goalNode != null)
+        //{
+        //Debug.Log("Start and end node succesfully set!" + startNode.worldPosition + goalNode.worldPosition);
+        pathfinder = new Pathfinding(grid);
+        pathfinder.FindPath(agent.transform.position, box.transform.position);
+        Debug.Log("Path set up" + grid.path);
+        model.SetWayPoints(grid.path);
+        //}
     }
     public void AStarRun()
     {
@@ -110,16 +119,16 @@ public class AgentController : MonoBehaviour
         {
             Debug.Log("Start and end node succesfully set!" + startNode.worldPosition + goalNode.worldPosition);
             var path = _ast.Run(start, Satisfies, GetConections, GetCost, Heuristic, 500);
-            Debug.Log("Path set up" + path.Count);
+            Debug.Log("Path set up" + grid.path.Count);
             model.SetWayPoints(path);
-            box.GetComponent<Box>().SetWayPoints(path);
+            box.GetComponent<Box>().SetWayPoints(grid.path);
         }
     }
 
     GameObject SetConditionalNode(Vector3 pos)
     {
         GameObject node = null;
-        Collider[] coll = Physics.OverlapSphere(pos, 1f, nodeLayermask);
+        Collider[] coll = Physics.OverlapSphere(pos, .5f, nodeLayermask);
         if (coll.Length > 0) return node = coll[0].gameObject;
         else return null;
     }
@@ -218,7 +227,7 @@ public class AgentController : MonoBehaviour
     }
     Node GetStartNode()
     {
-        int count = Physics.OverlapSphereNonAlloc(model.transform.position, radius, _colliders, maskNodes);
+        int count = Physics.OverlapSphereNonAlloc(model.transform.position, radius, _colliders, nodeLayermask);
         float bestDistance = 0;
         Collider bestCollider = null;
         for (int i = 0; i < count; i++)
@@ -242,7 +251,11 @@ public class AgentController : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(model.transform.position, detectionArea);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(agent.transform.position, Vector3.one);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(box.transform.position, Vector3.one);
+
     }
 
 }

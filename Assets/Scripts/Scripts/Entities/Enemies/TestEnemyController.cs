@@ -14,7 +14,7 @@ public class TestEnemyController : MonoBehaviour
     {
         if (_model.readyToMove)
         {
-            _model.Run();
+            //_model.Run();
         }
     }
 }

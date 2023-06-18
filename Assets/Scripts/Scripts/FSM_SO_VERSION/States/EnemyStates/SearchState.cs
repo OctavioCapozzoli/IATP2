@@ -30,10 +30,10 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 
             //En base a la ultima direccion en la que vi al jugador
             //guardo 4 posibilidades:
-            
+
             //La verdadera ultima direccion
             dirChances.Add(lastViewDir, 50);
-            
+
             //Y 3 mas que son opuestas o perpendiculares
             dirChances.Add(lastViewDir * -1, 20);
             dirChances.Add(opositeDir, 20);
@@ -46,7 +46,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
             _searchDatas[model].Timer = myModel.GetData().TimeForSearchPlayer;
 
 
-            _searchDatas[model].Model.questionSing.SetActive(true);
+            //_searchDatas[model].Model.questionSing.SetActive(true);
             myModel.IsSearching = true;
         }
 

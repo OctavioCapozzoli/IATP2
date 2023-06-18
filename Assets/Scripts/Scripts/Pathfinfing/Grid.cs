@@ -12,7 +12,7 @@ public class Grid : MonoBehaviour
     public float nodeRadius;
     public GameObject nodePrefab;
     Node[,] grid;
-    public TerrainType[] walkableRegions;
+    //public TerrainType[] walkableRegions;
 
     float nodeDiameter;
     int gridSizeX, gridSizeY;
@@ -44,16 +44,14 @@ public class Grid : MonoBehaviour
             {
                 Vector3 worldPoint = worldBottomLeft + (Vector3.right * ((x * nodeDiameter) + nodeRadius)) + (Vector3.forward * ((y * nodeDiameter) + nodeRadius));
                 bool walkable = !Physics.CheckSphere(worldPoint, nodeRadius, unwalkableNodeLayerMask);
-
-                int movementPenalty = 0;
-                var go = Instantiate(nodePrefab, worldPoint, Quaternion.identity);
-                Node node = go.GetComponent<Node>();
-                node.InitNode(walkable, worldPoint, x, y, movementPenalty);
-                grid[x, y] = node;
-                GetNeighbours(node);
+                //var go = Instantiate(nodePrefab, worldPoint, Quaternion.identity);
+                //Node node = go.GetComponent<Node>(); node.InitNode(walkable, worldPoint, x, y);
+                grid[x, y] = new Node(true, worldPoint, x, y);
+                Debug.Log("node position data: " + worldPoint + x + y);
             }
         }
     }
+
 
     public List<Node> GetNeighbours(Node _currentNode)
     {
@@ -87,39 +85,48 @@ public class Grid : MonoBehaviour
         int x = Mathf.RoundToInt((gridSizeX - 1) * percentX);
         int y = Mathf.RoundToInt((gridSizeY - 1) * percentY);
         return grid[x, y];
-
     }
 
     public List<Node> path;
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
-        if (grid != null && player != null)
+        if (path != null)
         {
-            Node playerNode = GetNodeFromWorldPoint(player.position);
-            foreach (Node n in grid)
+            foreach (var item in path)
             {
-                //Gizmos.color = (n.isWalkable) ? Color.green : Color.red;
-                if (path != null)
-                {
-                    if (path.Contains(n))
-                    {
-                        Gizmos.color = Color.yellow;
-                        Gizmos.DrawWireCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
-                    }
-                }
-                if (playerNode == n) Gizmos.color = Color.magenta;
-                //Gizmos.DrawWireCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
-
+                Debug.Log("Path item: " + item);
+                Gizmos.color = Color.cyan;
+                Gizmos.DrawWireCube(new Vector3(item.gridX, 0, item.gridY), Vector3.one);
             }
+            Debug.Log("Path nodes count: " + path.Count);
         }
+        //Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
+        //if (grid != null && player != null)
+        //{
+        //    Node playerNode = GetNodeFromWorldPoint(player.position);
+        //    foreach (Node n in grid)
+        //    {
+        //        //Gizmos.color = (n.isWalkable) ? Color.green : Color.red;
+        //        if (path != null)
+        //        {
+        //            if (path.Contains(n))
+        //            {
+        //                Gizmos.color = Color.yellow;
+        //                Gizmos.DrawWireCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
+        //            }
+        //        }
+        //        if (playerNode == n) Gizmos.color = Color.magenta;
+        //        //Gizmos.DrawWireCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
+
+        //    }
+        //}
     }
 }
 
-[System.Serializable]
-public class TerrainType
-{
-    public LayerMask terrainMask;
-    public int terrainPenalty;
-}
+//[System.Serializable]
+//public class TerrainType
+//{
+//    public LayerMask terrainMask;
+//    public int terrainPenalty;
+//}

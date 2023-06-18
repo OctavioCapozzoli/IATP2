@@ -39,8 +39,8 @@ namespace _Main.Scripts.Entities.Enemies
 
             _controller = GetComponent<EnemyController>();
             _obstacleAvoidance = new ObstacleAvoidance(transform, 4, 10, data.TotalSightDegrees, obsMask);
-            exclamationSing.SetActive(false);
-            questionSing.SetActive(false);
+            //exclamationSing.SetActive(false);
+            //questionSing.SetActive(false);
             cooldownAttack = 0;
 
             _healthController.OnDie += Die;
