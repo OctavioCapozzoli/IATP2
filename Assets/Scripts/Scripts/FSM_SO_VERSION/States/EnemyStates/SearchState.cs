@@ -25,6 +25,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
             var myModel = _searchDatas[model].Model;
             Vector3 lastViewDir = myModel.GetLastViewDir();
 
+
             Dictionary<Vector3, int> dirChances = new Dictionary<Vector3, int>();
             Vector3 opositeDir = Quaternion.AngleAxis(90f, Vector3.one) * lastViewDir;
 

@@ -40,43 +40,45 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
         public override void ExecuteState(EntityModel model)
         {
             var patrolPoints = _movementDatas[model].EnemyModel.GetPatrolPoints();
-            
+
             var distToNextPoint = Vector3.Distance(patrolPoints[_movementDatas[model].PatrolCount].transform.position, model.transform.position);
-            
+
+            Debug.Log("In sight?" + _movementDatas[model].EnemyModel.LineOfSight(_movementDatas[model].EnemyModel.GetTarget().transform));
+
             //Si estoy lejos del punto, me muevo hacia el
             if (distToNextPoint > 1f)
             {
                 var dirToNextPoint = (patrolPoints[_movementDatas[model].PatrolCount].transform.position - model.transform.position).normalized;
-                
+
                 model.Move(dirToNextPoint);
             }
             else
             {
                 //Si ya estoy cerca, me quedo quiero un tiempo X
-                
+
                 model.GetRigidbody().velocity = Vector3.zero;
                 _movementDatas[model].Timer -= Time.deltaTime;
-                
+
                 //Si ese tiempo X ya paso, chequeo si tengo que seguir el mismo recorrido
                 //O tengo que cambiar el sentido de la patrulla
                 if (_movementDatas[model].Timer <= 0 && !_movementDatas[model].TravelBackwards)
                 {
                     _movementDatas[model].PatrolCount++;
-                    
+
                     _movementDatas[model].Timer = _movementDatas[model].EnemyModel.GetData().RestPatrolTime;
                 }
                 else if (_movementDatas[model].Timer <= 0 && _movementDatas[model].TravelBackwards)
                 {
-                    
+
                     _movementDatas[model].PatrolCount--;
-                    
+
                     _movementDatas[model].Timer = _movementDatas[model].EnemyModel.GetData().RestPatrolTime;
                 }
             }
 
             //Chequeo si tengo que cambiar el sentido de la patrulla en base al count actual
             //si ya llegue al final, cambio el sentido
-            if (_movementDatas[model].PatrolCount >= patrolPoints.Length -1)
+            if (_movementDatas[model].PatrolCount >= patrolPoints.Length - 1)
             {
                 _movementDatas[model].TravelBackwards = true;
 

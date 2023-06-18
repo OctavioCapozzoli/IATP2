@@ -9,9 +9,8 @@ namespace _Main.Scripts.FSM_SO_VERSION.Conditions.EnemyConditions
     {
         public override bool CompleteCondition(EntityModel model)
         {
-        
+
             var thisModel = (EnemyModel)model;
-            
             return thisModel.LineOfSight(thisModel.GetTarget().transform);
         }
     }

@@ -24,6 +24,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 
         public override void ExecuteState(EntityModel model)
         {
+            Debug.Log("Enemy chase state execute");
 
             var steering = _entitiesData[model].Controller.EnemySbController;
             _entitiesData[model].cooldownAttack -= Time.deltaTime;
