@@ -43,8 +43,6 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 
             var distToNextPoint = Vector3.Distance(patrolPoints[_movementDatas[model].PatrolCount].transform.position, model.transform.position);
 
-            Debug.Log("In sight?" + _movementDatas[model].EnemyModel.LineOfSight(_movementDatas[model].EnemyModel.GetTarget().transform));
-
             //Si estoy lejos del punto, me muevo hacia el
             if (distToNextPoint > 1f)
             {

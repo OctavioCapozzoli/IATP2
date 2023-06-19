@@ -16,6 +16,9 @@ namespace _Main.Scripts.Entities
         bool isAllert;
 
         bool isWalking;
+        bool isDamaged;
+        bool isFleeing;
+        bool isBlocking;
         bool isDead;
         bool isSpecialAttacking;
         #endregion
@@ -33,6 +36,9 @@ namespace _Main.Scripts.Entities
         public bool IsWalking { get => isWalking; set => isWalking = value; }
         public bool IsDead { get => isDead; set => isDead = value; }
         public bool IsSpecialAttacking { get => isSpecialAttacking; set => isSpecialAttacking = value; }
+        public bool IsDamaged { get => isDamaged; set => isDamaged = value; }
+        public bool IsFleeing { get => isFleeing; set => isFleeing = value; }
+        public bool IsBlocking { get => isBlocking; set => isBlocking = value; }
         #endregion
 
         public float rotSpeed;

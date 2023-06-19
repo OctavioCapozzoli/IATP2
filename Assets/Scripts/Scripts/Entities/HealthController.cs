@@ -10,17 +10,16 @@ namespace _Main.Scripts.Entities
         public event Action<float> OnHealthChange;
         public event Action OnDie;
 
-
         public HealthController(float maxHealth)
         {
             MaxHealth = maxHealth;
             CurrentHealth = MaxHealth;
         }
-    
+
         public void TakeDamage(float damage)
         {
             CurrentHealth -= damage;
-            
+
             if (CurrentHealth <= 0)
                 OnDie?.Invoke();
             else
@@ -37,8 +36,8 @@ namespace _Main.Scripts.Entities
             }
             OnHealthChange?.Invoke(CurrentHealth);
         }
-    
-    
-    
+
+
+
     }
 }

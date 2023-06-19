@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using _Main.Scripts.Entities;
+﻿using _Main.Scripts.Entities;
 using _Main.Scripts.Entities.Enemies;
 using _Main.Scripts.Entities.Enemies.Data;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
@@ -24,14 +24,15 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
             _allAttackDatas[model].EnemyModel = (EnemyModel)model;
             _allAttackDatas[model].Data = _allAttackDatas[model].EnemyModel.GetData();
             _allAttackDatas[model].TargetLayer = _allAttackDatas[model].EnemyModel.GetTarget().gameObject.layer;
-            
-            
+
+
             model.IsAttacking = true;
-            
+
         }
 
         public override void ExecuteState(EntityModel model)
         {
+            Debug.Log("Attack state execute");
             var dir = (_allAttackDatas[model].EnemyModel.GetTarget().transform.position - model.transform.position).normalized;
 
             if (Physics.Raycast(model.transform.position, dir,
@@ -45,12 +46,12 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
         {
             _allAttackDatas[model].EnemyModel.cooldownAttack = _allAttackDatas[model].Data.CooldownToAttack;
             _allAttackDatas.Remove(model);
-            
-            
-            
+
+
+
             model.IsAttacking = false;
         }
-        
-        
+
+
     }
 }

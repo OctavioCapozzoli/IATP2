@@ -47,7 +47,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
             _searchDatas[model].Timer = myModel.GetData().TimeForSearchPlayer;
 
 
-            //_searchDatas[model].Model.questionSing.SetActive(true);
+            _searchDatas[model].Model.questionSing.SetActive(true);
             myModel.IsSearching = true;
         }
 

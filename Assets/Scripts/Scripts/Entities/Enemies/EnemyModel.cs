@@ -4,7 +4,9 @@ using _Main.Scripts.FSM_SO_VERSION;
 using _Main.Scripts.Steering_Behaviours.Steering_Behaviours;
 using System;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace _Main.Scripts.Entities.Enemies
 {
@@ -16,6 +18,7 @@ namespace _Main.Scripts.Entities.Enemies
         [SerializeField] private PlayerModel playerModel;
         [SerializeField] private LayerMask obsMask;
         EnemyView _enemyView;
+        bool targetInSight = false;
 
 
         private Rigidbody _rb;
@@ -25,6 +28,7 @@ namespace _Main.Scripts.Entities.Enemies
 
         public EnemyController Controller { get => _controller; set => _controller = value; }
         public EnemyView EnemyView { get => _enemyView; set => _enemyView = value; }
+        public bool TargetInSight { get => targetInSight; set => targetInSight = value; }
 
         public GameObject exclamationSing;
         public GameObject questionSing;
@@ -39,8 +43,8 @@ namespace _Main.Scripts.Entities.Enemies
 
             _controller = GetComponent<EnemyController>();
             _obstacleAvoidance = new ObstacleAvoidance(transform, 4, 10, data.TotalSightDegrees, obsMask);
-            //exclamationSing.SetActive(false);
-            //questionSing.SetActive(false);
+            exclamationSing.SetActive(false);
+            questionSing.SetActive(false);
             cooldownAttack = 0;
 
             _healthController.OnDie += Die;
@@ -88,6 +92,10 @@ namespace _Main.Scripts.Entities.Enemies
 
         public override EntityModel GetModel() => this;
 
+        public void SetBlockConditions()
+        {
+            IsBlocking = true; //TODO testear si pasa bien al estado. De no ser así pasar normalmente desde idle y tratarlo como otro ataque aparte
+        }
         public override bool IsEntityDead()
         {
             return _healthController.CurrentHealth <= 0;
@@ -100,31 +108,59 @@ namespace _Main.Scripts.Entities.Enemies
 
         public bool LineOfSight(Transform target)
         {
-            Vector3 diff = target.transform.position + Vector3.up - (transform.position + Vector3.up);
+            target = null;
+            Collider[] overlapSphere = Physics.OverlapSphere(transform.position, data.SightRange, data.TargetLayer);
 
-            float distanceToTarget = diff.magnitude;
-            if (distanceToTarget > data.SightRange) return false;
-
-            float angleToTarget = Vector3.Angle(transform.position, diff.normalized);
-
-            if (angleToTarget > data.TotalSightDegrees) return false;
-
-            if (Physics.Raycast(transform.position + Vector3.up, diff.normalized, data.SightRange, data.TargetLayer))
+            if (overlapSphere.Length > 0)
             {
-                IsAllert = true;
-                IsSeeingTarget = true;
-                return true;
+                target = overlapSphere[0].transform;
             }
-            else
+            //Debug.Log(target + "  " + ViewDistance);
+            targetInSight = false;
+            if (target != null)
             {
+                // 1 - Si está en mi rango de visión
+                float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-                IsAllert = false;
-                IsSeeingTarget = false;
+                if (distanceToTarget <= data.SightRange)
+                {
+                    // 2 - Si está en mi cono de visión
+                    Vector3 targetDir = (target.position - transform.position).normalized; // Asi se calcula
+                    float angleToTarget = Vector3.Angle(transform.forward, targetDir);
 
-                return false;
+                    if (angleToTarget <= data.TotalSightDegrees)
+                    {
+                        RaycastHit hitInfo = new RaycastHit();
+
+                        if (!Physics.Raycast(transform.position, targetDir, out hitInfo, distanceToTarget, obsMask))
+                        {
+                            targetInSight = true;
+                        }
+
+                    }
+                    if (targetInSight)
+                    {
+                        Debug.Log("Lo veo y lo sigo");
+                        IsAllert = true;
+                        IsSeeingTarget = true;
+                    }
+                    else
+                    {
+                        Debug.Log("No lo veo y no lo sigo");
+                        IsAllert = false;
+                        IsSeeingTarget = false;
+                    }
+
+                }
             }
+            return targetInSight;
         }
+        public bool CheckFleeFromPlayer()
+        {
+            IsFleeing = _healthController.CurrentHealth <= 10 ? true : false;
+            return IsFleeing;
 
+        }
         public PlayerModel GetTarget() => playerModel;
         public EnemyData GetData() => data;
         public override StateData[] GetStates() => data.FsmStates;
@@ -140,6 +176,17 @@ namespace _Main.Scripts.Entities.Enemies
 
         public override float GetSpeed() => _rb.velocity.magnitude;
 
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, data.SightRange);
 
+            Gizmos.color = Color.blue;
+            Vector3 rightLimit = Quaternion.AngleAxis(data.TotalSightDegrees, Vector3.up) * Vector3.forward;
+            Gizmos.DrawLine(transform.position, transform.position + (rightLimit * data.SightRange));
+
+            Vector3 leftLimit = Quaternion.AngleAxis(data.TotalSightDegrees, Vector3.up) * Vector3.forward;
+            Gizmos.DrawLine(transform.position, transform.position + (leftLimit * data.SightRange));
+        }
     }
 }

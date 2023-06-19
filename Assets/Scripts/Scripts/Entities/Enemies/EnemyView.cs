@@ -16,5 +16,13 @@ namespace _Main.Scripts.Entities.Enemies
         {
             //_animator.SetFloat("Vel", velocity);
         }
+        public void PlayDamageAnimation()
+        {
+            _animator.SetTrigger("onDamage");
+        }
+        public void PlayBlockAnimation()
+        {
+            _animator.SetTrigger("onBlock");
+        }
     }
 }

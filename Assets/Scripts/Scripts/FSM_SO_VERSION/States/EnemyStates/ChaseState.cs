@@ -16,9 +16,9 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 
 
             //Activo la ruleta dentro del model
-            _entitiesData[model].Controller.EnemyRoulette.RouletteAction();
+            _entitiesData[model].Controller.EnemyRoulette.EnemySbRouletteAction();
 
-            //_entitiesData[model].exclamationSing.SetActive(true);
+            _entitiesData[model].exclamationSing.SetActive(true);
             _entitiesData[model].IsChasing = true;
         }
 

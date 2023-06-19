@@ -8,13 +8,17 @@ namespace _Main.Scripts.Roulette_Wheel.EntitiesRouletteWheel
 {
     public class EnemyRouletteWheel : EntityRouletteWheel
     {
+        //Sb roulette wheel
         private Roulette _sbRouletteWheel;
         private Dictionary<ActionNode, int> _sbRouletteWheelNodes = new Dictionary<ActionNode, int>();
-        private EntityModel _model;
+        private EnemyModel _model;
         private EnemyController _enemyController;
 
+        //Attack or block roulette wheel
+        private Roulette _attackRouletteWheel;
+        private Dictionary<ActionNode, int> _attackRouletteWheelNodes = new Dictionary<ActionNode, int>();
 
-        public EnemyRouletteWheel(EntityModel model, EnemyController enemyController) : base(model)
+        public EnemyRouletteWheel(EnemyModel model, EnemyController enemyController) : base(model)
         {
             _model = model;
             _enemyController = enemyController;
@@ -22,6 +26,13 @@ namespace _Main.Scripts.Roulette_Wheel.EntitiesRouletteWheel
 
 
         public override void CreateRouletteWheel()
+        {
+            SbRouletteSetUp();
+            AttackRouletteSetUp();
+        }
+
+        #region Steering Behaviours Enemy Roulette wheel
+        void SbRouletteSetUp()
         {
             _sbRouletteWheel = new Roulette();
 
@@ -32,10 +43,9 @@ namespace _Main.Scripts.Roulette_Wheel.EntitiesRouletteWheel
             _sbRouletteWheelNodes.Add(sbSeek, 60);
             _sbRouletteWheelNodes.Add(sbPursuit, 120);
             //sbRouletteWheelNodes.Add(transtoPatrol, 10);
-
-            ActionNode rouletteAction = new ActionNode(RouletteAction);
+            //TODO agregarle algo más a esta ruleta
+            ActionNode rouletteAction = new ActionNode(EnemySbRouletteAction);
         }
-
 
         void GetSeekDir()
         {
@@ -48,12 +58,63 @@ namespace _Main.Scripts.Roulette_Wheel.EntitiesRouletteWheel
         }
 
 
-        public void RouletteAction()
+        public void EnemySbRouletteAction()
         {
             INode node = _sbRouletteWheel.Run(_sbRouletteWheelNodes);
             node.Execute();
         }
 
+        #endregion;
+
+        #region Attack or Block Enemy Roulette Wheel
+        void AttackRouletteSetUp()
+        {
+            _attackRouletteWheel = new Roulette();
+
+            ActionNode Attack1 = new ActionNode(PlayAttack1);
+            ActionNode Attack2 = new ActionNode(PlayAttack2);
+            ActionNode Attack3 = new ActionNode(PlayAttack3);
+            ActionNode BlockStateTransition = new ActionNode(TransitionToBlock);
+            //ActionNode transtoPatrol = new ActionNode(GetTransitionToPatrol);
+
+            _attackRouletteWheelNodes.Add(Attack1, 30);
+            _attackRouletteWheelNodes.Add(Attack2, 25);
+            _attackRouletteWheelNodes.Add(Attack3, 35);
+            _attackRouletteWheelNodes.Add(BlockStateTransition, 15);
+            //sbRouletteWheelNodes.Add(transtoPatrol, 10);
+            //TODO agregarle algo más a esta ruleta
+            ActionNode rouletteAction = new ActionNode(EnemyAttackOrBlockRouletteAction);
+        }
+
+        void PlayAttack1()
+        {
+            //_model.EnemyView.PlayAttack1Animation();
+        }
+
+        void PlayAttack2()
+        {
+
+            //_model.EnemyView.PlayAttack2Animation();
+        }
+
+        void PlayAttack3()
+        {
+
+            //_model.EnemyView.PlayAttack3Animation();
+        }
+
+        void TransitionToBlock()
+        {
+            _model.SetBlockConditions();
+        }
+
+        public void EnemyAttackOrBlockRouletteAction()
+        {
+            INode node = _attackRouletteWheel.Run(_attackRouletteWheelNodes);
+            node.Execute();
+        }
+
+        #endregion;
 
     }
 }
