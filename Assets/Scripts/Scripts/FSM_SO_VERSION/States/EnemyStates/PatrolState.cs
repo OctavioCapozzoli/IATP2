@@ -42,7 +42,11 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
             var patrolPoints = _movementDatas[model].EnemyModel.GetPatrolPoints();
 
             var distToNextPoint = Vector3.Distance(patrolPoints[_movementDatas[model].PatrolCount].transform.position, model.transform.position);
-
+            if (distToNextPoint == 0)
+            {
+                Debug.Log("Está en el wp");
+                model.Move(Vector3.zero);
+            }
             //Si estoy lejos del punto, me muevo hacia el
             if (distToNextPoint > 1f)
             {

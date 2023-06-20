@@ -15,7 +15,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
     {
         PlayerModel playerModel;
         PlayerAttackComboState playerCurrentState;
-        float maxComboTimer = 1f;
+        float maxComboTimer = .5f;
         float currentComboTimer = 0;
 
         public override void EnterState(EntityModel model)
@@ -30,9 +30,9 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
         {
             Debug.Log("Execute");
             currentComboTimer -= Time.deltaTime;
-            if(currentComboTimer > 0)
+            if (currentComboTimer > 0)
             {
-                if(Input.GetKeyDown(KeyCode.J))
+                if (Input.GetKeyDown(KeyCode.J))
                 {
                     Debug.Log("player current state" + playerCurrentState);
                     playerCurrentState++;
@@ -78,7 +78,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
         public void ResetCombo()
         {
             currentComboTimer = maxComboTimer;
-            playerCurrentState = PlayerAttackComboState.NONE;   
+            playerCurrentState = PlayerAttackComboState.NONE;
         }
 
     }

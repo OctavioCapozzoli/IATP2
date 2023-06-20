@@ -32,6 +32,8 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 
             if (dir != Vector3.zero)
             {
+                //TODO Ver si no se marea con las animaciones ( El move tiene el walk anim con el float)
+                _entitiesData[model].EnemyView.PlayRunAnimation(true);
                 _entitiesData[model].Move(dir);
             }
         }
@@ -43,11 +45,10 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
                            _entitiesData[model].transform.position).normalized;
             _entitiesData[model].SetLastViewDir(lastDir);
             _entitiesData[model].exclamationSing.SetActive(false);
-
+            _entitiesData[model].EnemyView.PlayRunAnimation(false);
+            _entitiesData[model].IsWalking = false;
+            _entitiesData[model].IsChasing = false;
             _entitiesData.Remove(model);
-
-
-            model.IsChasing = false;
         }
     }
 }

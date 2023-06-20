@@ -81,30 +81,34 @@ namespace _Main.Scripts.Roulette_Wheel.EntitiesRouletteWheel
             _attackRouletteWheelNodes.Add(Attack2, 25);
             _attackRouletteWheelNodes.Add(Attack3, 35);
             _attackRouletteWheelNodes.Add(BlockStateTransition, 15);
-            //sbRouletteWheelNodes.Add(transtoPatrol, 10);
+
             //TODO agregarle algo más a esta ruleta
             ActionNode rouletteAction = new ActionNode(EnemyAttackOrBlockRouletteAction);
         }
 
         void PlayAttack1()
         {
-            //_model.EnemyView.PlayAttack1Animation();
+            Debug.Log("Attack 1");
+            _model.EnemyView.PlayAttack1Animation();
         }
 
         void PlayAttack2()
         {
+            Debug.Log("Attack 2");
 
-            //_model.EnemyView.PlayAttack2Animation();
+            _model.EnemyView.PlayAttack2Animation();
         }
 
         void PlayAttack3()
         {
+            Debug.Log("Attack 3");
 
-            //_model.EnemyView.PlayAttack3Animation();
+            _model.EnemyView.PlayAttack3Animation();
         }
 
         void TransitionToBlock()
         {
+            Debug.Log("Transition to block");
             _model.SetBlockConditions();
         }
 

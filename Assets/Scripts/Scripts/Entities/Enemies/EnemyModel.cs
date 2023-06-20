@@ -17,13 +17,15 @@ namespace _Main.Scripts.Entities.Enemies
         [SerializeField] private Transform[] patrolPoints;
         [SerializeField] private PlayerModel playerModel;
         [SerializeField] private LayerMask obsMask;
+        [SerializeField] float obsAvoidanceRadius = 4;
+        [SerializeField] int obsAvoidanceMaxObs = 10;
         EnemyView _enemyView;
         bool targetInSight = false;
 
 
         private Rigidbody _rb;
         private HealthController _healthController;
-        private EnemyController _controller;
+        [SerializeField] EnemyController _controller;
         private ObstacleAvoidance _obstacleAvoidance;
 
         public EnemyController Controller { get => _controller; set => _controller = value; }
@@ -41,8 +43,7 @@ namespace _Main.Scripts.Entities.Enemies
             _healthController = new HealthController(data.MaxLife);
             _enemyView = GetComponent<EnemyView>();
 
-            _controller = GetComponent<EnemyController>();
-            _obstacleAvoidance = new ObstacleAvoidance(transform, 4, 10, data.TotalSightDegrees, obsMask);
+            _obstacleAvoidance = new ObstacleAvoidance(transform, obsAvoidanceRadius, obsAvoidanceMaxObs, data.TotalSightDegrees, obsMask);
             exclamationSing.SetActive(false);
             questionSing.SetActive(false);
             cooldownAttack = 0;
@@ -68,7 +69,7 @@ namespace _Main.Scripts.Entities.Enemies
             _rb.velocity = direction.normalized * (data.MovementSpeed * Time.deltaTime);
 
             transform.forward = Vector3.Lerp(transform.forward, direction, rotSpeed * Time.deltaTime);
-            _enemyView.PlayRunAnimation(_rb.velocity.magnitude);
+            _enemyView.PlayWalkAnimation(_rb.velocity.magnitude);
         }
 
         public override void LookDir(Vector3 dir)
@@ -157,7 +158,7 @@ namespace _Main.Scripts.Entities.Enemies
         }
         public bool CheckFleeFromPlayer()
         {
-            IsFleeing = _healthController.CurrentHealth <= 10 ? true : false;
+            IsFleeing = _healthController.CurrentHealth <= data.FleeHealthValue ? true : false;
             return IsFleeing;
 
         }

@@ -18,7 +18,12 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 
         public override void ExecuteState(EntityModel model)
         {
+            Debug.Log("Block state execute");
             //_entitiesData[model].EnemyView.PlayBlockAnimation();
+        }
+        public override void ExitState(EntityModel model)
+        {
+            _entitiesData[model].IsBlocking = false;
         }
     }
 }

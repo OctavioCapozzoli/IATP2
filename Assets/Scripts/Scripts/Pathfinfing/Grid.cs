@@ -47,7 +47,7 @@ public class Grid : MonoBehaviour
                 //var go = Instantiate(nodePrefab, worldPoint, Quaternion.identity);
                 //Node node = go.GetComponent<Node>(); node.InitNode(walkable, worldPoint, x, y);
                 grid[x, y] = new Node(true, worldPoint, x, y);
-                Debug.Log("node position data: " + worldPoint + x + y);
+                //Debug.Log("node position data: " + worldPoint + x + y);
             }
         }
     }

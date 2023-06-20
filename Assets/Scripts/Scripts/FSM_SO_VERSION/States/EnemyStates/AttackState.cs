@@ -16,16 +16,13 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
             public int TargetLayer;
         }
 
-        private Dictionary<EntityModel, AttackData> _allAttackDatas = new Dictionary<EntityModel, AttackData>();
+        private Dictionary<EntityModel, EnemyModel> _entitiesData = new Dictionary<EntityModel, EnemyModel>();
+
         public override void EnterState(EntityModel model)
         {
-            _allAttackDatas.Add(model, new AttackData());
+            _entitiesData.Add(model, model as EnemyModel);
 
-            _allAttackDatas[model].EnemyModel = (EnemyModel)model;
-            _allAttackDatas[model].Data = _allAttackDatas[model].EnemyModel.GetData();
-            _allAttackDatas[model].TargetLayer = _allAttackDatas[model].EnemyModel.GetTarget().gameObject.layer;
-
-
+            _entitiesData[model].Controller.EnemyRoulette.EnemyAttackOrBlockRouletteAction();
             model.IsAttacking = true;
 
         }
@@ -33,21 +30,11 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
         public override void ExecuteState(EntityModel model)
         {
             Debug.Log("Attack state execute");
-            var dir = (_allAttackDatas[model].EnemyModel.GetTarget().transform.position - model.transform.position).normalized;
-
-            if (Physics.Raycast(model.transform.position, dir,
-                    _allAttackDatas[model].Data.DistanceToAttack, _allAttackDatas[model].TargetLayer))
-            {
-                _allAttackDatas[model].EnemyModel.GetTarget().GetDamage(10);
-            }
         }
 
         public override void ExitState(EntityModel model)
         {
-            _allAttackDatas[model].EnemyModel.cooldownAttack = _allAttackDatas[model].Data.CooldownToAttack;
-            _allAttackDatas.Remove(model);
-
-
+            _entitiesData.Remove(model);
 
             model.IsAttacking = false;
         }
