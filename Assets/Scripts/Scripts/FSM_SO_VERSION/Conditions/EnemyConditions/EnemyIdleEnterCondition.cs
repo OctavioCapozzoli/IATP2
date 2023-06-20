@@ -5,12 +5,15 @@ using UnityEngine;
 
 namespace _Main.Scripts.FSM_SO_VERSION.Conditions.EnemyConditions
 {
-    [CreateAssetMenu(fileName = "IsDamaged", menuName = "_main/Conditions/Enemy Conditions/IsDamaged")]
-    public class IsDamaged : StateCondition
+
+    [CreateAssetMenu(fileName = "EnemyIdleEnterCondition", menuName = "_main/Conditions/Enemy Conditions/EnemyIdleEnterCondition")]
+    public class EnemyIdleEnterCondition : StateCondition
     {
+
         public override bool CompleteCondition(EntityModel model)
         {
-            return model.IsDamaged;
+            return model.IsIdle;
         }
+
     }
 }

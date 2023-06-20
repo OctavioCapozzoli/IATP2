@@ -12,9 +12,9 @@ namespace _Main.Scripts.Entities.Enemies
             _animator = GetComponent<Animator>();
         }
 
-        public void PlayWalkAnimation(float velocity)
+        public void PlayWalkAnimation(bool _value)
         {
-            _animator.SetFloat("Vel", velocity);
+            _animator.SetBool("isWalking", _value);
         }
         public void PlayRunAnimation(bool _value)
         {
@@ -22,18 +22,22 @@ namespace _Main.Scripts.Entities.Enemies
         }
         public void PlayAttack1Animation()
         {
+            Debug.Log("Animation attck");
             _animator.SetTrigger("onAttack1");
         }
         public void PlayAttack2Animation()
         {
+            Debug.Log("Animation attck");
             _animator.SetTrigger("onAttack2");
         }
         public void PlayAttack3Animation()
         {
+            Debug.Log("Animation attck");
             _animator.SetTrigger("onAttack3");
         }
         public void PlayBlockAnimation()
         {
+            Debug.Log("Animation attck");
             _animator.SetTrigger("onBlock");
         }
         public void PlayDamageAnimation()

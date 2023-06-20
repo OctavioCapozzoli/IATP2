@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace _Main.Scripts.FSM_SO_VERSION.Conditions.EnemyConditions
 {
-    [CreateAssetMenu(fileName = "IsFleeingFromPlayer", menuName = "_main/Conditions/EnemyConditions/IsFleeingFromPlayer")]
+    [CreateAssetMenu(fileName = "IsFleeingFromPlayer", menuName = "_main/Conditions/Enemy Conditions/IsFleeingFromPlayer")]
     public class IsFleeingFromPlayer : StateCondition
     {
         public override bool CompleteCondition(EntityModel model)

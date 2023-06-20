@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _Main.Scripts.FSM_SO_VERSION.Conditions.EnemyConditions
 {
-    [CreateAssetMenu(fileName = "IsBlockingAttack", menuName = "_main/Conditions/EnemyConditions/IsBlockingAttack")]
+    [CreateAssetMenu(fileName = "IsBlockingAttack", menuName = "_main/Conditions/Enemy Conditions/IsBlockingAttack")]
     public class IsBlockingAttack : StateCondition
     {
         public override bool CompleteCondition(EntityModel model)

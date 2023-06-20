@@ -74,13 +74,13 @@ namespace _Main.Scripts.Roulette_Wheel.EntitiesRouletteWheel
             ActionNode Attack1 = new ActionNode(PlayAttack1);
             ActionNode Attack2 = new ActionNode(PlayAttack2);
             ActionNode Attack3 = new ActionNode(PlayAttack3);
-            ActionNode BlockStateTransition = new ActionNode(TransitionToBlock);
+            //ActionNode BlockStateTransition = new ActionNode(TransitionToBlock);
             //ActionNode transtoPatrol = new ActionNode(GetTransitionToPatrol);
 
             _attackRouletteWheelNodes.Add(Attack1, 30);
             _attackRouletteWheelNodes.Add(Attack2, 25);
             _attackRouletteWheelNodes.Add(Attack3, 35);
-            _attackRouletteWheelNodes.Add(BlockStateTransition, 15);
+            //_attackRouletteWheelNodes.Add(BlockStateTransition, 15);
 
             //TODO agregarle algo más a esta ruleta
             ActionNode rouletteAction = new ActionNode(EnemyAttackOrBlockRouletteAction);

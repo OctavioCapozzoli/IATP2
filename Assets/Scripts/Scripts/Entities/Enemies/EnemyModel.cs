@@ -19,6 +19,7 @@ namespace _Main.Scripts.Entities.Enemies
         [SerializeField] private LayerMask obsMask;
         [SerializeField] float obsAvoidanceRadius = 4;
         [SerializeField] int obsAvoidanceMaxObs = 10;
+        bool isMoving;
         EnemyView _enemyView;
         bool targetInSight = false;
 
@@ -31,6 +32,7 @@ namespace _Main.Scripts.Entities.Enemies
         public EnemyController Controller { get => _controller; set => _controller = value; }
         public EnemyView EnemyView { get => _enemyView; set => _enemyView = value; }
         public bool TargetInSight { get => targetInSight; set => targetInSight = value; }
+        public bool IsMoving { get => isMoving; set => isMoving = value; }
 
         public GameObject exclamationSing;
         public GameObject questionSing;
@@ -64,12 +66,18 @@ namespace _Main.Scripts.Entities.Enemies
 
         public override void Move(Vector3 direction)
         {
+            //if (isMoving)
+            //{
             direction.y = 0;
             direction += _obstacleAvoidance.GetDir() * multiplier;
             _rb.velocity = direction.normalized * (data.MovementSpeed * Time.deltaTime);
 
             transform.forward = Vector3.Lerp(transform.forward, direction, rotSpeed * Time.deltaTime);
-            _enemyView.PlayWalkAnimation(_rb.velocity.magnitude);
+            _enemyView.PlayWalkAnimation(true);
+            //_enemyView.PlayWalkAnimation(_rb.velocity.magnitude);
+            //}
+            //else _enemyView.PlayWalkAnimation(false);
+
         }
 
         public override void LookDir(Vector3 dir)

@@ -31,3 +31,4 @@ MonoBehaviour:
   <TargetLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 256
+  <FleeHealthValue>k__BackingField: 10

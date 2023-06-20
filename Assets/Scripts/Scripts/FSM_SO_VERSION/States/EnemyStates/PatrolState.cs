@@ -33,7 +33,6 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
             {
                 _movementDatas.Add(model, new DataMovementState(model));
             }
-
             model.IsPatrolling = true;
         }
 

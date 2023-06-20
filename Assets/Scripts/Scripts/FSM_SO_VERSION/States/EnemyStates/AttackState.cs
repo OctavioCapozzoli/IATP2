@@ -16,27 +16,30 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
             public int TargetLayer;
         }
 
+        float attackCooldown;
         private Dictionary<EntityModel, EnemyModel> _entitiesData = new Dictionary<EntityModel, EnemyModel>();
-
         public override void EnterState(EntityModel model)
         {
             _entitiesData.Add(model, model as EnemyModel);
-
+            _entitiesData[model].IsPatrolling = false;
+            _entitiesData[model].IsAttacking = true;
+            _entitiesData[model].EnemyView.PlayWalkAnimation(false);
             _entitiesData[model].Controller.EnemyRoulette.EnemyAttackOrBlockRouletteAction();
-            model.IsAttacking = true;
-
+            attackCooldown = .1f;
         }
 
         public override void ExecuteState(EntityModel model)
         {
             Debug.Log("Attack state execute");
+            attackCooldown -= Time.deltaTime;
         }
 
         public override void ExitState(EntityModel model)
         {
+            attackCooldown = .5f;
+            _entitiesData[model].IsAttacking = false;
+            _entitiesData[model].IsIdle = true;
             _entitiesData.Remove(model);
-
-            model.IsAttacking = false;
         }
 
 

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Main.Scripts.FSM_SO_VERSION.Conditions
 {
-    [CreateAssetMenu(fileName = "WalkCondition", menuName = "_main/Conditions/WalkCondition")]
+    [CreateAssetMenu(fileName = "WalkCondition", menuName = "_main/Conditions/Player Conditions/WalkCondition")]
     public class WalkConditionsPlayer : StateCondition
     {
         public override bool CompleteCondition(EntityModel model)

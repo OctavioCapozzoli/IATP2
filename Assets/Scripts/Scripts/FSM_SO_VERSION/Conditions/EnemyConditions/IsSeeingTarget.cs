@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _Main.Scripts.FSM_SO_VERSION.Conditions.EnemyConditions
 {
-    [CreateAssetMenu(fileName = "IsSeeingTarget", menuName = "_main/Conditions/EnemyConditions/IsSeeingTarget")]
+    [CreateAssetMenu(fileName = "IsSeeingTarget", menuName = "_main/Conditions/Enemy Conditions/IsSeeingTarget")]
     public class IsSeeingTarget : StateCondition
     {
         public override bool CompleteCondition(EntityModel model)

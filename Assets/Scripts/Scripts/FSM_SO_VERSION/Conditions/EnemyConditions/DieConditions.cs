@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Main.Scripts.FSM_SO_VERSION.Conditions.EnemyConditions
 {
-    [CreateAssetMenu(fileName = "DieConditions", menuName = "_main/Conditions/DieConditions")]
+    [CreateAssetMenu(fileName = "DieConditions", menuName = "_main/Conditions/Universal Conditions/DieConditions")]
     public class DieConditions : StateCondition
     {
         public override bool CompleteCondition(EntityModel model)
