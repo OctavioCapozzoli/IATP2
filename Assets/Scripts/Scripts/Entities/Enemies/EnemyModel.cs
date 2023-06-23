@@ -3,6 +3,7 @@ using _Main.Scripts.Entities.Player;
 using _Main.Scripts.FSM_SO_VERSION;
 using _Main.Scripts.Steering_Behaviours.Steering_Behaviours;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
@@ -19,6 +20,7 @@ namespace _Main.Scripts.Entities.Enemies
         [SerializeField] private LayerMask obsMask;
         [SerializeField] float obsAvoidanceRadius = 4;
         [SerializeField] int obsAvoidanceMaxObs = 10;
+        [SerializeField] private SkinnedMeshRenderer meshRenderer;
         bool isMoving;
         EnemyView _enemyView;
         bool targetInSight = false;
@@ -90,6 +92,14 @@ namespace _Main.Scripts.Entities.Enemies
         public override void GetDamage(int damage)
         {
             _healthController.TakeDamage(damage);
+            StartCoroutine(FlashRed());
+        }
+
+        public IEnumerator FlashRed()
+        {
+            meshRenderer.sharedMaterial.color = Color.red;
+            yield return new WaitForSeconds(0.1f);
+            meshRenderer.sharedMaterial.color = Color.white;
         }
 
         public override void Heal(int healingPoint)

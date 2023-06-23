@@ -1,5 +1,6 @@
 ﻿using _Main.Scripts.FSM_SO_VERSION;
 using _Main.Scripts.Roulette_Wheel.EntitiesRouletteWheel;
+using System.Collections;
 using UnityEngine;
 
 namespace _Main.Scripts.Entities.Player
@@ -23,11 +24,13 @@ namespace _Main.Scripts.Entities.Player
         {
             _playerFsm = new FsmScript(_model, initialState);
             _playerSpecialAttacksRouletteWheel = new PlayerRouletteWheel(_model);
+            StartCoroutine(manaTime());
         }
         private void Update()
         {
             _model.CheckGround();
             _playerFsm.UpdateState();
+            _model.ManaBar();
 
             if (_model.IsGrounded)
             {
@@ -37,6 +40,19 @@ namespace _Main.Scripts.Entities.Player
                 CheckSpecialAttackInput();
             }
         }
+        
+        IEnumerator manaTime()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(0.1f);
+                if(_model.mana < 100)
+                {
+                    _model.mana += 0.4f;
+                }
+            }
+        }
+
         void CheckMovementControls()
         {
             var horizontalInput = Input.GetAxis("Horizontal");

@@ -3,6 +3,7 @@ using _Main.Scripts.Steering_Behaviours.Steering_Behaviours;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace _Main.Scripts.Entities.Player
 {
@@ -11,6 +12,10 @@ namespace _Main.Scripts.Entities.Player
 
         [SerializeField] private StateData[] fsmStates;
         [SerializeField] private float maxSpeed;
+        [SerializeField] public float mana;
+        [SerializeField] public float cooldown;
+        public float lastSpecialAtk;
+        [SerializeField] public int manaCost;
         [SerializeField] private float jumpForce;
         [SerializeField] private float maxLife = 100;
         [SerializeField] private LayerMask groundMask;
@@ -18,6 +23,7 @@ namespace _Main.Scripts.Entities.Player
         [SerializeField] ProjectileScript projectile;
         [SerializeField] Transform projectilePosition;
         [SerializeField] GameObject guitarPrefab;
+        [SerializeField] private Slider manaSlider;
 
 
         private PlayerView _view;
@@ -42,6 +48,10 @@ namespace _Main.Scripts.Entities.Player
         }
 
 
+        public void ManaBar()
+        {
+            manaSlider.GetComponent<Slider>().value = mana;
+        }
 
         public void CheckGround()
         {

@@ -16,7 +16,16 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
         public override void EnterState(EntityModel model)
         {
             playerModel = model as PlayerModel;
-            playerModel.Controller.PlayerSpecialAttacksRouletteWheel.RouletteAction();
+            if (playerModel.mana >= playerModel.manaCost)
+            {
+                if (Time.time - playerModel.lastSpecialAtk < playerModel.cooldown)
+                {
+                    return;
+                }
+                playerModel.lastSpecialAtk = Time.time;
+                playerModel.mana -= playerModel.manaCost;
+                playerModel.Controller.PlayerSpecialAttacksRouletteWheel.RouletteAction();
+            }
         }
 
         public override void ExecuteState(EntityModel model)
