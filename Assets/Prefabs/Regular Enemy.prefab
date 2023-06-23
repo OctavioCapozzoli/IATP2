@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 6346816219197415746}
   m_Layer: 9
   m_Name: Regular Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,6 +125,8 @@ MonoBehaviour:
   obsMask:
     serializedVersion: 2
     m_Bits: 64
+  obsAvoidanceRadius: 4
+  obsAvoidanceMaxObs: 10
   _controller: {fileID: 4569825258058179005}
   exclamationSing: {fileID: 4569825258530685644}
   questionSing: {fileID: 4569825258944659983}

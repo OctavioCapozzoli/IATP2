@@ -31,6 +31,7 @@ namespace _Main.Scripts.Entities.Player
         public bool IsGrounded { get => _isGrounded; set => _isGrounded = value; }
         public PlayerView View { get => _view; set => _view = value; }
         public PlayerController Controller { get => _controller; set => _controller = value; }
+        public HealthController HealthController { get => _healthController; set => _healthController = value; }
 
         void Awake()
         {

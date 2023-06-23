@@ -1,18 +1,16 @@
-Ôªøusing _Main.Scripts.Entities.Enemies.Data;
+using _Main.Scripts.Entities.Enemies.Data;
 using _Main.Scripts.Entities.Player;
 using _Main.Scripts.FSM_SO_VERSION;
 using _Main.Scripts.Steering_Behaviours.Steering_Behaviours;
 using System;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 namespace _Main.Scripts.Entities.Enemies
 {
-    public class EnemyModel : EntityModel
+    public class BossEnemyModel : EntityModel
     {
-        [SerializeField] private EnemyData data;
+        [SerializeField] private BossEnemyData data;
         [SerializeField] private float multiplier;
         [SerializeField] private Transform[] patrolPoints;
         [SerializeField] private PlayerModel playerModel;
@@ -20,35 +18,27 @@ namespace _Main.Scripts.Entities.Enemies
         [SerializeField] float obsAvoidanceRadius = 4;
         [SerializeField] int obsAvoidanceMaxObs = 10;
         bool isMoving;
-        EnemyView _enemyView;
+        BossEnemyView _enemyView;
         bool targetInSight = false;
-
 
         private Rigidbody _rb;
         private HealthController _healthController;
-        [SerializeField] EnemyController _controller;
+        [SerializeField] BossEnemyController _controller;
         private ObstacleAvoidance _obstacleAvoidance;
 
-        public EnemyController Controller { get => _controller; set => _controller = value; }
-        public EnemyView EnemyView { get => _enemyView; set => _enemyView = value; }
+        public BossEnemyController Controller { get => _controller; set => _controller = value; }
+        public BossEnemyView EnemyView { get => _enemyView; set => _enemyView = value; }
         public bool TargetInSight { get => targetInSight; set => targetInSight = value; }
         public bool IsMoving { get => isMoving; set => isMoving = value; }
-
-        public GameObject exclamationSing;
-        public GameObject questionSing;
-
-        public float cooldownAttack;
+        public HealthController HealthController { get => _healthController; set => _healthController = value; }
         private void Awake()
         {
 
             _rb = GetComponent<Rigidbody>();
             _healthController = new HealthController(data.MaxLife);
-            _enemyView = GetComponent<EnemyView>();
+            _enemyView = GetComponent<BossEnemyView>();
 
             _obstacleAvoidance = new ObstacleAvoidance(transform, obsAvoidanceRadius, obsAvoidanceMaxObs, data.TotalSightDegrees, obsMask);
-            exclamationSing.SetActive(false);
-            questionSing.SetActive(false);
-            cooldownAttack = 0;
 
             _healthController.OnDie += Die;
         }
@@ -66,18 +56,12 @@ namespace _Main.Scripts.Entities.Enemies
 
         public override void Move(Vector3 direction)
         {
-            //if (isMoving)
-            //{
             direction.y = 0;
             direction += _obstacleAvoidance.GetDir() * multiplier;
             _rb.velocity = direction.normalized * (data.MovementSpeed * Time.deltaTime);
 
             transform.forward = Vector3.Lerp(transform.forward, direction, rotSpeed * Time.deltaTime);
             _enemyView.PlayWalkAnimation(true);
-            //_enemyView.PlayWalkAnimation(_rb.velocity.magnitude);
-            //}
-            //else _enemyView.PlayWalkAnimation(false);
-
         }
 
         public override void LookDir(Vector3 dir)
@@ -103,7 +87,7 @@ namespace _Main.Scripts.Entities.Enemies
 
         public void SetBlockConditions()
         {
-            IsBlocking = true; //TODO testear si pasa bien al estado. De no ser as√≠ pasar normalmente desde idle y tratarlo como otro ataque aparte
+            IsBlocking = true; //TODO testear si pasa bien al estado. De no ser asÌ pasar normalmente desde idle y tratarlo como otro ataque aparte
         }
         public override bool IsEntityDead()
         {
@@ -124,16 +108,16 @@ namespace _Main.Scripts.Entities.Enemies
             {
                 target = overlapSphere[0].transform;
             }
-            //Debug.Log(target + "  " + ViewDistance);
+
             targetInSight = false;
             if (target != null)
             {
-                // 1 - Si est√° en mi rango de visi√≥n
+                // 1 - Si est· en mi rango de visiÛn
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                 if (distanceToTarget <= data.SightRange)
                 {
-                    // 2 - Si est√° en mi cono de visi√≥n
+                    // 2 - Si est· en mi cono de visiÛn
                     Vector3 targetDir = (target.position - transform.position).normalized; // Asi se calcula
                     float angleToTarget = Vector3.Angle(transform.forward, targetDir);
 
@@ -149,13 +133,11 @@ namespace _Main.Scripts.Entities.Enemies
                     }
                     if (targetInSight)
                     {
-                        Debug.Log("Lo veo y lo sigo");
                         IsAllert = true;
                         IsSeeingTarget = true;
                     }
                     else
                     {
-                        Debug.Log("No lo veo y no lo sigo");
                         IsAllert = false;
                         IsSeeingTarget = false;
                     }
@@ -167,11 +149,12 @@ namespace _Main.Scripts.Entities.Enemies
         public bool CheckFleeFromPlayer()
         {
             IsFleeing = _healthController.CurrentHealth <= data.FleeHealthValue ? true : false;
+            Debug.Log("Is fleeing ? " + IsFleeing + _healthController.CurrentHealth + data.FleeHealthValue);
             return IsFleeing;
 
         }
         public PlayerModel GetTarget() => playerModel;
-        public EnemyData GetData() => data;
+        public BossEnemyData GetData() => data;
         public override StateData[] GetStates() => data.FsmStates;
         public Transform[] GetPatrolPoints() => patrolPoints;
 

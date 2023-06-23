@@ -1,6 +1,7 @@
 ﻿using _Main.Scripts.Entities;
 using _Main.Scripts.Entities.Enemies;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace _Main.Scripts.FSM_SO_VERSION.Conditions.EnemyConditions
 {
@@ -12,8 +13,8 @@ namespace _Main.Scripts.FSM_SO_VERSION.Conditions.EnemyConditions
             var enemyModel = (EnemyModel)model;
             var distanceToTarget =
                 Vector3.Distance(enemyModel.GetTarget().transform.position, model.transform.position);
-            Debug.Log("Chequeando attack");
-            return distanceToTarget < enemyModel.GetData().DistanceToAttack; //TODO chequear cooldown attack enemy
+            Debug.Log("enemy distance to target " + distanceToTarget);
+            return distanceToTarget <= enemyModel.GetData().DistanceToAttack; //TODO chequear cooldown attack enemy
         }
     }
 }

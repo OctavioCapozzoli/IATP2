@@ -12,6 +12,7 @@ public class Grid : MonoBehaviour
     public float nodeRadius;
     public GameObject nodePrefab;
     Node[,] grid;
+    bool isGridReady = false;
     //public TerrainType[] walkableRegions;
 
     float nodeDiameter;
@@ -33,6 +34,8 @@ public class Grid : MonoBehaviour
         }
     }
 
+    public bool IsGridReady { get => isGridReady; set => isGridReady = value; }
+
     void CreateGrid()
     {
         grid = new Node[gridSizeX, gridSizeY];
@@ -44,35 +47,39 @@ public class Grid : MonoBehaviour
             {
                 Vector3 worldPoint = worldBottomLeft + (Vector3.right * ((x * nodeDiameter) + nodeRadius)) + (Vector3.forward * ((y * nodeDiameter) + nodeRadius));
                 bool walkable = !Physics.CheckSphere(worldPoint, nodeRadius, unwalkableNodeLayerMask);
-                //var go = Instantiate(nodePrefab, worldPoint, Quaternion.identity);
-                //Node node = go.GetComponent<Node>(); node.InitNode(walkable, worldPoint, x, y);
+                var go = Instantiate(nodePrefab, worldPoint, Quaternion.identity);
+                //node.InitNode(walkable, worldPoint, x, y);
                 grid[x, y] = new Node(true, worldPoint, x, y);
                 //Debug.Log("node position data: " + worldPoint + x + y);
             }
         }
+        isGridReady = true;
     }
 
 
-    public List<Node> GetNeighbours(Node _currentNode)
+    public void /*List<Node>*/ GetNeighbours(Node _currentNode)
     {
-        List<Node> neighbours = new List<Node>();
-        for (int x = -1; x <= 1; x++)
+        if (isGridReady)
         {
-            for (int y = -1; y <= 1; y++)
+            List<Node> neighbours = new List<Node>();
+            for (int x = -1; x <= 1; x++)
             {
-                if (x == 0 && y == 0) continue;
-
-                int checkX = _currentNode.gridX + x;
-                int checkY = _currentNode.gridY + y;
-
-                if (checkX >= 0 && checkX < gridSizeX && checkY >= 0 && checkY < gridSizeY)
+                for (int y = -1; y <= 1; y++)
                 {
-                    if (grid[checkX, checkY] != null) neighbours.Add(grid[checkX, checkY]);
+                    if (x == 0 && y == 0) continue;
+
+                    int checkX = _currentNode.gridX + x;
+                    int checkY = _currentNode.gridY + y;
+
+                    if (checkX >= 0 && checkX < gridSizeX && checkY >= 0 && checkY < gridSizeY)
+                    {
+                        if (grid[checkX, checkY] != null) neighbours.Add(grid[checkX, checkY]);
+                    }
                 }
             }
+            _currentNode.Neighbors = neighbours;
+            //return neighbours;
         }
-        _currentNode.Neighbors = neighbours;
-        return neighbours;
     }
 
     public Node GetNodeFromWorldPoint(Vector3 _worldPosition)

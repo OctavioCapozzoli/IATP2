@@ -18,5 +18,6 @@ namespace _Main.Scripts.Entities.Enemies.Data
         [field: SerializeField] public float TimeForSearchPlayer { get; private set; }
         [field: SerializeField] public LayerMask TargetLayer { get; private set; }
         [field: SerializeField] public float FleeHealthValue { get; set; }
+        [field: SerializeField] public float IdleTimer { get; set; }
     }
 }

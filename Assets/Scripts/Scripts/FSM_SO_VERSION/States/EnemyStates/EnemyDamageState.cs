@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 {
-    [CreateAssetMenu(fileName = "DamageState", menuName = "_main/States/EnemyStates/DamageState", order = 0)]
+    [CreateAssetMenu(fileName = "DamageState", menuName = "_main/States/Enemy States/Damage State", order = 0)]
     public class EnemyDamageState : State
     {
         private Dictionary<EntityModel, EnemyModel> _entitiesData = new Dictionary<EntityModel, EnemyModel>();
@@ -14,11 +14,17 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
         public override void EnterState(EntityModel model)
         {
             _entitiesData.Add(model, model as EnemyModel);
+            Debug.Log("Enemy current health" + _entitiesData[model].HealthController.CurrentHealth);
         }
 
         public override void ExecuteState(EntityModel model)
         {
-            //_entitiesData[model].EnemyView.PlayDamageAnimation();
+            Debug.Log("Enemy damage state execute");
+        }
+        public override void ExitState(EntityModel model)
+        {
+            _entitiesData[model].IsDamaged = false;
+            _entitiesData.Remove(model);
         }
     }
 }

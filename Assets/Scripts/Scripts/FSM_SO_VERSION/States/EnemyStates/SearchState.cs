@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 {
-    [CreateAssetMenu(fileName = "SearchState", menuName = "_main/States/EnemyStates/SearchState", order = 0)]
+    [CreateAssetMenu(fileName = "SearchState", menuName = "_main/States/Enemy States/Search State", order = 0)]
     public class SearchState : State
     {
         private class SearchData
@@ -22,6 +22,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
         {
             _searchDatas.Add(model, new SearchData());
             _searchDatas[model].Model = (EnemyModel)model;
+            _searchDatas[model].Model.EnemyView.PlayWalkAnimation(false);
             var myModel = _searchDatas[model].Model;
             Vector3 lastViewDir = myModel.GetLastViewDir();
 
@@ -55,6 +56,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 
         public override void ExecuteState(EntityModel model)
         {
+            Debug.Log("Enemy search state execute");
             _searchDatas[model].Timer -= Time.deltaTime;
             if (_searchDatas[model].Timer > 0)
             {

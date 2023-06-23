@@ -1,4 +1,5 @@
 using _Main.Scripts.Entities;
+using _Main.Scripts.Entities.Player;
 using UnityEngine;
 
 namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
@@ -8,11 +9,12 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
     {
         public override void EnterState(EntityModel model)
         {
-            model.GetRigidbody().velocity = Vector3.zero;
+            PlayerModel playerModel = model as PlayerModel;
+            playerModel.View.PlayRunAnimation(false);
         }
         public override void ExecuteState(EntityModel model)
         {
-            model.GetRigidbody().velocity = Vector3.zero;
+            Debug.Log("Idle state player execute");
         }
     }
 }

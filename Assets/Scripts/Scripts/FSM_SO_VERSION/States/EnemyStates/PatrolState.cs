@@ -6,7 +6,7 @@ using UnityEngine.Assertions;
 
 namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 {
-    [CreateAssetMenu(fileName = "PatrolState", menuName = "_main/States/EnemyStates/PatrolState", order = 0)]
+    [CreateAssetMenu(fileName = "PatrolState", menuName = "_main/States/Enemy States/Patrol State", order = 0)]
     public class PatrolState : State
     {
         private Dictionary<EntityModel, DataMovementState> _movementDatas = new Dictionary<EntityModel, DataMovementState>();
@@ -33,17 +33,18 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
             {
                 _movementDatas.Add(model, new DataMovementState(model));
             }
+            _movementDatas[model].EnemyModel.EnemyView.PlayWalkAnimation(false);
             model.IsPatrolling = true;
         }
 
         public override void ExecuteState(EntityModel model)
         {
+            Debug.Log("Enemy patrol state execute");
             var patrolPoints = _movementDatas[model].EnemyModel.GetPatrolPoints();
 
             var distToNextPoint = Vector3.Distance(patrolPoints[_movementDatas[model].PatrolCount].transform.position, model.transform.position);
             if (distToNextPoint == 0)
             {
-                Debug.Log("Está en el wp");
                 model.Move(Vector3.zero);
             }
             //Si estoy lejos del punto, me muevo hacia el

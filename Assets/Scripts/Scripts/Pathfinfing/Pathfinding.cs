@@ -38,25 +38,29 @@ public class Pathfinding
                 return;
             }
 
-            foreach (Node neighbour in grid.GetNeighbours(currentNode))
+            if (currentNode.Neighbors.Count > 0)
             {
-                if (!neighbour.isWalkable || closedSet.Contains(neighbour))
+                foreach (Node neighbour in currentNode.Neighbors)// grid.GetNeighbours(currentNode))
                 {
-                    continue;
-                }
 
-                int newMovementCostToNeighbour = currentNode.gCost + GetDistance(currentNode, neighbour);
-                if (newMovementCostToNeighbour < neighbour.gCost || !openSet.ContainsItem(neighbour))
-                {
-                    neighbour.gCost = newMovementCostToNeighbour;
-                    neighbour.hCost = GetDistance(neighbour, targetNode);
-                    neighbour.parent = currentNode;
-
-                    if (!openSet.ContainsItem(neighbour))
-                        openSet.Add(neighbour);
-                    else
+                    if (!neighbour.isWalkable || closedSet.Contains(neighbour))
                     {
-                        //openSet.UpdateItem(neighbour);
+                        continue;
+                    }
+
+                    int newMovementCostToNeighbour = currentNode.gCost + GetDistance(currentNode, neighbour);
+                    if (newMovementCostToNeighbour < neighbour.gCost || !openSet.ContainsItem(neighbour))
+                    {
+                        neighbour.gCost = newMovementCostToNeighbour;
+                        neighbour.hCost = GetDistance(neighbour, targetNode);
+                        neighbour.parent = currentNode;
+
+                        if (!openSet.ContainsItem(neighbour))
+                            openSet.Add(neighbour);
+                        else
+                        {
+                            //openSet.UpdateItem(neighbour);
+                        }
                     }
                 }
             }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace _Main.Scripts.Entities
 {
@@ -19,7 +20,6 @@ namespace _Main.Scripts.Entities
         public void TakeDamage(float damage)
         {
             CurrentHealth -= damage;
-
             if (CurrentHealth <= 0)
                 OnDie?.Invoke();
             else

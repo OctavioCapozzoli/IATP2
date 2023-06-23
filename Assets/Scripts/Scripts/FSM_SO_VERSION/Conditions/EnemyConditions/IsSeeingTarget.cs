@@ -12,8 +12,6 @@ namespace _Main.Scripts.FSM_SO_VERSION.Conditions.EnemyConditions
 
             var thisModel = (EnemyModel)model;
 
-            Debug.Log("In sight?" + thisModel.LineOfSight(thisModel.GetTarget().transform));
-
             return thisModel.LineOfSight(thisModel.GetTarget().transform);
         }
     }

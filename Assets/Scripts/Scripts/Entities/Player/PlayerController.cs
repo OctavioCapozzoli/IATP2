@@ -1,6 +1,8 @@
 ﻿using _Main.Scripts.FSM_SO_VERSION;
 using _Main.Scripts.Roulette_Wheel.EntitiesRouletteWheel;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace _Main.Scripts.Entities.Player
 {
@@ -12,8 +14,10 @@ namespace _Main.Scripts.Entities.Player
         private StateData _currentState;
         private PlayerModel _model;
         PlayerRouletteWheel _playerSpecialAttacksRouletteWheel;
-
+        [SerializeField] float attackKeyCooldown = .5f;
+        bool isOnAttackCooldown = false;
         public PlayerRouletteWheel PlayerSpecialAttacksRouletteWheel { get => _playerSpecialAttacksRouletteWheel; set => _playerSpecialAttacksRouletteWheel = value; }
+        public bool IsOnAttackCooldown { get => isOnAttackCooldown; set => isOnAttackCooldown = value; }
 
         private void Awake()
         {
@@ -66,8 +70,35 @@ namespace _Main.Scripts.Entities.Player
         {
             if (Input.GetKeyDown(KeyCode.J) && _model.IsIdle)
             {
+                if (isOnAttackCooldown)
+                {
+                    Debug.Log("Attack is on cooldown");
+                    return;
+                }
                 _model.IsAttacking = true;
             }
+            else if (Input.GetKeyUp(KeyCode.J))
+            {
+                //attackKeyCooldown -= Time.deltaTime;
+                //if (attackKeyCooldown <= 0)
+                //{
+                //    _model.IsAttacking = false;
+                //    attackKeyCooldown = .5f;
+                //}
+            }
+        }
+        public IEnumerator StartCooldownTimer()
+        {
+            isOnAttackCooldown = true;
+            Debug.Log("Cooldown coroutine set");
+            yield return new WaitForSeconds(attackKeyCooldown);
+            isOnAttackCooldown = false;
+
+            Debug.Log("Cooldown coroutine end");
+        }
+        public void ResetAttackKeyCooldown()
+        {
+            Debug.Log("Timer reset");
         }
 
         void CheckSpecialAttackInput()

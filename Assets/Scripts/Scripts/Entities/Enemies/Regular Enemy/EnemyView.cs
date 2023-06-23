@@ -16,29 +16,20 @@ namespace _Main.Scripts.Entities.Enemies
         {
             _animator.SetBool("isWalking", _value);
         }
-        public void PlayRunAnimation(bool _value)
-        {
-            _animator.SetBool("isSeeking", _value);
-        }
         public void PlayAttack1Animation()
         {
-            Debug.Log("Animation attck");
+            Debug.Log("Enemy attack animation 1");
             _animator.SetTrigger("onAttack1");
         }
         public void PlayAttack2Animation()
         {
-            Debug.Log("Animation attck");
+            Debug.Log("Enemy attack animation 2");
             _animator.SetTrigger("onAttack2");
         }
         public void PlayAttack3Animation()
         {
-            Debug.Log("Animation attck");
+            Debug.Log("Enemy attack animation 3");
             _animator.SetTrigger("onAttack3");
-        }
-        public void PlayBlockAnimation()
-        {
-            Debug.Log("Animation attck");
-            _animator.SetTrigger("onBlock");
         }
         public void PlayDamageAnimation()
         {

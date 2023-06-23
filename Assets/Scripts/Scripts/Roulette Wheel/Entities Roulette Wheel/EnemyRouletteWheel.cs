@@ -88,21 +88,16 @@ namespace _Main.Scripts.Roulette_Wheel.EntitiesRouletteWheel
 
         void PlayAttack1()
         {
-            Debug.Log("Attack 1");
             _model.EnemyView.PlayAttack1Animation();
         }
 
         void PlayAttack2()
         {
-            Debug.Log("Attack 2");
-
             _model.EnemyView.PlayAttack2Animation();
         }
 
         void PlayAttack3()
         {
-            Debug.Log("Attack 3");
-
             _model.EnemyView.PlayAttack3Animation();
         }
 

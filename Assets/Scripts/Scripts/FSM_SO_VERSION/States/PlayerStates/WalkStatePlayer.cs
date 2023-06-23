@@ -10,20 +10,13 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
     {
         public override void ExecuteState(EntityModel model)
         {
-            //var horizontalInput = model.transform.right * Input.GetAxis("Horizontal");
-            //var verticalInput = model.transform.forward * Input.GetAxis("Vertical");
+
             var h = Input.GetAxis("Horizontal");
             var v = Input.GetAxis("Vertical");
             Vector3 dir = new Vector3(h, 0, v);
-            //_entity.Move(dir);
-
-            //Vector3 inputDir = (horizontalInput + verticalInput).normalized;
-            //Vector3 wantedDir = new Vector3(inputDir.x, model.GetRigidbody().velocity.y, inputDir.z).normalized;
-
             if (h != 0 || v != 0)
             {
                 model.Move(dir);
-                //model.LookDir(model.GetFoward());
             }
 
         }
@@ -31,6 +24,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
         {
             PlayerModel playerModel = (PlayerModel)model;
             playerModel.View.PlayRunAnimation(false);
+            playerModel.IsWalking = false;
         }
 
     }

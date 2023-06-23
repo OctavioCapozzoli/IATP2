@@ -28,8 +28,10 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
 
         public override void ExecuteState(EntityModel model)
         {
-            Debug.Log("Execute");
+            Debug.Log("Attack State Player Execute");
             currentComboTimer -= Time.deltaTime;
+            Debug.Log("Attack cooldown is: " +
+                playerModel.Controller.IsOnAttackCooldown);
             if (currentComboTimer > 0)
             {
                 if (Input.GetKeyDown(KeyCode.J))
@@ -42,15 +44,16 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
             }
             else
             {
+                ResetCombo();
                 model.IsAttacking = false;
             }
-
-            //CheckTimerOff();
         }
 
         public override void ExitState(EntityModel model)
         {
             Debug.Log("Exit");
+            model.IsAttacking = false;
+            //playerModel.Controller.ResetAttackKeyCooldown();
         }
 
         void CheckComboAnim()
