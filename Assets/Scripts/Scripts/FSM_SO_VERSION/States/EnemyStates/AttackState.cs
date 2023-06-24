@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 {
-    [CreateAssetMenu(fileName = "AttackState", menuName = "_main/States/Enemy States/Attack State", order = 0)]
+    [CreateAssetMenu(fileName = "Attack State", menuName = "_main/States/Enemy States/Attack State", order = 0)]
     public class AttackState : State
     {
         private class AttackData

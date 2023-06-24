@@ -6,7 +6,7 @@ using UnityEngine.Assertions;
 
 namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 {
-    [CreateAssetMenu(fileName = "PatrolState", menuName = "_main/States/Enemy States/Patrol State", order = 0)]
+    [CreateAssetMenu(fileName = "Patrol State", menuName = "_main/States/Enemy States/Patrol State", order = 0)]
     public class PatrolState : State
     {
         private Dictionary<EntityModel, DataMovementState> _movementDatas = new Dictionary<EntityModel, DataMovementState>();

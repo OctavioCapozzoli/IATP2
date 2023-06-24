@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
 {
-    [CreateAssetMenu(fileName = "RegularAttackState", menuName = "_main/States/Boss States/Regular Attack State", order = 0)]
+    [CreateAssetMenu(fileName = "Regular Attack State", menuName = "_main/States/Boss States/Regular Attack State", order = 0)]
     public class RegularAttackState : State
     {
 
@@ -31,6 +31,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
                 if (rouletteCooldownTimer >= rouletteMaxCooldown) timer = 0;
 
             }
+            //else bossModel.GetData().RegularAttackHealthThreshold = false;
         }
 
         public override void ExitState(EntityModel model)

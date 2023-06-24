@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
 {
-    [CreateAssetMenu(fileName = "WalkState", menuName = "_main/States/PlayerStates/WalkState", order = 0)]
+    [CreateAssetMenu(fileName = "Walk State", menuName = "_main/States/Player States/Walk State", order = 0)]
 
     public class WalkStatePlayer : State
     {

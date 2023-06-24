@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 {
-    [CreateAssetMenu(fileName = "DamageState", menuName = "_main/States/Enemy States/Damage State", order = 0)]
+    [CreateAssetMenu(fileName = "Damage State", menuName = "_main/States/Enemy States/Damage State", order = 0)]
     public class EnemyDamageState : State
     {
         private Dictionary<EntityModel, EnemyModel> _entitiesData = new Dictionary<EntityModel, EnemyModel>();

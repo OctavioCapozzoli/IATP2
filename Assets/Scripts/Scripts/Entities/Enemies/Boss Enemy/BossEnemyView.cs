@@ -20,34 +20,38 @@ namespace _Main.Scripts.Entities.Enemies
         #region Regular Attacks 
         public void PlayAttack1Animation()
         {
-            _animator.SetTrigger("onEnhancedAttack1");
+            _animator.SetTrigger("onRegularAttack1");
         }
         public void PlayAttack2Animation()
         {
-            _animator.SetTrigger("onEnhancedAttack2");
+            _animator.SetTrigger("onRegularAttack2");
         }
         public void PlayAttack3Animation()
         {
-            _animator.SetTrigger("onEnhancedAttack3");
+            _animator.SetTrigger("onRegularAttack3");
         }
         #endregion
 
         #region Enhanced Attacks
         public void PlayEnhancedAttack1Animation()
         {
-            _animator.SetTrigger("onAttack1");
+            _animator.SetTrigger("onEnhancedAttack1");
         }
         public void PlayEnhancedAttack2Animation()
         {
-            _animator.SetTrigger("onAttack2");
+            _animator.SetTrigger("onEnhancedAttack2");
         }
         public void PlayEnhancedAttack3Animation()
         {
-            _animator.SetTrigger("onAttack3");
+            _animator.SetTrigger("onEnhancedAttack3");
         }
         #endregion
 
         #region Desperate Attacks
+        public void PlayDesperateAttackActivator()
+        {
+            _animator.SetTrigger("onDesperateAttackActivated");
+        }
         public void PlayDesperateAttack1Animation()
         {
             _animator.SetTrigger("onDesperateAttack1");

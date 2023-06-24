@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 {
-    [CreateAssetMenu(fileName = "DieState", menuName = "_main/States/Enemy States/Die State", order = 0)]
+    [CreateAssetMenu(fileName = "Die State", menuName = "_main/States/Enemy States/Die State", order = 0)]
     public class DieState : State
     {
         public override void EnterState(EntityModel model)

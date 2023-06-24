@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Main.Scripts.Entities.Enemies.Data
 {
-    [CreateAssetMenu(fileName = "EnemyData", menuName = "_main/Data/EnemyData")]
+    [CreateAssetMenu(fileName = "Enemy Data", menuName = "_main/Data/Enemy Data")]
     public class EnemyData : ScriptableObject
     {
         [field: SerializeField] public StateData[] FsmStates { get; private set; }

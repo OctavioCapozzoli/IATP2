@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
 {
-    [CreateAssetMenu(fileName = "BlockState", menuName = "_main/States/Boss States/Block State", order = 0)]
+    [CreateAssetMenu(fileName = "Block State", menuName = "_main/States/Boss States/Block State", order = 0)]
     public class BlockState : State
     {
         BossEnemyModel bossEnemyModel;

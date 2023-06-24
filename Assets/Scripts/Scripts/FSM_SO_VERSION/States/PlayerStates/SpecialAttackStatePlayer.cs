@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
 {
-    [CreateAssetMenu(fileName = "SpecialAttackState", menuName = "_main/States/PlayerStates/SpecialAttackState", order = 0)]
+    [CreateAssetMenu(fileName = "Special Attack State", menuName = "_main/States/Player States/Special Attack State", order = 0)]
 
     public class SpecialAttackStatePlayer : State
     {

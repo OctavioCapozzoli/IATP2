@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Boss Enemy Data", menuName = "_main/Data/Boss Enemy Data")]
 public class BossEnemyData : EnemyData
 {
     [field: SerializeField] public float SeekRange { get; private set; }

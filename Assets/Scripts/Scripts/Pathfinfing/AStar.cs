@@ -12,7 +12,6 @@ public class AStar<T>
         Func<T, float> heuristic,
         int watchdog = 100)
     {
-        Debug.Log("Running Astar");
         PriorityQueue<T> pending = new PriorityQueue<T>();
         HashSet<T> visited = new HashSet<T>();
         Dictionary<T, T> parent = new Dictionary<T, T>();

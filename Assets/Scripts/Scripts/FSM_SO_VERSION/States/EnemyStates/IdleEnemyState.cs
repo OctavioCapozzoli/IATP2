@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 {
-    [CreateAssetMenu(fileName = "IdleEnemyState", menuName = "_main/States/Enemy States/IdleState", order = 0)]
+    [CreateAssetMenu(fileName = "Idle Enemy State", menuName = "_main/States/Enemy States/Idle State", order = 0)]
     public class IdleEnemyState : State
     {
         float timer = 2f;

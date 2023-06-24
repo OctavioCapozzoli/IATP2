@@ -9,7 +9,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
 
     public enum PlayerAttackComboState { NONE, PUNCH_1, PUNCH_2, PUNCH_3 }
 
-    [CreateAssetMenu(fileName = "RegularAttackState", menuName = "_main/States/PlayerStates/RegularAttackState", order = 0)]
+    [CreateAssetMenu(fileName = "Regular Attack State", menuName = "_main/States/Player States/Regular Attack State", order = 0)]
 
     public class AttackStatePlayer : State
     {
