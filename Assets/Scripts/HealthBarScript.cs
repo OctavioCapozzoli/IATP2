@@ -23,7 +23,7 @@ public class HealthBarScript : MonoBehaviour
 
     private void Update()
     {
-        transform.rotation = Quaternion.LookRotation(transform.position - _cam.transform.position);
+        transform.rotation = Quaternion.LookRotation(transform.position - Camera.main.transform.position);
         _healthBar.fillAmount = Mathf.MoveTowards(_healthBar.fillAmount, target, reduceSpeed * Time.deltaTime);
     }
 }

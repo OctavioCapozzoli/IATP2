@@ -30,10 +30,6 @@ namespace _Main.Scripts.Entities.Enemies
         [SerializeField] EnemyController _controller;
         private ObstacleAvoidance _obstacleAvoidance;
 
-        [SerializeField] private SkinnedMeshRenderer meshRenderer;
-        [SerializeField] private Material redenemyMat;
-        [SerializeField] private Material enemyMat;
-
         public EnemyController Controller { get => _controller; set => _controller = value; }
         public EnemyView EnemyView { get => _enemyView; set => _enemyView = value; }
         public bool TargetInSight { get => targetInSight; set => targetInSight = value; }
@@ -93,13 +89,6 @@ namespace _Main.Scripts.Entities.Enemies
         public override void GetDamage(int damage)
         {
             _healthController.TakeDamage(damage);
-            StartCoroutine(FlashRed());
-        }
-        public IEnumerator FlashRed()
-        {
-            meshRenderer.material = redenemyMat;
-            yield return new WaitForSeconds(0.1f);
-            meshRenderer.material = enemyMat;
         }
 
         public override void Heal(int healingPoint)
