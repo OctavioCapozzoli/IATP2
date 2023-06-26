@@ -1,4 +1,5 @@
 ﻿using _Main.Scripts.FSM_SO_VERSION;
+using System.Collections;
 using UnityEngine;
 
 namespace _Main.Scripts.Entities
@@ -47,6 +48,10 @@ namespace _Main.Scripts.Entities
         public GameObject rightHandCollider;
         public GameObject leftFootCollider;
         public GameObject rightFootCollider;
+
+        [SerializeField] private Material redMaterial;
+        [SerializeField] private Material material;
+        [SerializeField] private SkinnedMeshRenderer meshRenderer;
 
 
         #region Attack Colliders Activation/Deactivation
@@ -97,5 +102,25 @@ namespace _Main.Scripts.Entities
         public abstract void Die();
         public abstract Vector3 GetFoward();
         public abstract float GetSpeed();
+
+        public void StartingRutine()
+        {
+            StartCoroutine(DamageFlash());
+        }
+
+        public IEnumerator DamageFlash()
+        {
+            if(meshRenderer != null)
+            {
+                meshRenderer.material = redMaterial;
+                yield return new WaitForSeconds(0.1f);
+                meshRenderer.material = material;
+            }
+            else
+            {
+                Debug.Log("mesh renderer null");
+            }
+            
+        }
     }
 }
