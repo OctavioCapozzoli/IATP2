@@ -22,7 +22,7 @@ namespace _Main.Scripts.Entities.Player
         private void Awake()
         {
             _model = GetComponent<PlayerModel>();
-            
+
         }
         private void Start()
         {
@@ -35,7 +35,7 @@ namespace _Main.Scripts.Entities.Player
             _model.CheckGround();
             _playerFsm.UpdateState();
             _model.ManaBar();
-
+            Debug.Log("Is grounded? " + _model.IsGrounded);
             if (_model.IsGrounded)
             {
                 CheckMovementControls();
@@ -44,13 +44,13 @@ namespace _Main.Scripts.Entities.Player
                 CheckSpecialAttackInput();
             }
         }
-        
+
         IEnumerator manaTime()
         {
             while (true)
             {
                 yield return new WaitForSeconds(0.1f);
-                if(_model.mana < 100)
+                if (_model.mana < 100)
                 {
                     _model.mana += 0.4f;
                 }
