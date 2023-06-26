@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 217acc9401221c94d89812d546baf99f
+  - enabled: 1
     path: Assets/Scenes/Level Test Branch Foster.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Scenes/BossScene.unity
     guid: 186406327d71e2f4fb7ec76b64fe20d7
+  - enabled: 1
+    path: Assets/Scenes/Game Over.unity
+    guid: 579a9a60176d3bc4c8330d74cf1db923
+  - enabled: 1
+    path: Assets/Scenes/Win.unity
+    guid: 210296e4fdf21c94999cdf0f6bec80a5
   m_configObjects: {}

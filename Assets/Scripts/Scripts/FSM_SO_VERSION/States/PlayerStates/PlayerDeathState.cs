@@ -1,4 +1,5 @@
 using _Main.Scripts.Entities;
+using _Main.Scripts.Entities.Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,8 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
     {
         public override void EnterState(EntityModel model)
         {
-
+            PlayerModel playerModel = model as PlayerModel;
+            playerModel.Die();
         }
         public override void ExecuteState(EntityModel model)
         {

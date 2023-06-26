@@ -39,7 +39,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 
         public override void ExecuteState(EntityModel model)
         {
-            Debug.Log("Enemy patrol state execute");
+            //Acá corro Astar.
             var patrolPoints = _movementDatas[model].EnemyModel.GetPatrolPoints();
 
             var distToNextPoint = Vector3.Distance(patrolPoints[_movementDatas[model].PatrolCount].transform.position, model.transform.position);
@@ -93,7 +93,8 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 
         public override void ExitState(EntityModel model)
         {
-            model.IsPatrolling = false;
+            _movementDatas[model].EnemyModel.IsPatrolling = false;
+            _movementDatas.Remove(model);
         }
     }
 

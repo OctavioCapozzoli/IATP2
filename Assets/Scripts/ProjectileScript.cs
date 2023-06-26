@@ -1,3 +1,5 @@
+using _Main.Scripts.Entities;
+using _Main.Scripts.Entities.Enemies;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +7,7 @@ using UnityEngine;
 public class ProjectileScript : MonoBehaviour
 {
     public float projectileSpeed;
+    public float damage;
 
     private void Update()
     {
@@ -16,7 +19,9 @@ public class ProjectileScript : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            Debug.Log("bocchi za rocku");
+            other.gameObject.GetComponent<EnemyModel>().HealthController.TakeDamage(damage);
+            Debug.Log("Enemy was damaged, current health is: " + other.gameObject.GetComponent<EnemyModel>().HealthController.CurrentHealth);
+            other.gameObject.GetComponent<EntityModel>().IsDamaged = true;
         }
         Destroy(gameObject);
     }

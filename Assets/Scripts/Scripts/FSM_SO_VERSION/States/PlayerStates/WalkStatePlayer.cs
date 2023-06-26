@@ -8,6 +8,12 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
 
     public class WalkStatePlayer : State
     {
+        PlayerModel playerModel;
+        public override void EnterState(EntityModel model)
+        {
+            playerModel = model as PlayerModel;
+        }
+
         public override void ExecuteState(EntityModel model)
         {
 
@@ -16,14 +22,14 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
             Vector3 dir = new Vector3(h, 0, v);
             if (h != 0 || v != 0)
             {
-                model.Move(dir);
+                playerModel.View.PlayRunAnimation(true);
+                playerModel.Move(dir);
             }
+            else playerModel.View.PlayRunAnimation(false);
 
         }
         public override void ExitState(EntityModel model)
         {
-            PlayerModel playerModel = (PlayerModel)model;
-            playerModel.View.PlayRunAnimation(false);
             playerModel.IsWalking = false;
         }
 

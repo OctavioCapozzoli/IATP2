@@ -19,13 +19,14 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
         {
             Debug.Log("Enemy idle state execute");
             timer -= Time.deltaTime;
-            if (timer >= _entitiesData[model].GetData().IdleTimer) model.IsIdle = false;
+            if (timer >= _entitiesData[model].GetData().IdleTimer) _entitiesData[model].IsIdle = false;
             //Debug.Log("Is allert? " + model.IsAllert);
             //Debug.Log("Is seeing target? " + enemymodel.LineOfSight(enemymodel.GetTarget().transform));
         }
 
         public override void ExitState(EntityModel model)
         {
+            _entitiesData.Remove(model);
             timer = 0f;
         }
     }

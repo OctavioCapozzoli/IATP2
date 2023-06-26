@@ -69,7 +69,7 @@ namespace _Main.Scripts.Entities.Player
 
         public override void Move(Vector3 direction)
         {
-            _view.PlayRunAnimation(true);
+            //_view.PlayRunAnimation(true);
             direction.y = 0;
             _rigidbody.velocity = direction * maxSpeed;
             if (direction.x != 0 || direction.z != 0)
@@ -90,7 +90,7 @@ namespace _Main.Scripts.Entities.Player
         {
             StartCoroutine(FlashRed());
             _healthController.TakeDamage(damage);
-            
+
         }
         public IEnumerator FlashRed()
         {
