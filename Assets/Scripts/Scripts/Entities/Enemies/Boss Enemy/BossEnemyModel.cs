@@ -43,6 +43,11 @@ namespace _Main.Scripts.Entities.Enemies
             _healthController.OnDie += Die;
         }
 
+        private void Start()
+        {
+            playerModel = GameObject.FindWithTag("Player").GetComponent<PlayerModel>();
+        }
+
         public void SetWayPoints(List<Node> _waypoints)
         {
 
