@@ -1,6 +1,7 @@
 ﻿using _Main.Scripts.FSM_SO_VERSION;
 using _Main.Scripts.Steering_Behaviours.Steering_Behaviours;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -25,6 +26,10 @@ namespace _Main.Scripts.Entities.Player
         [SerializeField] GameObject guitarPrefab;
         [SerializeField] private Slider manaSlider;
 
+        [SerializeField] private SkinnedMeshRenderer meshRenderer;
+        [SerializeField] private Material redBocchiMat;
+        [SerializeField] private Material bocchiMat;
+
 
         private PlayerView _view;
         PlayerController _controller;
@@ -45,6 +50,7 @@ namespace _Main.Scripts.Entities.Player
             _controller = GetComponent<PlayerController>();
             _healthController = new HealthController(maxLife);
             _healthController.OnDie += Die;
+            //meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         }
 
 
@@ -81,7 +87,15 @@ namespace _Main.Scripts.Entities.Player
         }
         public override void GetDamage(int damage)
         {
+            StartCoroutine(FlashRed());
             _healthController.TakeDamage(damage);
+            
+        }
+        public IEnumerator FlashRed()
+        {
+            meshRenderer.material = redBocchiMat;
+            yield return new WaitForSeconds(0.1f);
+            meshRenderer.material = bocchiMat;
         }
 
         public override void Heal(int healingPoint)

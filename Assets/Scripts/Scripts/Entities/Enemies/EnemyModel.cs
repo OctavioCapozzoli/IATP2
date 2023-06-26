@@ -20,7 +20,6 @@ namespace _Main.Scripts.Entities.Enemies
         [SerializeField] private LayerMask obsMask;
         [SerializeField] float obsAvoidanceRadius = 4;
         [SerializeField] int obsAvoidanceMaxObs = 10;
-        [SerializeField] private SkinnedMeshRenderer meshRenderer;
         bool isMoving;
         EnemyView _enemyView;
         bool targetInSight = false;
@@ -30,6 +29,10 @@ namespace _Main.Scripts.Entities.Enemies
         private HealthController _healthController;
         [SerializeField] EnemyController _controller;
         private ObstacleAvoidance _obstacleAvoidance;
+
+        [SerializeField] private SkinnedMeshRenderer meshRenderer;
+        [SerializeField] private Material redenemyMat;
+        [SerializeField] private Material enemyMat;
 
         public EnemyController Controller { get => _controller; set => _controller = value; }
         public EnemyView EnemyView { get => _enemyView; set => _enemyView = value; }
@@ -94,12 +97,11 @@ namespace _Main.Scripts.Entities.Enemies
             _healthController.TakeDamage(damage);
             StartCoroutine(FlashRed());
         }
-
         public IEnumerator FlashRed()
         {
-            meshRenderer.sharedMaterial.color = Color.red;
+            meshRenderer.material = redenemyMat;
             yield return new WaitForSeconds(0.1f);
-            meshRenderer.sharedMaterial.color = Color.white;
+            meshRenderer.material = enemyMat;
         }
 
         public override void Heal(int healingPoint)

@@ -19,6 +19,7 @@ namespace _Main.Scripts.Entities.Player
         private void Awake()
         {
             _model = GetComponent<PlayerModel>();
+            
         }
         private void Start()
         {
@@ -73,8 +74,7 @@ namespace _Main.Scripts.Entities.Player
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                _model.IsIdle = false;
-                _model.IsWalking = false;
+
             }
         }
 
