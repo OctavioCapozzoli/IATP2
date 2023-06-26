@@ -10,18 +10,17 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
     [CreateAssetMenu(fileName = "Seek State", menuName = "_main/States/Boss States/Seek State", order = 0)]
     public class SeekState : State
     {
-        private Dictionary<EntityModel, EnemyModel> _entitiesData = new Dictionary<EntityModel, EnemyModel>();
+        private Dictionary<EntityModel, BossEnemyModel> _entitiesData = new Dictionary<EntityModel, BossEnemyModel>();
         public override void EnterState(EntityModel model)
         {
-            _entitiesData.Add(model, model as EnemyModel);
-            _entitiesData[model].IsChasing = true;
+            _entitiesData.Add(model, model as BossEnemyModel);
         }
 
         public override void ExecuteState(EntityModel model)
         {
             Debug.Log("Enemy chase state execute");
 
-            var dir = _entitiesData[model].Controller.EnemySbController.SbSeek.GetDir();
+            var dir = _entitiesData[model].Controller.SbSeek.GetDir();
             if (dir != Vector3.zero)
             {
                 Debug.Log("Enemy puede moverse");

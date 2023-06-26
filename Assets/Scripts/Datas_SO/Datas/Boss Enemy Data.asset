@@ -14,26 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <FsmStates>k__BackingField: []
   <RestPatrolTime>k__BackingField: 0
-  <MaxLife>k__BackingField: 0
-  <MovementSpeed>k__BackingField: 0
-  <SightRange>k__BackingField: 0
-  <TotalSightDegrees>k__BackingField: 0
-  <Damage>k__BackingField: 0
-  <DistanceToAttack>k__BackingField: 0
-  <CooldownToAttack>k__BackingField: 0
-  <TimeForSearchPlayer>k__BackingField: 0
+  <MaxLife>k__BackingField: 200
+  <MovementSpeed>k__BackingField: 3
+  <SightRange>k__BackingField: 10
+  <TotalSightDegrees>k__BackingField: 180
+  <Damage>k__BackingField: 15
+  <DistanceToAttack>k__BackingField: 2
+  <CooldownToAttack>k__BackingField: 1.5
+  <TimeForSearchPlayer>k__BackingField: 2
   <TargetLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 256
-  <FleeHealthValue>k__BackingField: 0
-  <IdleTimer>k__BackingField: 0
-  <SeekRange>k__BackingField: 0
-  <AttackRange>k__BackingField: 0
-  <RegularAttackHealthThreshold>k__BackingField: 0
-  <EnhancedAttackHealthThreshold>k__BackingField: 0
-  <SummoningAttackHealthThreshold>k__BackingField: 0
-  <DesperationAttackHealthThreshold>k__BackingField: 0
+  <FleeHealthValue>k__BackingField: 2
+  <IdleTimer>k__BackingField: 1
+  <IsInBossRoom>k__BackingField: 1
+  <AttackRange>k__BackingField: 2
+  <RegularAttackHealthThreshold>k__BackingField: 1.5
+  <EnhancedAttackHealthThreshold>k__BackingField: 1
+  <SummoningAttackHealthThreshold>k__BackingField: 1
+  <DesperationAttackHealthThreshold>k__BackingField: 0.5
   <IsInvulnerable>k__BackingField: 0
+  <IsAttackDone>k__BackingField: 0
   <CanSummon>k__BackingField: 0
-  <AttackStateTimer>k__BackingField: 0
-  <BlockStateTimer>k__BackingField: 0
+  <AttackStateTimer>k__BackingField: 1
+  <BlockStateTimer>k__BackingField: 1
