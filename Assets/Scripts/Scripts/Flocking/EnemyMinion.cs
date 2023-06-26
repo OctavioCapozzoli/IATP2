@@ -1,5 +1,6 @@
 using _Main.Scripts.Entities;
 using _Main.Scripts.Entities.Enemies.Data;
+using _Main.Scripts.Entities.Player;
 using _Main.Scripts.FSM_SO_VERSION;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using UnityEngine;
 public class EnemyMinion : EntityModel, IBoid
 {
     [SerializeField] private EnemyData data;
+    [SerializeField] private int damage;
     public float radius;
     public float speed;
     Rigidbody _rb;
@@ -43,6 +45,17 @@ public class EnemyMinion : EntityModel, IBoid
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(Position, radius);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            other.gameObject.GetComponent<PlayerModel>().HealthController.TakeDamage(damage);
+            Debug.Log("Player was damaged, current health is: " + other.gameObject.GetComponent<PlayerModel>().HealthController.CurrentHealth);
+            other.gameObject.GetComponent<EntityModel>().IsDamaged = true;
+        }
+
     }
 
     public override void GetDamage(int damage)

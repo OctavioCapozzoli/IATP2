@@ -128,6 +128,9 @@ MonoBehaviour:
   obsAvoidanceRadius: 4
   obsAvoidanceMaxObs: 10
   _controller: {fileID: 4569825258058179005}
+  meshRenderer: {fileID: 0}
+  redenemyMat: {fileID: 2100000, guid: d40a51dd90057e14bacb1b21b99c8afe, type: 2}
+  enemyMat: {fileID: 2100000, guid: 70f517dd545fa8e40a2932b536c31ac1, type: 2}
   exclamationSing: {fileID: 4569825258530685644}
   questionSing: {fileID: 4569825258944659983}
   cooldownAttack: 0

@@ -27,6 +27,8 @@ namespace _Main.Scripts.Entities.Enemies
         [SerializeField] BossEnemyController _controller;
         private ObstacleAvoidance _obstacleAvoidance;
 
+        [SerializeField] private HealthBarScript _healthBar;
+
         public BossEnemyController Controller { get => _controller; set => _controller = value; }
         public BossEnemyView EnemyView { get => _enemyView; set => _enemyView = value; }
         public bool TargetInSight { get => targetInSight; set => targetInSight = value; }
@@ -42,6 +44,8 @@ namespace _Main.Scripts.Entities.Enemies
             _obstacleAvoidance = new ObstacleAvoidance(transform, obsAvoidanceRadius, obsAvoidanceMaxObs, data.TotalSightDegrees, obsMask);
 
             _healthController.OnDie += Die;
+
+            _healthBar.UpdateHealthBar(HealthController.MaxHealth,HealthController.CurrentHealth);
         }
 
         private void Start()
@@ -87,6 +91,7 @@ namespace _Main.Scripts.Entities.Enemies
         public override void GetDamage(int damage)
         {
             _healthController.TakeDamage(damage);
+            _healthBar.UpdateHealthBar(HealthController.MaxHealth, HealthController.CurrentHealth);
         }
 
         public override void Heal(int healingPoint)
