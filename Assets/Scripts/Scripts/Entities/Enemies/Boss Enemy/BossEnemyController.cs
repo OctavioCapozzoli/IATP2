@@ -6,6 +6,7 @@ using _Main.Scripts.Steering_Behaviours.Steering_Behaviours;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class BossEnemyController : MonoBehaviour
 {
@@ -15,10 +16,10 @@ public class BossEnemyController : MonoBehaviour
     BossEnemyModel _model;
     private BossRouletteWheel _bossEnemyRoulette;
     FsmScript _bossFSM;
-    Flee _sbFlee;
+    Seek sbSeek;
 
     public BossRouletteWheel BossEnemyRoulette { get => _bossEnemyRoulette; set => _bossEnemyRoulette = value; }
-    public Flee SbFlee { get => _sbFlee; set => _sbFlee = value; }
+    public Seek SbSeek { get => sbSeek; set => sbSeek = value; }
 
     private void Awake()
     {
@@ -27,14 +28,14 @@ public class BossEnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _sbFlee = new Flee(transform, _model.GetTarget().transform);
         _bossFSM = new FsmScript(_model, initState);
         _bossEnemyRoulette = new BossRouletteWheel(_model, this);
+        sbSeek = new Seek(_model.transform, _model.GetTarget().transform);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        _bossFSM.UpdateState();
     }
 }

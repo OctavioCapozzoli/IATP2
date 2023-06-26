@@ -20,6 +20,7 @@ namespace _Main.Scripts.Entities.Enemies
         bool isMoving;
         BossEnemyView _enemyView;
         bool targetInSight = false;
+        [SerializeField] bool bossFSMOn = false;
 
         private Rigidbody _rb;
         private HealthController _healthController;
@@ -41,6 +42,18 @@ namespace _Main.Scripts.Entities.Enemies
             _obstacleAvoidance = new ObstacleAvoidance(transform, obsAvoidanceRadius, obsAvoidanceMaxObs, data.TotalSightDegrees, obsMask);
 
             _healthController.OnDie += Die;
+        }
+
+        private void Start()
+        {
+            if (GameObject.FindWithTag("Player").GetComponent<PlayerModel>())
+                playerModel = GameObject.FindWithTag("Player").GetComponent<PlayerModel>();
+        }
+
+        private void Update()
+        {
+            Debug.Log("Is in boss room?" + data.IsInBossRoom);
+            data.IsInBossRoom = bossFSMOn;
         }
 
         public void SetWayPoints(List<Node> _waypoints)

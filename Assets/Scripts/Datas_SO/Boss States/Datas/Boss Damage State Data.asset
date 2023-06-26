@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58d626f229597984d995e88da515ed1a, type: 3}
+  m_Name: Boss Damage State Data
+  m_EditorClassIdentifier: 
+  <State>k__BackingField: {fileID: 11400000, guid: baa34e55704671e428a0635eb2f1b55f,
+    type: 2}
+  <StateConditions>k__BackingField:
+  - {fileID: 11400000, guid: 66e6e76f856c45241aff6dfef0b2ae13, type: 2}
+  - {fileID: 11400000, guid: 483c16c498ca93549a4a26eea72e3ad5, type: 2}
+  - {fileID: 11400000, guid: c76bba4a9fe42e3478ddf0d667decff1, type: 2}
+  - {fileID: 11400000, guid: 289fc2a742ec23547afdcf89c5ad6c7c, type: 2}
+  - {fileID: 11400000, guid: 289fc2a742ec23547afdcf89c5ad6c7c, type: 2}
+  - {fileID: 11400000, guid: ae1727a7ab3d69e4b8330e1fef7efa61, type: 2}
+  <ExitStates>k__BackingField:
+  - {fileID: 11400000, guid: 5dac275f1ff25c14a88ec384efc2e9c6, type: 2}
+  - {fileID: 11400000, guid: 9a4b439ae12899a4a91f865fc9dbc03b, type: 2}
+  - {fileID: 11400000, guid: 4ac5b59693630c74b910326244505262, type: 2}
+  - {fileID: 11400000, guid: 1f8f965e08b8adf4c88e93138a1604bf, type: 2}
+  - {fileID: 11400000, guid: b7cf77f3950e91944a9804eb23f6e90d, type: 2}
+  - {fileID: 11400000, guid: ca10708769391bd418a65ef83b3e2bba, type: 2}

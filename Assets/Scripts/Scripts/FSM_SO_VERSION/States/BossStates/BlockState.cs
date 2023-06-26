@@ -1,5 +1,6 @@
 using _Main.Scripts.Entities;
 using _Main.Scripts.Entities.Enemies;
+using _Main.Scripts.FSM_SO_VERSION.Conditions.BossConditions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,7 +25,11 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
                 Debug.Log("Boss is blocking attacks");
                 bossEnemyModel.EnemyView.PlayBlockAnimation(true);
             }
-            else bossEnemyModel.IsBlocking = false;
+            else
+            {
+                bossEnemyModel.GetData().IsAttackDone = false;
+                bossEnemyModel.IsBlocking = false;
+            }
         }
         public override void ExitState(EntityModel model)
         {
