@@ -26,6 +26,8 @@ namespace _Main.Scripts.Entities
                 OnDie?.Invoke();
             else
                 OnHealthChange?.Invoke(CurrentHealth);
+
+
         }
 
         public void Heal(float heal)

@@ -92,8 +92,8 @@ namespace _Main.Scripts.Entities.Enemies
 
         public override void GetDamage(int damage)
         {
-            _healthController.TakeDamage(damage);
             _healthBar.UpdateHealthBar(HealthController.MaxHealth, HealthController.CurrentHealth);
+            _healthController.TakeDamage(damage);
         }
 
         public override void Heal(int healingPoint)

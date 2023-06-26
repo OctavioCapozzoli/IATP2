@@ -3270,6 +3270,9 @@ MonoBehaviour:
   rightHandCollider: {fileID: 3245873719834514239}
   leftFootCollider: {fileID: 3245873718413479459}
   rightFootCollider: {fileID: 3245873718994875640}
+  redMaterial: {fileID: 0}
+  material: {fileID: 0}
+  meshRenderer: {fileID: 0}
   data: {fileID: 11400000, guid: 82a579d3c5385924b8ead79e6cb684b7, type: 2}
   multiplier: 2
   patrolPoints: []
@@ -7446,6 +7449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 6222834204185490382}
+  reduceSpeed: 2
 --- !u!1 &7111187000959281213
 GameObject:
   m_ObjectHideFlags: 0

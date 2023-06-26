@@ -2057,6 +2057,7 @@ GameObject:
   - component: {fileID: 8310361122902013612}
   - component: {fileID: 8310361122902013613}
   - component: {fileID: 8310361122902013610}
+  - component: {fileID: 2467621580464716256}
   m_Layer: 8
   m_Name: Bocchi
   m_TagString: Player
@@ -2163,6 +2164,9 @@ MonoBehaviour:
   rightHandCollider: {fileID: 438159734}
   leftFootCollider: {fileID: 1255214925}
   rightFootCollider: {fileID: 546390893}
+  redMaterial: {fileID: 2100000, guid: 07c516a99c025f546a64fb4a1e379369, type: 2}
+  material: {fileID: 2100000, guid: 53dca674a93442047b9476bb0d2c0907, type: 2}
+  meshRenderer: {fileID: 3791889753234478696}
   fsmStates:
   - {fileID: 11400000, guid: 88d4f7e9abb431d4b992e39c57b0f9ef, type: 2}
   - {fileID: 11400000, guid: aae73e7c87e77ae4482d039b5485658a, type: 2}
@@ -2186,9 +2190,6 @@ MonoBehaviour:
   projectilePosition: {fileID: 2838744776750836602}
   guitarPrefab: {fileID: 5661482419716189465}
   manaSlider: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  redBocchiMat: {fileID: 2100000, guid: 07c516a99c025f546a64fb4a1e379369, type: 2}
-  bocchiMat: {fileID: 2100000, guid: 53dca674a93442047b9476bb0d2c0907, type: 2}
 --- !u!114 &8310361122902013610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2201,6 +2202,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6004129c42614df0b6545bf4d1cf5ad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2467621580464716256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3386611335856387691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a9e4f5a6a3c4ee48a757b4cd3dff209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: 07c516a99c025f546a64fb4a1e379369, type: 2}
+  material: {fileID: 2100000, guid: 53dca674a93442047b9476bb0d2c0907, type: 2}
+  meshRenderer: {fileID: 3791889753234478696}
 --- !u!1 &3397191325420942566
 GameObject:
   m_ObjectHideFlags: 0
