@@ -21,7 +21,7 @@ namespace _Main.Scripts.Entities.Player
         [SerializeField] private float maxLife = 100;
         [SerializeField] private LayerMask groundMask;
         [SerializeField] float groundCheckLength;
-        [SerializeField] ProjectileScript projectile;
+        [SerializeField] GameObject projectile;
         [SerializeField] Transform projectilePosition;
         [SerializeField] GameObject guitarPrefab;
         [SerializeField] private Slider manaSlider;
