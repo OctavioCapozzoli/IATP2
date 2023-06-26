@@ -21,7 +21,8 @@ namespace _Main.Scripts.Entities.Player
         [SerializeField] private float maxLife = 100;
         [SerializeField] private LayerMask groundMask;
         [SerializeField] float groundCheckLength;
-        [SerializeField] GameObject projectile;
+        [SerializeField] ProjectileScript projectile;
+        [SerializeField] GameObject projectileGO;
         [SerializeField] Transform projectilePosition;
         [SerializeField] GameObject guitarPrefab;
         [SerializeField] private Slider manaSlider;
@@ -106,8 +107,8 @@ namespace _Main.Scripts.Entities.Player
         public void InstantiateFireball()
         {
             Instantiate(projectile, projectilePosition);
+            GameObject fireball = Instantiate(projectileGO, projectilePosition.position, projectilePosition.rotation);
         }
-
         public void EnableGuitar()
         {
             guitarPrefab.SetActive(true);

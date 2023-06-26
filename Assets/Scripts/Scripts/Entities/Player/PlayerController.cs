@@ -39,7 +39,6 @@ namespace _Main.Scripts.Entities.Player
             if (_model.IsGrounded)
             {
                 CheckMovementControls();
-                CheckJumpControls();
                 CheckRegularAttackInput();
                 CheckSpecialAttackInput();
             }
@@ -73,13 +72,6 @@ namespace _Main.Scripts.Entities.Player
                 _model.IsIdle = true;
             }
         }
-        void CheckJumpControls()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-
-            }
-        }
 
         void CheckRegularAttackInput()
         {
@@ -91,15 +83,6 @@ namespace _Main.Scripts.Entities.Player
                     return;
                 }
                 _model.IsAttacking = true;
-            }
-            else if (Input.GetKeyUp(KeyCode.J))
-            {
-                //attackKeyCooldown -= Time.deltaTime;
-                //if (attackKeyCooldown <= 0)
-                //{
-                //    _model.IsAttacking = false;
-                //    attackKeyCooldown = .5f;
-                //}
             }
         }
         public IEnumerator StartCooldownTimer()
