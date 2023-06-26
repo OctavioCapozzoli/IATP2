@@ -77,7 +77,10 @@ namespace _Main.Scripts.Entities.Enemies
             _rb.velocity = direction.normalized * (data.MovementSpeed * Time.deltaTime);
 
             transform.forward = Vector3.Lerp(transform.forward, direction, rotSpeed * Time.deltaTime);
-            _enemyView.PlayWalkAnimation(true);
+            if(_enemyView != null)
+            {
+                _enemyView.PlayWalkAnimation(true);
+            }
         }
 
         public override void LookDir(Vector3 dir)
