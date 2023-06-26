@@ -20,6 +20,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
         }
         public override void ExecuteState(EntityModel model)
         {
+            Debug.Log("Boss Desperate State Execute");
             if (!bossModel.GetData().IsAttackDone)
             {
                 timer += Time.deltaTime;

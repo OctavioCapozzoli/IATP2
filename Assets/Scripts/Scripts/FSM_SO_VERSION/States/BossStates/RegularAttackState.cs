@@ -23,6 +23,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
 
         public override void ExecuteState(EntityModel model)
         {
+            Debug.Log("Boss Regular Attack State Execute");
             timer += Time.deltaTime;
             if (timer <= bossModel.GetData().AttackStateTimer)
             {

@@ -18,7 +18,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
 
         public override void ExecuteState(EntityModel model)
         {
-            Debug.Log("Enemy chase state execute");
+            Debug.Log("Enemy Seek State execute");
 
             var dir = _entitiesData[model].Controller.SbSeek.GetDir();
             if (dir != Vector3.zero)

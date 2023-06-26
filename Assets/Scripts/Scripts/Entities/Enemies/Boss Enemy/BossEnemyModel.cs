@@ -3,8 +3,10 @@ using _Main.Scripts.Entities.Player;
 using _Main.Scripts.FSM_SO_VERSION;
 using _Main.Scripts.Steering_Behaviours.Steering_Behaviours;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace _Main.Scripts.Entities.Enemies
 {
@@ -45,7 +47,7 @@ namespace _Main.Scripts.Entities.Enemies
 
             _healthController.OnDie += Die;
 
-            _healthBar.UpdateHealthBar(HealthController.MaxHealth,HealthController.CurrentHealth);
+            if (_healthBar != null) _healthBar.UpdateHealthBar(HealthController.MaxHealth, HealthController.CurrentHealth);
         }
 
         private void Start()
@@ -62,6 +64,18 @@ namespace _Main.Scripts.Entities.Enemies
             Debug.Log("Is in boss room?" + data.IsInBossRoom);
         }
 
+        public override void Die()
+        {
+            StartCoroutine(WaitToDestroy());
+            SceneManager.LoadScene("Win");
+            Destroy(gameObject);
+        }
+
+        IEnumerator WaitToDestroy()
+        {
+            _enemyView.PlayDeathAnimation();
+            yield return new WaitForSeconds(1.5f);
+        }
         public void SetWayPoints(List<Node> _waypoints)
         {
 
@@ -112,11 +126,6 @@ namespace _Main.Scripts.Entities.Enemies
         public override bool IsEntityDead()
         {
             return _healthController.CurrentHealth <= 0;
-        }
-
-        public override void Die()
-        {
-            Destroy(gameObject);
         }
 
         public bool LineOfSight(Transform target)

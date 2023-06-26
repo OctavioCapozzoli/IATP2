@@ -1,5 +1,6 @@
 ﻿using _Main.Scripts.Entities;
 using _Main.Scripts.Entities.Enemies;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -10,11 +11,9 @@ namespace _Main.Scripts.FSM_SO_VERSION.Conditions.EnemyConditions
     {
         public override bool CompleteCondition(EntityModel model)
         {
-            var enemyModel = (EnemyModel)model;
-            var distanceToTarget =
-                Vector3.Distance(enemyModel.GetTarget().transform.position, model.transform.position);
-            Debug.Log("enemy distance to target " + distanceToTarget);
-            return distanceToTarget <= enemyModel.GetData().DistanceToAttack; //TODO chequear cooldown attack enemy
+            var enemyModel = model as EnemyModel;
+            enemyModel.IsAttacking = Vector3.Distance(enemyModel.GetTarget().transform.position, model.transform.position) < enemyModel.GetData().DistanceToAttack ? true : false;
+            return enemyModel.IsAttacking;
         }
     }
 }

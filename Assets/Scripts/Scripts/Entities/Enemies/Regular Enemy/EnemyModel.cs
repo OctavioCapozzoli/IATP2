@@ -77,7 +77,7 @@ namespace _Main.Scripts.Entities.Enemies
             _rb.velocity = direction.normalized * (data.MovementSpeed * Time.deltaTime);
 
             transform.forward = Vector3.Lerp(transform.forward, direction, rotSpeed * Time.deltaTime);
-            if(_enemyView != null)
+            if (_enemyView != null)
             {
                 _enemyView.PlayWalkAnimation(true);
             }
@@ -122,7 +122,14 @@ namespace _Main.Scripts.Entities.Enemies
 
         public override void Die()
         {
+            StartCoroutine(WaitToDestroy());
             Destroy(gameObject);
+        }
+
+        IEnumerator WaitToDestroy()
+        {
+            _enemyView.PlayDeathAnimation();
+            yield return new WaitForSeconds(1.5f);
         }
 
         public bool LineOfSight(Transform target)
