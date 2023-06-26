@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Boss Enemy Data", menuName = "_main/Data/Boss Enemy Data")]
 public class BossEnemyData : EnemyData
 {
-    [field: SerializeField] public float SeekRange { get; private set; }
+    [field: SerializeField] public bool IsInBossRoom { get; private set; }
     [field: SerializeField] public float AttackRange { get; private set; }
     [field: SerializeField] public float RegularAttackHealthThreshold { get; private set; }
     [field: SerializeField] public float EnhancedAttackHealthThreshold { get; private set; }

@@ -9,6 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae670d61608502f4fa41157f87ce4bf9, type: 3}
-  m_Name: IdleStatePlayer
+  m_Script: {fileID: 11500000, guid: 58d626f229597984d995e88da515ed1a, type: 3}
+  m_Name: Player Death State Data
   m_EditorClassIdentifier: 
+  <State>k__BackingField: {fileID: 0}
+  <StateConditions>k__BackingField: []
+  <ExitStates>k__BackingField: []
