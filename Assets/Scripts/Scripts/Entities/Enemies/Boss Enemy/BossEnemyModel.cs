@@ -47,13 +47,15 @@ namespace _Main.Scripts.Entities.Enemies
         private void Start()
         {
             if (GameObject.FindWithTag("Player").GetComponent<PlayerModel>())
+            {
                 playerModel = GameObject.FindWithTag("Player").GetComponent<PlayerModel>();
+                bossFSMOn = data.IsInBossRoom;
+            }
         }
 
         private void Update()
         {
             Debug.Log("Is in boss room?" + data.IsInBossRoom);
-            data.IsInBossRoom = bossFSMOn;
         }
 
         public void SetWayPoints(List<Node> _waypoints)

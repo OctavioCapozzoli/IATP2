@@ -48,20 +48,6 @@ namespace _Main.Scripts.Entities
         public GameObject leftFootCollider;
         public GameObject rightFootCollider;
 
-        public abstract void Move(Vector3 direction);
-        public abstract void LookDir(Vector3 direction);
-
-        public virtual void DoDamage(EntityModel affectedModel) { }
-
-        public abstract void GetDamage(int damage);
-        public abstract void Heal(int healingPoint);
-        public abstract Rigidbody GetRigidbody();
-        public abstract EntityModel GetModel();
-        public abstract StateData[] GetStates();
-        public abstract bool IsEntityDead();
-        public abstract void Die();
-        public abstract Vector3 GetFoward();
-        public abstract float GetSpeed();
 
         #region Attack Colliders Activation/Deactivation
         public virtual void TurnOnLeftHandCollider()
@@ -97,5 +83,19 @@ namespace _Main.Scripts.Entities
             rightFootCollider.SetActive(false);
         }
         #endregion
+        public abstract void Move(Vector3 direction);
+        public abstract void LookDir(Vector3 direction);
+
+        public virtual void DoDamage(EntityModel affectedModel) { }
+
+        public abstract void GetDamage(int damage);
+        public abstract void Heal(int healingPoint);
+        public abstract Rigidbody GetRigidbody();
+        public abstract EntityModel GetModel();
+        public abstract StateData[] GetStates();
+        public abstract bool IsEntityDead();
+        public abstract void Die();
+        public abstract Vector3 GetFoward();
+        public abstract float GetSpeed();
     }
 }

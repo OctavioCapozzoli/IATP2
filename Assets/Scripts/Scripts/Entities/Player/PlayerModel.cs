@@ -56,7 +56,7 @@ namespace _Main.Scripts.Entities.Player
 
         public void ManaBar()
         {
-            manaSlider.GetComponent<Slider>().value = mana;
+            if (manaSlider != null) manaSlider.GetComponent<Slider>().value = mana;
         }
 
         public void CheckGround()

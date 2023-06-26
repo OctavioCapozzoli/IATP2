@@ -26,6 +26,12 @@ public class AttackCollider : MonoBehaviour
             Debug.Log("Enemy was damaged, current health is: " + other.gameObject.GetComponent<EnemyModel>().HealthController.CurrentHealth);
             other.gameObject.GetComponent<EntityModel>().IsDamaged = true;
         }
+        else if (other.gameObject.tag == "Boss")
+        {
+            other.gameObject.GetComponent<BossEnemyModel>().HealthController.TakeDamage(damage);
+            Debug.Log("Enemy was damaged, current health is: " + other.gameObject.GetComponent<BossEnemyModel>().HealthController.CurrentHealth);
+            other.gameObject.GetComponent<EntityModel>().IsDamaged = true;
+        }
         //    isFirstCollision = false;
         //}
     }
