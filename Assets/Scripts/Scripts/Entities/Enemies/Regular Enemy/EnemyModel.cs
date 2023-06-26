@@ -3,6 +3,7 @@ using _Main.Scripts.Entities.Player;
 using _Main.Scripts.FSM_SO_VERSION;
 using _Main.Scripts.Steering_Behaviours.Steering_Behaviours;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
@@ -28,6 +29,10 @@ namespace _Main.Scripts.Entities.Enemies
         private HealthController _healthController;
         [SerializeField] EnemyController _controller;
         private ObstacleAvoidance _obstacleAvoidance;
+
+        [SerializeField] private SkinnedMeshRenderer meshRenderer;
+        [SerializeField] private Material redenemyMat;
+        [SerializeField] private Material enemyMat;
 
         public EnemyController Controller { get => _controller; set => _controller = value; }
         public EnemyView EnemyView { get => _enemyView; set => _enemyView = value; }
@@ -85,6 +90,13 @@ namespace _Main.Scripts.Entities.Enemies
         public override void GetDamage(int damage)
         {
             _healthController.TakeDamage(damage);
+            StartCoroutine(FlashRed());
+        }
+        public IEnumerator FlashRed()
+        {
+            meshRenderer.material = redenemyMat;
+            yield return new WaitForSeconds(0.1f);
+            meshRenderer.material = enemyMat;
         }
 
         public override void Heal(int healingPoint)

@@ -1,8 +1,10 @@
 ﻿using _Main.Scripts.FSM_SO_VERSION;
 using _Main.Scripts.Steering_Behaviours.Steering_Behaviours;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace _Main.Scripts.Entities.Player
 {
@@ -11,13 +13,22 @@ namespace _Main.Scripts.Entities.Player
 
         [SerializeField] private StateData[] fsmStates;
         [SerializeField] private float maxSpeed;
+        [SerializeField] public float mana;
+        [SerializeField] public float cooldown;
+        public float lastSpecialAtk;
+        [SerializeField] public int manaCost;
         [SerializeField] private float jumpForce;
         [SerializeField] private float maxLife = 100;
         [SerializeField] private LayerMask groundMask;
         [SerializeField] float groundCheckLength;
-        [SerializeField] ProjectileScript projectile;
+        [SerializeField] GameObject projectile;
         [SerializeField] Transform projectilePosition;
         [SerializeField] GameObject guitarPrefab;
+        [SerializeField] private Slider manaSlider;
+
+        [SerializeField] private SkinnedMeshRenderer meshRenderer;
+        [SerializeField] private Material redBocchiMat;
+        [SerializeField] private Material bocchiMat;
 
 
         private PlayerView _view;
@@ -40,9 +51,14 @@ namespace _Main.Scripts.Entities.Player
             _controller = GetComponent<PlayerController>();
             _healthController = new HealthController(maxLife);
             _healthController.OnDie += Die;
+            //meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         }
 
 
+        public void ManaBar()
+        {
+            manaSlider.GetComponent<Slider>().value = mana;
+        }
 
         public void CheckGround()
         {
@@ -72,7 +88,15 @@ namespace _Main.Scripts.Entities.Player
         }
         public override void GetDamage(int damage)
         {
+            StartCoroutine(FlashRed());
             _healthController.TakeDamage(damage);
+            
+        }
+        public IEnumerator FlashRed()
+        {
+            meshRenderer.material = redBocchiMat;
+            yield return new WaitForSeconds(0.1f);
+            meshRenderer.material = bocchiMat;
         }
 
         public override void Heal(int healingPoint)

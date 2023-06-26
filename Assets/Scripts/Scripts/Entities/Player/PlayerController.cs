@@ -22,16 +22,19 @@ namespace _Main.Scripts.Entities.Player
         private void Awake()
         {
             _model = GetComponent<PlayerModel>();
+            
         }
         private void Start()
         {
             _playerFsm = new FsmScript(_model, initialState);
             _playerSpecialAttacksRouletteWheel = new PlayerRouletteWheel(_model);
+            StartCoroutine(manaTime());
         }
         private void Update()
         {
             _model.CheckGround();
             _playerFsm.UpdateState();
+            _model.ManaBar();
 
             if (_model.IsGrounded)
             {
@@ -41,6 +44,19 @@ namespace _Main.Scripts.Entities.Player
                 CheckSpecialAttackInput();
             }
         }
+        
+        IEnumerator manaTime()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(0.1f);
+                if(_model.mana < 100)
+                {
+                    _model.mana += 0.4f;
+                }
+            }
+        }
+
         void CheckMovementControls()
         {
             var horizontalInput = Input.GetAxis("Horizontal");
@@ -61,8 +77,7 @@ namespace _Main.Scripts.Entities.Player
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                _model.IsIdle = false;
-                _model.IsWalking = false;
+
             }
         }
 

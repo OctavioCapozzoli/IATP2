@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Collections;
+using UnityEngine;
 
 namespace _Main.Scripts.Entities
 {
@@ -36,8 +38,5 @@ namespace _Main.Scripts.Entities
             }
             OnHealthChange?.Invoke(CurrentHealth);
         }
-
-
-
     }
 }
