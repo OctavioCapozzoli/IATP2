@@ -8,10 +8,25 @@ namespace _Main.Scripts.Utilities
         [SerializeField] Vector3 offset;
         [SerializeField] Quaternion rotation;
 
+        // Start is called before the first frame update
+        void Start()
+        {
+
+            if (GameObject.FindWithTag("Player"))
+            {
+                Debug.Log("Spawneando acá");
+                var playerGO = GameObject.FindWithTag("Player");
+                target = playerGO.transform;
+            }
+        }
+
         void FixedUpdate()
         {
-            transform.position = target.position + offset;
-            transform.rotation = rotation;
+            if (target != null)
+            {
+                transform.position = target.position + offset;
+                transform.rotation = rotation;
+            }
         }
 
     }

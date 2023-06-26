@@ -54,7 +54,6 @@ namespace _Main.Scripts.Entities.Player
             //meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         }
 
-
         public void ManaBar()
         {
             manaSlider.GetComponent<Slider>().value = mana;
