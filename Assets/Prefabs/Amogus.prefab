@@ -36,7 +36,7 @@ Transform:
   m_GameObject: {fileID: 533027603876473815}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -40.044792, y: 2.6424947, z: -6.524246}
-  m_LocalScale: {x: 0.3, y: 0.25, z: 0.3}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1719397716579879645}
@@ -224,9 +224,15 @@ MonoBehaviour:
   rightHandCollider: {fileID: 0}
   leftFootCollider: {fileID: 0}
   rightFootCollider: {fileID: 0}
-  data: {fileID: 0}
+  redMaterial: {fileID: 0}
+  material: {fileID: 0}
+  meshRenderer: {fileID: 0}
+  data: {fileID: 11400000, guid: 7a6a1d983c7c4a2429a8be10fe7d33d9, type: 2}
+  damage: 5
   radius: 2
   speed: 1
+  attackedPlayer: 0
+  isCollidingWithPlayer: 0
 --- !u!1 &2264116786946980742
 GameObject:
   m_ObjectHideFlags: 0

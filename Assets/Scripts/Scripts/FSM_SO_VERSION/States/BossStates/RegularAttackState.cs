@@ -1,3 +1,4 @@
+
 using _Main.Scripts.Entities;
 using _Main.Scripts.Entities.Enemies;
 using _Main.Scripts.Roulette_Wheel;
@@ -15,7 +16,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
         public override void EnterState(EntityModel model)
         {
             bossModel = model as BossEnemyModel;
-
+            timer = 0;
             bossModel.EnemyView.PlayWalkAnimation(false);
             bossModel.GetRigidbody().velocity = Vector3.zero;
 
@@ -32,12 +33,12 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
                 if (rouletteCooldownTimer >= rouletteMaxCooldown) timer = 0;
 
             }
-            //else bossModel.GetData().RegularAttackHealthThreshold = false;
+            else bossModel.GetData().IsAttackDone = true;
         }
 
         public override void ExitState(EntityModel model)
         {
-
+            bossModel.EnemyView.PlayBlockAnimation(false);
         }
     }
 }

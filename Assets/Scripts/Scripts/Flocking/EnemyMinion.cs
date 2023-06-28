@@ -9,11 +9,13 @@ using UnityEngine;
 public class EnemyMinion : EntityModel, IBoid
 {
     [SerializeField] private EnemyData data;
-    [SerializeField] private int damage;
+    public int damage;
     public float radius;
     public float speed;
     Rigidbody _rb;
+    public bool attackedPlayer = false;
     private HealthController _healthController;
+    public bool isCollidingWithPlayer = false;
     public Vector3 Position => transform.position;
 
     public Vector3 Front => transform.forward;
@@ -23,11 +25,20 @@ public class EnemyMinion : EntityModel, IBoid
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        _healthController = new HealthController(data.MaxLife);
+        if(!attackedPlayer) _healthController = new HealthController(data.MaxLife);
 
         _healthController.OnDie += Die;
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            other.gameObject.GetComponent<PlayerModel>().HealthController.TakeDamage(damage);
+            Debug.Log("Player was damaged, current health is: " + other.gameObject.GetComponent<PlayerModel>().HealthController.CurrentHealth);
+            attackedPlayer = true;
+        }
+    }
     public override void Move(Vector3 dir)
     {
         dir *= speed;
@@ -51,6 +62,7 @@ public class EnemyMinion : EntityModel, IBoid
     {
         if (other.gameObject.tag == "Player")
         {
+            isCollidingWithPlayer = true;
             other.gameObject.GetComponent<PlayerModel>().HealthController.TakeDamage(damage);
             Debug.Log("Player was damaged, current health is: " + other.gameObject.GetComponent<PlayerModel>().HealthController.CurrentHealth);
             other.gameObject.GetComponent<EntityModel>().IsDamaged = true;
@@ -76,7 +88,7 @@ public class EnemyMinion : EntityModel, IBoid
 
     public override bool IsEntityDead()
     {
-        return _healthController.CurrentHealth <= 0;
+        return attackedPlayer;
     }
 
     public override void Die()

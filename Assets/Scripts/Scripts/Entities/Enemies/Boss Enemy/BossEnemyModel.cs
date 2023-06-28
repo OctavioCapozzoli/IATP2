@@ -31,11 +31,17 @@ namespace _Main.Scripts.Entities.Enemies
 
         [SerializeField] private HealthBarScript _healthBar;
 
+        [SerializeField] GameObject flockingBoidPrefab;
+        [SerializeField] List<Transform> flockingSpawnPositions;
+
         public BossEnemyController Controller { get => _controller; set => _controller = value; }
         public BossEnemyView EnemyView { get => _enemyView; set => _enemyView = value; }
         public bool TargetInSight { get => targetInSight; set => targetInSight = value; }
         public bool IsMoving { get => isMoving; set => isMoving = value; }
         public HealthController HealthController { get => _healthController; set => _healthController = value; }
+        public List<Transform> FlockingSpawnPositions { get => flockingSpawnPositions; set => flockingSpawnPositions = value; }
+        public GameObject FlockingBoidPrefab { get => flockingBoidPrefab; set => flockingBoidPrefab = value; }
+
         private void Awake()
         {
 

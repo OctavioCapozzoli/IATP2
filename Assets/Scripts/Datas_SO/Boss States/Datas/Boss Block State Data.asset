@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d626f229597984d995e88da515ed1a, type: 3}
   m_Name: Boss Block State Data
   m_EditorClassIdentifier: 
-  <State>k__BackingField: {fileID: 11400000, guid: baa34e55704671e428a0635eb2f1b55f,
+  <State>k__BackingField: {fileID: 11400000, guid: e6a0845280ed80a4b9b4ecf2e7805058,
     type: 2}
   <StateConditions>k__BackingField:
   - {fileID: 11400000, guid: 66e6e76f856c45241aff6dfef0b2ae13, type: 2}
