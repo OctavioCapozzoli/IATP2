@@ -26,6 +26,7 @@ namespace _Main.Scripts.Entities.Player
         [SerializeField] Transform projectilePosition;
         [SerializeField] GameObject guitarPrefab;
         [SerializeField] private Slider manaSlider;
+        [SerializeField] private float projectileSpeed;
 
 
         private PlayerView _view;
@@ -96,8 +97,9 @@ namespace _Main.Scripts.Entities.Player
 
         public void InstantiateFireball()
         {
-            Instantiate(projectile, projectilePosition);
-            GameObject fireball = Instantiate(projectileGO, projectilePosition.position, projectilePosition.rotation);
+            GameObject fireball = Instantiate(projectileGO, projectilePosition) as GameObject;
+            Rigidbody rb = fireball.GetComponent<Rigidbody>();
+            rb.velocity = transform.forward * projectileSpeed;
         }
         public void EnableGuitar()
         {

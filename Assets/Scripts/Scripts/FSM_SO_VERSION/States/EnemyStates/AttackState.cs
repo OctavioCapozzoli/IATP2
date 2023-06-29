@@ -27,7 +27,6 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
             attackCooldown += Time.deltaTime;
             if (attackCooldown >= attackMaxCooldown)
             {
-                attackCooldown = 0f;
                 _entitiesData[model].IsAttacking = false;
             }
         }

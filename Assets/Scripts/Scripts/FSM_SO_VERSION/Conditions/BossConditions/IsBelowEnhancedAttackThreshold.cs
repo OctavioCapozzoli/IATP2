@@ -13,7 +13,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.Conditions.BossConditions
         {
             BossEnemyModel bossModel = model as BossEnemyModel;
 
-            return bossModel.HealthController.CurrentHealth <= bossModel.GetData().RegularAttackHealthThreshold;
+            return bossModel.HealthController.CurrentHealth <= bossModel.GetData().EnhancedAttackHealthThreshold;
         }
     }
 }

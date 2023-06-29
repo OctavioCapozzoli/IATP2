@@ -23,6 +23,10 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BoidStates
             {
                 _entitiesData[model].LookDir(_entitiesData[model].GetComponent<FlockingManager>().RunFlockingDir());
                 _entitiesData[model].Move(_entitiesData[model].GetComponent<FlockingManager>().RunFlockingDir());
+                if (_entitiesData[model].isCollidingWithPlayer)
+                {
+                    _entitiesData[model].attackedPlayer = true;
+                }
             }
         }
 

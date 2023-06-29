@@ -8,9 +8,15 @@ public class ProjectileScript : MonoBehaviour
 {
     public float projectileSpeed;
     public float damage;
+    float lifetime = 2f, timer = 0;
 
     private void Update()
     {
+        timer += Time.deltaTime;
+        if (timer >= lifetime)
+        {
+            Destroy(this.gameObject);
+        }
         Rigidbody rb = this.GetComponent<Rigidbody>();
         rb.velocity = this.transform.forward * projectileSpeed;
     }
