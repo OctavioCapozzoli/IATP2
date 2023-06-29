@@ -23,6 +23,7 @@ namespace _Main.Scripts.Entities.Enemies
         BossEnemyView _enemyView;
         bool targetInSight = false;
         [SerializeField] bool bossFSMOn = false;
+        int boidsCount;
 
         private Rigidbody _rb;
         private HealthController _healthController;
@@ -41,6 +42,7 @@ namespace _Main.Scripts.Entities.Enemies
         public HealthController HealthController { get => _healthController; set => _healthController = value; }
         public List<Transform> FlockingSpawnPositions { get => flockingSpawnPositions; set => flockingSpawnPositions = value; }
         public GameObject FlockingBoidPrefab { get => flockingBoidPrefab; set => flockingBoidPrefab = value; }
+        public int BoidsCount { get => boidsCount; set => boidsCount = value; }
 
         private void Awake()
         {
@@ -58,6 +60,7 @@ namespace _Main.Scripts.Entities.Enemies
 
         private void Start()
         {
+            boidsCount = 0;
             if (GameObject.FindWithTag("Player").GetComponent<PlayerModel>())
             {
                 playerModel = GameObject.FindWithTag("Player").GetComponent<PlayerModel>();

@@ -1,4 +1,5 @@
 using _Main.Scripts.Entities;
+using _Main.Scripts.Entities.Enemies;
 using _Main.Scripts.Entities.Enemies.Data;
 using _Main.Scripts.Entities.Player;
 using _Main.Scripts.FSM_SO_VERSION;
@@ -16,6 +17,7 @@ public class EnemyMinion : EntityModel, IBoid
     public bool attackedPlayer = false;
     private HealthController _healthController;
     public bool isCollidingWithPlayer = false;
+    BossEnemyModel bossEnemyModel;
     public Vector3 Position => transform.position;
 
     public Vector3 Front => transform.forward;
@@ -28,6 +30,10 @@ public class EnemyMinion : EntityModel, IBoid
         if(!attackedPlayer) _healthController = new HealthController(data.MaxLife);
 
         _healthController.OnDie += Die;
+    }
+    private void Start()
+    {
+        if (GameObject.FindWithTag("Boss")) bossEnemyModel = GameObject.FindWithTag("Boss").GetComponent<BossEnemyModel>();
     }
 
     private void OnCollisionEnter(Collision other)
@@ -93,6 +99,8 @@ public class EnemyMinion : EntityModel, IBoid
 
     public override void Die()
     {
+        bossEnemyModel.BoidsCount--;
+        Debug.Log("Boids Count: " + bossEnemyModel.BoidsCount);
         Destroy(gameObject);
     }
 

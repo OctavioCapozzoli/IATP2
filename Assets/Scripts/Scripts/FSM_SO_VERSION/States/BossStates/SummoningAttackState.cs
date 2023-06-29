@@ -16,22 +16,37 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
             bossModel = model as BossEnemyModel;
             bossModel.EnemyView.PlayWalkAnimation(false);
             bossModel.GetRigidbody().velocity = Vector3.zero;
-            for (int i = 0; i < bossModel.FlockingSpawnPositions.Count; i++)
-            {
-                Instantiate(bossModel.FlockingBoidPrefab, bossModel.FlockingSpawnPositions[i]);
-            }
+
+            if (bossModel.BoidsCount == 0) bossModel.GetData().CanSummon = true;
+
+            if (bossModel.GetData().CanSummon) SummonBoids();
 
         }
 
         public override void ExecuteState(EntityModel model)
         {
             Debug.Log("Boss Summon State Execute");
-                bossModel.GetData().CanSummon = false;
         }
 
         public override void ExitState(EntityModel model)
         {
-            bossModel.GetData().CanSummon = true;
+        }
+
+        void SummonBoids()
+        {
+
+            for (int i = 0; i < bossModel.FlockingSpawnPositions.Count; i++)
+            {
+                if (bossModel.BoidsCount >= bossModel.FlockingSpawnPositions.Count)
+                {
+                    Debug.Log("Enough boids spawned");
+                    bossModel.GetData().CanSummon = false;
+                    return;
+                }
+                Instantiate(bossModel.FlockingBoidPrefab, bossModel.FlockingSpawnPositions[i]);
+                bossModel.BoidsCount++;
+            }
+
         }
     }
 }
