@@ -23,12 +23,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5dac275f1ff25c14a88ec384efc2e9c6, type: 2}
   - {fileID: 11400000, guid: 1f8f965e08b8adf4c88e93138a1604bf, type: 2}
   <RestPatrolTime>k__BackingField: 0
-  <MaxLife>k__BackingField: 120
+  <MaxLife>k__BackingField: 50
   <MovementSpeed>k__BackingField: 100
   <SightRange>k__BackingField: 3
   <TotalSightDegrees>k__BackingField: 180
   <Damage>k__BackingField: 15
-  <DistanceToAttack>k__BackingField: 1
+  <DistanceToAttack>k__BackingField: 10
   <CooldownToAttack>k__BackingField: 2
   <TimeForSearchPlayer>k__BackingField: 2
   <TargetLayer>k__BackingField:
@@ -44,6 +44,6 @@ MonoBehaviour:
   <DesperationAttackHealthThreshold>k__BackingField: 30
   <IsInvulnerable>k__BackingField: 0
   <IsAttackDone>k__BackingField: 0
-  <CanSummon>k__BackingField: 0
+  <CanSummon>k__BackingField: 1
   <AttackStateTimer>k__BackingField: 4
   <BlockStateTimer>k__BackingField: 3

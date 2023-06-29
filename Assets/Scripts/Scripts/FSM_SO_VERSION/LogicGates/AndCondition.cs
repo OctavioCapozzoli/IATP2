@@ -11,6 +11,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.LogicGates
         
         public override bool CompleteCondition(EntityModel model)
         {
+            Debug.Log("CONDITION PARA SUMMON" + conditionOne + conditionTwo);
             return conditionOne.CompleteCondition(model) && conditionTwo.CompleteCondition(model);
         }
     }
