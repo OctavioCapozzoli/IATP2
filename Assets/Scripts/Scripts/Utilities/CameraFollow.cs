@@ -14,7 +14,6 @@ namespace _Main.Scripts.Utilities
 
             if (GameObject.FindWithTag("Player"))
             {
-                Debug.Log("Spawneando acá");
                 var playerGO = GameObject.FindWithTag("Player");
                 target = playerGO.transform;
             }

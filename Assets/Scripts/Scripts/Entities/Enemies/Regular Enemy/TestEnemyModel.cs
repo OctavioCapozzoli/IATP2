@@ -30,7 +30,6 @@ public class TestEnemyModel : MonoBehaviour
         {
             list.Add(newPoints[i].worldPosition);
         }
-        Debug.Log("List: " + list);
         SetWayPoints(list);
     }
     public void SetWayPoints(List<Vector3> newPoints)
@@ -42,7 +41,6 @@ public class TestEnemyModel : MonoBehaviour
         var pos = waypoints[_nextPoint];
         pos.y = transform.position.y;
         transform.position = pos;
-        Debug.Log("Setting up wps");
         readyToMove = true;
     }
     public void Run()

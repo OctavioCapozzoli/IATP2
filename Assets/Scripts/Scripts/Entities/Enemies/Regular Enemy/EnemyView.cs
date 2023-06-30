@@ -18,17 +18,14 @@ namespace _Main.Scripts.Entities.Enemies
         }
         public void PlayAttack1Animation()
         {
-            Debug.Log("Enemy attack animation 1");
             _animator.SetTrigger("onAttack1");
         }
         public void PlayAttack2Animation()
         {
-            Debug.Log("Enemy attack animation 2");
             _animator.SetTrigger("onAttack2");
         }
         public void PlayAttack3Animation()
         {
-            Debug.Log("Enemy attack animation 3");
             _animator.SetTrigger("onAttack3");
         }
         public void PlayDamageAnimation()

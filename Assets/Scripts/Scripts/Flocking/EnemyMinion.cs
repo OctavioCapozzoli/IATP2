@@ -69,7 +69,6 @@ public class EnemyMinion : EntityModel, IBoid
         {
             isCollidingWithPlayer = true;
             other.gameObject.GetComponent<PlayerModel>().HealthController.TakeDamage(damage);
-            Debug.Log("Player was damaged, current health is: " + other.gameObject.GetComponent<PlayerModel>().HealthController.CurrentHealth);
             other.gameObject.GetComponent<EntityModel>().IsDamaged = true;
         }
 
@@ -99,7 +98,6 @@ public class EnemyMinion : EntityModel, IBoid
     public override void Die()
     {
         bossEnemyModel.BoidsCount--;
-        Debug.Log("Boids Count: " + bossEnemyModel.BoidsCount);
         Destroy(gameObject);
     }
 

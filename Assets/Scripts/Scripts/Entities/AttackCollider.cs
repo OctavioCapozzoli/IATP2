@@ -17,7 +17,7 @@ public class AttackCollider : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<PlayerModel>().HealthController.TakeDamage(damage); //TODO Paso a damage state
-            other.gameObject.GetComponent<EntityModel>().IsDamaged = true;
+            //other.gameObject.GetComponent<EntityModel>().IsDamaged = true;
             other.gameObject.GetComponent<EntityModel>().StartingRutine();
 
 

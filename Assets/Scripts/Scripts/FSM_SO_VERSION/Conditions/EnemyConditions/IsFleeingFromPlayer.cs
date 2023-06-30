@@ -12,7 +12,6 @@ namespace _Main.Scripts.FSM_SO_VERSION.Conditions.EnemyConditions
         public override bool CompleteCondition(EntityModel model)
         {
             var thisModel = (EnemyModel)model;
-            Debug.Log("Is fleeing? " + thisModel.CheckFleeFromPlayer());
             return thisModel.CheckFleeFromPlayer();
         }
     }

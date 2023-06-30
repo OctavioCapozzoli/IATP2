@@ -10,7 +10,6 @@ public class PlayerSpawnpoint : MonoBehaviour
 
         if (GameObject.FindWithTag("Player"))
         {
-            Debug.Log("Spawneando acá");
             var playerGO = GameObject.FindWithTag("Player");
             playerGO.transform.position = transform.position;
         }

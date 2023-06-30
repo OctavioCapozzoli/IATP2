@@ -34,17 +34,14 @@ namespace _Main.Scripts.Entities.Player
 
         public void FireballSpecialAttack()
         {
-            Debug.Log("Player Special Attack 1");
             _animator.SetTrigger("onSpecialAttack1");
         }
         public void GuitarSmashSpecialAttack()
         {
-            Debug.Log("Player Special Attack 2");
             _animator.SetTrigger("onSpecialAttack2");
         }
         public void FirePunchesSpecialAttack()
         {
-            Debug.Log("Player Special Attack 3");
             _animator.SetTrigger("onSpecialAttack3");
         }
         #endregion

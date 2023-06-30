@@ -14,7 +14,6 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
         public override void EnterState(EntityModel model)
         {
             _entitiesData.Add(model, model as EnemyModel);
-            Debug.Log("Enemy current health" + _entitiesData[model].HealthController.CurrentHealth);
         }
 
         public override void ExecuteState(EntityModel model)

@@ -30,6 +30,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
 
         public override void ExitState(EntityModel model)
         {
+            Debug.Log("Salgo del summon state");
         }
 
         void SummonBoids()
@@ -43,7 +44,8 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
                     bossModel.GetData().CanSummon = false;
                     return;
                 }
-                Instantiate(bossModel.FlockingBoidPrefab, bossModel.FlockingSpawnPositions[i]);
+                Debug.Log("Boid instanced");
+                //Instantiate(bossModel.FlockingBoidPrefab, bossModel.FlockingSpawnPositions[i]);
                 bossModel.BoidsCount++;
             }
 

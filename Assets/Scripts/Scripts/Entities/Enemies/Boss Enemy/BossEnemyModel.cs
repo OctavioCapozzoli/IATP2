@@ -70,7 +70,6 @@ namespace _Main.Scripts.Entities.Enemies
 
         private void Update()
         {
-            Debug.Log("Is in boss room?" + data.IsInBossRoom);
         }
 
         public override void Die()
@@ -187,7 +186,6 @@ namespace _Main.Scripts.Entities.Enemies
         public bool CheckFleeFromPlayer()
         {
             IsFleeing = _healthController.CurrentHealth <= data.FleeHealthValue ? true : false;
-            Debug.Log("Is fleeing ? " + IsFleeing + _healthController.CurrentHealth + data.FleeHealthValue);
             return IsFleeing;
 
         }
