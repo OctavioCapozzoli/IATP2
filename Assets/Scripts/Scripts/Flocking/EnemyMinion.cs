@@ -41,7 +41,6 @@ public class EnemyMinion : EntityModel, IBoid
         if(other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<PlayerModel>().HealthController.TakeDamage(damage);
-            Debug.Log("Player was damaged, current health is: " + other.gameObject.GetComponent<PlayerModel>().HealthController.CurrentHealth);
             attackedPlayer = true;
         }
     }

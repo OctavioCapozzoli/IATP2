@@ -26,7 +26,6 @@ public class ProjectileScript : MonoBehaviour
         if (other.tag == "Enemy")
         {
             other.gameObject.GetComponent<EnemyModel>().HealthController.TakeDamage(damage);
-            Debug.Log("Enemy was damaged, current health is: " + other.gameObject.GetComponent<EnemyModel>().HealthController.CurrentHealth);
             other.gameObject.GetComponent<EntityModel>().IsDamaged = true;
         }
         Destroy(gameObject);
