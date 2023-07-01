@@ -17,14 +17,11 @@ public class AttackCollider : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<PlayerModel>().HealthController.TakeDamage(damage); //TODO Paso a damage state
-            Debug.Log("Player was damaged, current health is: " + other.gameObject.GetComponent<PlayerModel>().HealthController.CurrentHealth);
-            other.gameObject.GetComponent<EntityModel>().IsDamaged = true;
+            Debug.Log("Player was damaged, current health is: " + other.gameObject.GetComponent<PlayerModel>().HealthController.CurrentHealth);  
             other.gameObject.GetComponent<EntityModel>().StartingRutine();
-
-
-        
+            //other.gameObject.GetComponent<PlayerModel>().IsDamaged = true;
         }
-        else if (other.gameObject.tag == "Enemy")
+       else if (other.gameObject.tag == "Enemy")
         {
             other.gameObject.GetComponent<EnemyModel>().HealthController.TakeDamage(damage);
             Debug.Log("Enemy was damaged, current health is: " + other.gameObject.GetComponent<EnemyModel>().HealthController.CurrentHealth);

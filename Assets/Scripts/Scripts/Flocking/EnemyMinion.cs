@@ -14,6 +14,7 @@ public class EnemyMinion : EntityModel, IBoid
     public float speed;
     Rigidbody _rb;
     private HealthController _healthController;
+    [SerializeField] private GameObject explosionVFX;
     public Vector3 Position => transform.position;
 
     public Vector3 Front => transform.forward;
@@ -54,6 +55,8 @@ public class EnemyMinion : EntityModel, IBoid
             other.gameObject.GetComponent<PlayerModel>().HealthController.TakeDamage(damage);
             Debug.Log("Player was damaged, current health is: " + other.gameObject.GetComponent<PlayerModel>().HealthController.CurrentHealth);
             other.gameObject.GetComponent<EntityModel>().IsDamaged = true;
+            Instantiate(explosionVFX, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
 
     }
