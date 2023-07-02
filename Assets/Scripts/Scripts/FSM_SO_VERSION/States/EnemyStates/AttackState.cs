@@ -16,6 +16,13 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
         {
             _entitiesData.Add(model, model as EnemyModel);
             _entitiesData[model].EnemyView.PlayWalkAnimation(false);
+            _entitiesData[model].LineOfSight(_entitiesData[model].GetTarget().transform);
+            if (_entitiesData[model].IsSeeingTarget)
+            {
+                Debug.Log("Target is in sight, executing look dir");
+                Vector3 dir = _entitiesData[model].GetTarget().transform.position - _entitiesData[model].transform.position;
+                _entitiesData[model].LookDir(dir);
+            }
             _entitiesData[model].GetRigidbody().velocity = Vector3.zero;
             _entitiesData[model].Controller.EnemyRoulette.EnemyAttackOrBlockRouletteAction();
             attackCooldown = 0f;

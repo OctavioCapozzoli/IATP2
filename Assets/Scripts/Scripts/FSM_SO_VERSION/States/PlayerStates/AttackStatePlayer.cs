@@ -22,6 +22,13 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
         {
             Debug.Log("Enter");
             playerModel = model as PlayerModel;
+            playerModel.LineOfSight();
+            if(playerModel.IsSeeingTarget && playerModel.IsAttacking)
+            {
+                Debug.Log("Target is in sight, executing look dir");
+                Vector3 dir = playerModel.Target.position - playerModel.transform.position;
+                playerModel.LookDir(dir);
+            }
             CheckComboAnim();
             ResetCombo();
         }
@@ -29,7 +36,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
         public override void ExecuteState(EntityModel model)
         {
             Debug.Log("Attack State Player Execute");
-            playerModel.LineOfSight();
+            //playerModel.LineOfSight(); //lookdir
             Debug.Log("Target in sight in attack state execute: " + playerModel.IsSeeingTarget + playerModel.LineOfSight());
             currentComboTimer -= Time.deltaTime;
             if (currentComboTimer > 0)
@@ -39,12 +46,12 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
                 {
                     
                     Debug.Log("player current state" + playerCurrentState);
-                    if (playerModel.IsSeeingTarget && playerModel.Target != null)
-                    {
-                        Debug.Log("Target in sight, looking at it and executing combo");
-                        Vector3 dir = playerModel.Target.position - playerModel.transform.position;
-                        playerModel.LookDir(dir);
-                    }
+                    //if (playerModel.IsSeeingTarget && playerModel.Target != null)
+                    //{
+                    //    Debug.Log("Target in sight, looking at it and executing combo");
+                    //    Vector3 dir = playerModel.Target.position - playerModel.transform.position; //lookdir
+                    //    playerModel.LookDir(dir); //lookdir
+                    //}
                     playerCurrentState++;
                     CheckComboAnim();
                     currentComboTimer = maxComboTimer;
