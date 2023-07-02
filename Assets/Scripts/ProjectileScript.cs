@@ -8,9 +8,15 @@ public class ProjectileScript : MonoBehaviour
 {
     public float projectileSpeed;
     public float damage;
+    float lifetime = 2f, timer = 0;
 
     private void Update()
     {
+        timer += Time.deltaTime;
+        if (timer >= lifetime)
+        {
+            Destroy(this.gameObject);
+        }
         Rigidbody rb = this.GetComponent<Rigidbody>();
         rb.velocity = this.transform.forward * projectileSpeed;
     }
@@ -20,7 +26,6 @@ public class ProjectileScript : MonoBehaviour
         if (other.tag == "Enemy")
         {
             other.gameObject.GetComponent<EnemyModel>().HealthController.TakeDamage(damage);
-            Debug.Log("Enemy was damaged, current health is: " + other.gameObject.GetComponent<EnemyModel>().HealthController.CurrentHealth);
             other.gameObject.GetComponent<EntityModel>().IsDamaged = true;
         }
         Destroy(gameObject);

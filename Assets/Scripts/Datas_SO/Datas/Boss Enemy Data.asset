@@ -12,15 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96763b302b4b0148a899e6db1e58001, type: 3}
   m_Name: Boss Enemy Data
   m_EditorClassIdentifier: 
-  <FsmStates>k__BackingField: []
+  <FsmStates>k__BackingField:
+  - {fileID: 11400000, guid: 3190ae4b11e30a44eaab4d53c7f157dc, type: 2}
+  - {fileID: 11400000, guid: 1e538d5d518f4b041ac420e366f23928, type: 2}
+  - {fileID: 11400000, guid: ca10708769391bd418a65ef83b3e2bba, type: 2}
+  - {fileID: 11400000, guid: b7cf77f3950e91944a9804eb23f6e90d, type: 2}
+  - {fileID: 11400000, guid: 4ac5b59693630c74b910326244505262, type: 2}
+  - {fileID: 11400000, guid: 34a3e709d1d693342ab847cc5498aadc, type: 2}
+  - {fileID: 11400000, guid: 9a4b439ae12899a4a91f865fc9dbc03b, type: 2}
+  - {fileID: 11400000, guid: 5dac275f1ff25c14a88ec384efc2e9c6, type: 2}
+  - {fileID: 11400000, guid: 1f8f965e08b8adf4c88e93138a1604bf, type: 2}
   <RestPatrolTime>k__BackingField: 0
-  <MaxLife>k__BackingField: 200
-  <MovementSpeed>k__BackingField: 3
-  <SightRange>k__BackingField: 10
+  <MaxLife>k__BackingField: 110
+  <MovementSpeed>k__BackingField: 100
+  <SightRange>k__BackingField: 3
   <TotalSightDegrees>k__BackingField: 180
   <Damage>k__BackingField: 15
-  <DistanceToAttack>k__BackingField: 2
-  <CooldownToAttack>k__BackingField: 1.5
+  <DistanceToAttack>k__BackingField: 10
+  <CooldownToAttack>k__BackingField: 2
   <TimeForSearchPlayer>k__BackingField: 2
   <TargetLayer>k__BackingField:
     serializedVersion: 2
@@ -28,13 +37,13 @@ MonoBehaviour:
   <FleeHealthValue>k__BackingField: 2
   <IdleTimer>k__BackingField: 1
   <IsInBossRoom>k__BackingField: 1
-  <AttackRange>k__BackingField: 2
-  <RegularAttackHealthThreshold>k__BackingField: 1.5
-  <EnhancedAttackHealthThreshold>k__BackingField: 1
-  <SummoningAttackHealthThreshold>k__BackingField: 1
-  <DesperationAttackHealthThreshold>k__BackingField: 0.5
+  <AttackRange>k__BackingField: 1
+  <RegularAttackHealthThreshold>k__BackingField: 100
+  <EnhancedAttackHealthThreshold>k__BackingField: 80
+  <SummoningAttackHealthThreshold>k__BackingField: 80
+  <DesperationAttackHealthThreshold>k__BackingField: 30
   <IsInvulnerable>k__BackingField: 0
   <IsAttackDone>k__BackingField: 0
   <CanSummon>k__BackingField: 0
-  <AttackStateTimer>k__BackingField: 1
-  <BlockStateTimer>k__BackingField: 1
+  <AttackStateTimer>k__BackingField: 4
+  <BlockStateTimer>k__BackingField: 3

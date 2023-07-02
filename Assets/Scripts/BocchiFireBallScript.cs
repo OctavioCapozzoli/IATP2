@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class BocchiFireBallScript : MonoBehaviour
 {
-    public GameObject projectile;
-    public float projectileSpeed;
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GameObject fireball = Instantiate(projectile, transform) as GameObject;
-            Rigidbody rb = fireball.GetComponent<Rigidbody>();
-            rb.velocity = transform.forward * projectileSpeed;
-        }
-    }
+    //float lifetime = 2f, timer = 0;
+    //void Update()
+    //{
+    //    timer += Time.deltaTime;
+    //    if (timer >= lifetime)
+    //    {
+    //        Destroy(this.gameObject);
+    //    }
+    //}
 }

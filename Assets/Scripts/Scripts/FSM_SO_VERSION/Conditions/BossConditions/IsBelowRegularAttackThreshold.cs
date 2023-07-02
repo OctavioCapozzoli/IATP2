@@ -13,7 +13,6 @@ namespace _Main.Scripts.FSM_SO_VERSION.Conditions.BossConditions
         public override bool CompleteCondition(EntityModel model)
         {
             BossEnemyModel bossModel = model as BossEnemyModel;
-
             return bossModel.HealthController.CurrentHealth <= bossModel.GetData().RegularAttackHealthThreshold;
         }
     }

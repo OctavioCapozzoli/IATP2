@@ -1,3 +1,4 @@
+
 using _Main.Scripts.Entities;
 using _Main.Scripts.Entities.Enemies;
 using _Main.Scripts.Roulette_Wheel.EntitiesRouletteWheel;
@@ -10,29 +11,30 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
     [CreateAssetMenu(fileName = "Seek State", menuName = "_main/States/Boss States/Seek State", order = 0)]
     public class SeekState : State
     {
-        private Dictionary<EntityModel, BossEnemyModel> _entitiesData = new Dictionary<EntityModel, BossEnemyModel>();
+        BossEnemyModel bossModel;
+
         public override void EnterState(EntityModel model)
         {
-            _entitiesData.Add(model, model as BossEnemyModel);
+            bossModel = model as BossEnemyModel;
         }
 
         public override void ExecuteState(EntityModel model)
         {
             Debug.Log("Enemy Seek State execute");
 
-            var dir = _entitiesData[model].Controller.SbSeek.GetDir();
+            var dir = bossModel.Controller.SbSeek.GetDir();
             if (dir != Vector3.zero)
             {
                 Debug.Log("Enemy puede moverse");
-                _entitiesData[model].Move(dir);
+                bossModel.Move(dir);
             }
-            else _entitiesData[model].IsChasing = false;
+            //else bossModel.IsChasing = false;
         }
 
         public override void ExitState(EntityModel model)
         {
-            _entitiesData[model].IsChasing = false;
-            _entitiesData.Remove(model);
+            //bossModel.IsChasing = false;
+
         }
     }
 }

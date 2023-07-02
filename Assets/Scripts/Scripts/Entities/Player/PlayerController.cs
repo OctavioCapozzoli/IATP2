@@ -35,7 +35,6 @@ namespace _Main.Scripts.Entities.Player
             _model.CheckGround();
             _playerFsm.UpdateState();
             _model.ManaBar();
-            Debug.Log("Is grounded? " + _model.IsGrounded);
             if (_model.IsGrounded)
             {
                 CheckMovementControls();
@@ -85,19 +84,6 @@ namespace _Main.Scripts.Entities.Player
                 }
                 _model.IsAttacking = true;
             }
-        }
-        public IEnumerator StartCooldownTimer()
-        {
-            isOnAttackCooldown = true;
-            Debug.Log("Cooldown coroutine set");
-            yield return new WaitForSeconds(attackKeyCooldown);
-            isOnAttackCooldown = false;
-
-            Debug.Log("Cooldown coroutine end");
-        }
-        public void ResetAttackKeyCooldown()
-        {
-            Debug.Log("Timer reset");
         }
 
         void CheckSpecialAttackInput()

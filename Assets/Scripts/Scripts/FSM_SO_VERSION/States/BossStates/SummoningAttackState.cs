@@ -11,10 +11,15 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
     public class SummoningAttackState : State
     {
         BossEnemyModel bossModel;
-
         public override void EnterState(EntityModel model)
         {
             bossModel = model as BossEnemyModel;
+            bossModel.EnemyView.PlayWalkAnimation(false);
+            bossModel.GetRigidbody().velocity = Vector3.zero;
+
+            if (bossModel.BoidsCount == 0) bossModel.GetData().CanSummon = true;
+
+            if (bossModel.GetData().CanSummon) SummonBoids();
 
         }
 
@@ -25,6 +30,24 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
 
         public override void ExitState(EntityModel model)
         {
+            Debug.Log("Salgo del summon state");
+        }
+
+        void SummonBoids()
+        {
+
+            for (int i = 0; i < bossModel.FlockingSpawnPositions.Count; i++)
+            {
+                if (bossModel.BoidsCount >= bossModel.FlockingSpawnPositions.Count)
+                {
+                    Debug.Log("Enough boids spawned");
+                    bossModel.GetData().CanSummon = false;
+                    return;
+                }
+                Debug.Log("Boid instanced");
+                //Instantiate(bossModel.FlockingBoidPrefab, bossModel.FlockingSpawnPositions[i]);
+                bossModel.BoidsCount++;
+            }
 
         }
     }

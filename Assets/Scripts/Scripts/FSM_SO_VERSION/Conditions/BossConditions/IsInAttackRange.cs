@@ -13,7 +13,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.Conditions.BossConditions
         {
             var thisModel = (BossEnemyModel)model;
 
-            return Vector3.Distance(thisModel.transform.position, thisModel.GetTarget().transform.position) <= thisModel.GetData().AttackRange;
+            return Vector3.Distance(thisModel.transform.position, thisModel.GetTarget().transform.position) < thisModel.GetData().AttackRange;
         }
     }
 }

@@ -61,12 +61,10 @@ public class PlayerAttackComboManager
             }
             else if (currentComboState == PlayerAttackComboState.PUNCH_2)
             {
-                Debug.Log("2");
                 playerView.PlayerComboAttack2();
             }
             else if (currentComboState == PlayerAttackComboState.PUNCH_3)
             {
-                Debug.Log("3");
                 playerView.PlayerComboAttack3();
             }
 
@@ -79,7 +77,6 @@ public class PlayerAttackComboManager
     {
         if (isComboReset)
         {
-            //Debug.Log("Reset entered");
             currentComboCooldown -= Time.deltaTime;
 
             if (currentComboCooldown <= 0f)

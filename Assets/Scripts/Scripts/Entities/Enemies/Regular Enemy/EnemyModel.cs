@@ -171,7 +171,6 @@ namespace _Main.Scripts.Entities.Enemies
         public bool CheckFleeFromPlayer()
         {
             IsFleeing = _healthController.CurrentHealth <= data.FleeHealthValue ? true : false;
-            Debug.Log("Is fleeing ? " + IsFleeing + _healthController.CurrentHealth + data.FleeHealthValue);
             return IsFleeing;
 
         }

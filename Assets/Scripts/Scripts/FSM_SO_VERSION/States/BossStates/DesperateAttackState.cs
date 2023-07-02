@@ -17,6 +17,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
         public override void EnterState(EntityModel model)
         {
             bossModel = model as BossEnemyModel;
+            timer = 0;
         }
         public override void ExecuteState(EntityModel model)
         {
@@ -36,7 +37,6 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
 
         public override void ExitState(EntityModel model)
         {
-            timer = 0;
         }
     }
 }
