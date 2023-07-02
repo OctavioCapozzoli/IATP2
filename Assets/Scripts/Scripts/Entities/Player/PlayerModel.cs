@@ -24,9 +24,17 @@ namespace _Main.Scripts.Entities.Player
         [SerializeField] ProjectileScript projectile;
         [SerializeField] GameObject projectileGO;
         [SerializeField] Transform projectilePosition;
+        [SerializeField] Transform punchPosition;
         [SerializeField] GameObject guitarPrefab;
         [SerializeField] private Slider manaSlider;
         [SerializeField] private float projectileSpeed;
+        [SerializeField] private float sightRange;
+        [SerializeField] private LayerMask sightMask;
+        public bool targetInSight = false;
+        [SerializeField] private float TotalSightDegrees;
+        [SerializeField] private LayerMask obsMask;
+        private Transform target;
+
 
 
         private PlayerView _view;
@@ -41,6 +49,7 @@ namespace _Main.Scripts.Entities.Player
         public PlayerView View { get => _view; set => _view = value; }
         public PlayerController Controller { get => _controller; set => _controller = value; }
         public HealthController HealthController { get => _healthController; set => _healthController = value; }
+        public Transform Target { get => target; set => target = value; }
 
         void Awake()
         {
@@ -97,7 +106,7 @@ namespace _Main.Scripts.Entities.Player
 
         public void InstantiateFireball()
         {
-            GameObject fireball = Instantiate(projectileGO, projectilePosition) as GameObject;
+            GameObject fireball = Instantiate(projectileGO, projectilePosition.transform.position, projectilePosition.transform.rotation) as GameObject;
             Rigidbody rb = fireball.GetComponent<Rigidbody>();
             rb.velocity = transform.forward * projectileSpeed;
         }
@@ -115,6 +124,49 @@ namespace _Main.Scripts.Entities.Player
             return _healthController.CurrentHealth <= 0;
         }
 
+        public bool LineOfSight()
+        {
+            target = null;
+            Collider[] overlapSphere = Physics.OverlapSphere(transform.position, sightRange, sightMask);
+
+            if (overlapSphere.Length > 0)
+            {
+                target = overlapSphere[0].transform;
+            }
+
+            targetInSight = false;
+            if (target != null)
+            {
+                // 1 - Si está en mi rango de visión
+                float distanceToTarget = Vector3.Distance(transform.position, target.position);
+
+                if (distanceToTarget <= sightRange)
+                {
+                    // 2 - Si está en mi cono de visión
+                    Vector3 targetDir = (target.position - transform.position).normalized; // Asi se calcula
+                    float angleToTarget = Vector3.Angle(transform.forward, targetDir);
+                    if (angleToTarget <= TotalSightDegrees)
+                    {
+                        RaycastHit hitInfo = new RaycastHit();
+
+                        if (!Physics.Raycast(transform.position, targetDir, out hitInfo, distanceToTarget, obsMask))
+                        {
+                            targetInSight = true;
+                        IsSeeingTarget = true;
+                        }
+                        else
+                        {
+                            targetInSight = false;
+                            IsSeeingTarget = false;
+                        }
+
+                    }
+
+                }
+            }
+            return targetInSight;
+        }
+
         public override void Die()
         {
             SceneManager.LoadScene("Game Over");
@@ -125,5 +177,11 @@ namespace _Main.Scripts.Entities.Player
         public override Vector3 GetFoward() => transform.forward;
         public override float GetSpeed() => _rigidbody.velocity.magnitude;
         public override Rigidbody GetRigidbody() => _rigidbody;
+
+        public void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(punchPosition.position, sightRange);
+        }
     }
 }

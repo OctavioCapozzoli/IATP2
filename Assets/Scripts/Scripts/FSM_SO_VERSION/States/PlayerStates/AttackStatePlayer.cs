@@ -28,12 +28,23 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
 
         public override void ExecuteState(EntityModel model)
         {
+            Debug.Log("Attack State Player Execute");
+            playerModel.LineOfSight();
+            Debug.Log("Target in sight in attack state execute: " + playerModel.IsSeeingTarget + playerModel.LineOfSight());
             currentComboTimer -= Time.deltaTime;
             if (currentComboTimer > 0)
             {
+                Debug.Log("entra en combo timer" + playerModel.IsAttacking);
                 if (Input.GetKeyDown(KeyCode.J))
                 {
+                    
                     Debug.Log("player current state" + playerCurrentState);
+                    if (playerModel.IsSeeingTarget && playerModel.Target != null)
+                    {
+                        Debug.Log("Target in sight, looking at it and executing combo");
+                        Vector3 dir = playerModel.Target.position - playerModel.transform.position;
+                        playerModel.LookDir(dir);
+                    }
                     playerCurrentState++;
                     CheckComboAnim();
                     currentComboTimer = maxComboTimer;

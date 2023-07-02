@@ -1,5 +1,4 @@
 using _Main.Scripts.Entities;
-using _Main.Scripts.Entities.Enemies;
 using _Main.Scripts.Entities.Enemies.Data;
 using _Main.Scripts.Entities.Player;
 using _Main.Scripts.FSM_SO_VERSION;
@@ -10,14 +9,12 @@ using UnityEngine;
 public class EnemyMinion : EntityModel, IBoid
 {
     [SerializeField] private EnemyData data;
-    public int damage;
+    [SerializeField] private int damage;
     public float radius;
     public float speed;
     Rigidbody _rb;
-    public bool attackedPlayer = false;
     private HealthController _healthController;
-    public bool isCollidingWithPlayer = false;
-    BossEnemyModel bossEnemyModel;
+    [SerializeField] private GameObject explosionVFX;
     public Vector3 Position => transform.position;
 
     public Vector3 Front => transform.forward;
@@ -27,23 +24,11 @@ public class EnemyMinion : EntityModel, IBoid
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        if(!attackedPlayer) _healthController = new HealthController(data.MaxLife);
+        _healthController = new HealthController(data.MaxLife);
 
         _healthController.OnDie += Die;
     }
-    private void Start()
-    {
-        if (GameObject.FindWithTag("Boss")) bossEnemyModel = GameObject.FindWithTag("Boss").GetComponent<BossEnemyModel>();
-    }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        if(other.gameObject.tag == "Player")
-        {
-            other.gameObject.GetComponent<PlayerModel>().HealthController.TakeDamage(damage);
-            attackedPlayer = true;
-        }
-    }
     public override void Move(Vector3 dir)
     {
         dir *= speed;
@@ -67,9 +52,11 @@ public class EnemyMinion : EntityModel, IBoid
     {
         if (other.gameObject.tag == "Player")
         {
-            isCollidingWithPlayer = true;
             other.gameObject.GetComponent<PlayerModel>().HealthController.TakeDamage(damage);
+            Debug.Log("Player was damaged, current health is: " + other.gameObject.GetComponent<PlayerModel>().HealthController.CurrentHealth);
             other.gameObject.GetComponent<EntityModel>().IsDamaged = true;
+            Instantiate(explosionVFX, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
 
     }
@@ -92,12 +79,11 @@ public class EnemyMinion : EntityModel, IBoid
 
     public override bool IsEntityDead()
     {
-        return attackedPlayer;
+        return _healthController.CurrentHealth <= 0;
     }
 
     public override void Die()
     {
-        bossEnemyModel.BoidsCount--;
         Destroy(gameObject);
     }
 

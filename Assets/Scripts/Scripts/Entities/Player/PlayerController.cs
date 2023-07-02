@@ -78,6 +78,8 @@ namespace _Main.Scripts.Entities.Player
             {
                 if (isOnAttackCooldown)
                 {
+                    Debug.Log("Attack is on cooldown");
+                    
                     return;
                 }
                 _model.IsAttacking = true;
