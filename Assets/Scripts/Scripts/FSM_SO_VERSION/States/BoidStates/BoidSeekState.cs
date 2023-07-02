@@ -19,6 +19,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BoidStates
 
         public override void ExecuteState(EntityModel model)
         {
+            //Debug.Log("Boid state seek execute");
             if(_entitiesData[model].GetComponent<Leader>().target != null)
             {
                 _entitiesData[model].LookDir(_entitiesData[model].GetComponent<FlockingManager>().RunFlockingDir());

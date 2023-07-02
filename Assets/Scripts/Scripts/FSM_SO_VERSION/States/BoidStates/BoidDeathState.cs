@@ -20,7 +20,8 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BoidStates
 
         public override void ExecuteState(EntityModel model)
         {
-            
+
+            //Debug.Log("Boid state death execute");
         }
 
         public override void ExitState(EntityModel model)
