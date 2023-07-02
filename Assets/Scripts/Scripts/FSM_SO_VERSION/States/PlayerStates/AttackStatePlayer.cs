@@ -28,7 +28,6 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
 
         public override void ExecuteState(EntityModel model)
         {
-            Debug.Log("Attack State Player Execute");
             currentComboTimer -= Time.deltaTime;
             if (currentComboTimer > 0)
             {

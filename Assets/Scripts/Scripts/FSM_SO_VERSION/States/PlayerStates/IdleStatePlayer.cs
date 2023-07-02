@@ -14,7 +14,6 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
         }
         public override void ExecuteState(EntityModel model)
         {
-            Debug.Log("Idle state player execute");
         }
     }
 }

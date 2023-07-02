@@ -16,6 +16,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
         public override void EnterState(EntityModel model)
         {
             bossEnemyModel = model as BossEnemyModel;
+            bossEnemyModel.GetRigidbody().velocity = Vector3.zero;
         }
 
         public override void ExecuteState(EntityModel model)

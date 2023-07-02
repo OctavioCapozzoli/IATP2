@@ -17,7 +17,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1e538d5d518f4b041ac420e366f23928, type: 2}
   - {fileID: 11400000, guid: ca10708769391bd418a65ef83b3e2bba, type: 2}
   - {fileID: 11400000, guid: b7cf77f3950e91944a9804eb23f6e90d, type: 2}
-  - {fileID: 11400000, guid: 4ac5b59693630c74b910326244505262, type: 2}
   - {fileID: 11400000, guid: 34a3e709d1d693342ab847cc5498aadc, type: 2}
   - {fileID: 11400000, guid: 9a4b439ae12899a4a91f865fc9dbc03b, type: 2}
   - {fileID: 11400000, guid: 5dac275f1ff25c14a88ec384efc2e9c6, type: 2}
@@ -42,8 +41,8 @@ MonoBehaviour:
   <EnhancedAttackHealthThreshold>k__BackingField: 80
   <SummoningAttackHealthThreshold>k__BackingField: 80
   <DesperationAttackHealthThreshold>k__BackingField: 30
-  <IsInvulnerable>k__BackingField: 0
-  <IsAttackDone>k__BackingField: 0
+  <IsInvulnerable>k__BackingField: 1
+  <IsAttackDone>k__BackingField: 1
   <CanSummon>k__BackingField: 0
   <AttackStateTimer>k__BackingField: 4
   <BlockStateTimer>k__BackingField: 3

@@ -13,7 +13,8 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
         public override void EnterState(EntityModel model)
         {
             bossModel = model as BossEnemyModel;
-            Debug.Log("Enemy current health" + bossModel.HealthController.CurrentHealth);
+            bossModel.EnemyView.PlayWalkAnimation(false);
+            bossModel.GetRigidbody().velocity = Vector3.zero;
         }
 
         public override void ExecuteState(EntityModel model)
@@ -22,7 +23,6 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
         }
         public override void ExitState(EntityModel model)
         {
-            bossModel.IsDamaged = false;
         }
     }
 }
