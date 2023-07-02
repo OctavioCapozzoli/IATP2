@@ -16,12 +16,10 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
         public override void EnterState(EntityModel model)
         {
             bossModel = model as BossEnemyModel;
-            timer = 0;
             bossModel.EnemyView.PlayWalkAnimation(false);
             bossModel.EnemyView.PlayBlockAnimation(false);
-            bossModel.GetData().IsAttackDone = false;
-            bossModel.GetData().IsInvulnerable = false;
             bossModel.GetRigidbody().velocity = Vector3.zero;
+            bossModel.GetData().IsInvulnerable = false;
 
         }
 
@@ -29,9 +27,9 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
         {
             Debug.Log("Boss Regular Attack State Execute");
             timer += Time.deltaTime;
-            if (timer <= bossModel.GetData().AttackStateTimer)
+            if (timer <= bossModel.GetData().AttackStateTimer && !bossModel.GetData().IsAttackDone)
             {
-                Debug.Log("Timer boss attack is " + timer);
+                Debug.Log("Timer boss regular attack is " + timer);
                 //rouletteCooldownTimer += Time.deltaTime;
                 //bossModel.Controller.BossEnemyRoulette.EnemyRegularAttacksRouletteAction();
                 //if (rouletteCooldownTimer >= rouletteMaxCooldown)
@@ -44,6 +42,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
             }
             else
             {
+                timer = 0;
                 bossModel.GetData().IsAttackDone = true;
             }
         }

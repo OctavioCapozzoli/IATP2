@@ -16,19 +16,17 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
         public override void EnterState(EntityModel model)
         {
             bossEnemyModel = model as BossEnemyModel;
-            bossEnemyModel.GetData().IsAttackDone = false;
-            timer = 0;
         }
 
         public override void ExecuteState(EntityModel model)
         {
             Debug.Log("Boss Block State Execute");
             timer += Time.deltaTime;
-            if (timer <= bossEnemyModel.GetData().BlockStateTimer)
+            if (timer <= bossEnemyModel.GetData().BlockStateTimer && bossEnemyModel.GetData().IsAttackDone)
             {
                 Debug.Log("Block timer" + timer);
                 bossEnemyModel.GetData().IsInvulnerable = true;
-                //bossEnemyModel.EnemyView.PlayBlockAnimation(true);
+                bossEnemyModel.EnemyView.PlayBlockAnimation(true);
                 Debug.Log("Boss is blocking attacks");
             }
             else
@@ -36,12 +34,8 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
                 Debug.Log("Block is done");
                 bossEnemyModel.GetData().IsAttackDone = false;
                 bossEnemyModel.GetData().IsInvulnerable = false;
+                timer = 0;
             }
-            //else
-            //{
-            //    bossEnemyModel.GetData().IsAttackDone = false;
-            //    bossEnemyModel.GetData().IsInvulnerable = false;
-            //}
         }
         public override void ExitState(EntityModel model)
         {
