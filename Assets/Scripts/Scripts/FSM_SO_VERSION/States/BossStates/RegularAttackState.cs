@@ -17,9 +17,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
         {
             bossModel = model as BossEnemyModel;
             bossModel.EnemyView.PlayWalkAnimation(false);
-            bossModel.EnemyView.PlayBlockAnimation(false);
             bossModel.GetRigidbody().velocity = Vector3.zero;
-            bossModel.GetData().IsInvulnerable = false;
 
         }
 
@@ -29,16 +27,12 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
             timer += Time.deltaTime;
             if (timer <= bossModel.GetData().AttackStateTimer && !bossModel.GetData().IsAttackDone)
             {
-                Debug.Log("Timer boss regular attack is " + timer);
-                //rouletteCooldownTimer += Time.deltaTime;
-                //bossModel.Controller.BossEnemyRoulette.EnemyRegularAttacksRouletteAction();
-                //if (rouletteCooldownTimer >= rouletteMaxCooldown)
-                //{
-
-                //    timer = 0;
-                //     bossModel.GetData().IsAttackDone = true;
-                //}
-
+                rouletteCooldownTimer += Time.deltaTime;
+                if(rouletteCooldownTimer >= rouletteMaxCooldown)
+                {
+                    bossModel.Controller.BossEnemyRoulette.EnemyRegularAttacksRouletteAction();
+                    rouletteCooldownTimer = 0;
+                }
             }
             else
             {

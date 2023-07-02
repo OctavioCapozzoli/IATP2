@@ -183,12 +183,7 @@ namespace _Main.Scripts.Entities.Enemies
             }
             return targetInSight;
         }
-        public bool CheckFleeFromPlayer()
-        {
-            IsFleeing = _healthController.CurrentHealth <= data.FleeHealthValue ? true : false;
-            return IsFleeing;
 
-        }
         public PlayerModel GetTarget() => playerModel;
         public BossEnemyData GetData() => data;
         public override StateData[] GetStates() => data.FsmStates;
