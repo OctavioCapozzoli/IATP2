@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8059108354718680199}
   - component: {fileID: 5202575732344303693}
   - component: {fileID: 2510802572866159403}
-  - component: {fileID: 468576909887363527}
+  - component: {fileID: 7812480354052903613}
   m_Layer: 8
   m_Name: Bocchi Guitar
   m_TagString: Untagged
@@ -99,7 +99,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4584375, y: 0.1166444, z: 0.41739005}
   m_Center: {x: 0.21199009, y: -0.07183712, z: -0.09292886}
---- !u!114 &468576909887363527
+--- !u!114 &7812480354052903613
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5995345949572764056}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ddd60378a121934784fc55b2b097c00, type: 3}
+  m_Script: {fileID: 11500000, guid: 67caf52495f1d21438297dfbbe1b34f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30
