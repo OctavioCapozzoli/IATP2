@@ -1144,6 +1144,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bocchi
       objectReference: {fileID: 0}
+    - target: {fileID: 3386611335856387691, guid: cf9c22b7fe5d0de4f8d2b214df05793a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf9c22b7fe5d0de4f8d2b214df05793a, type: 3}
 --- !u!1001 &1058356713
@@ -2453,11 +2458,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Boss
-      objectReference: {fileID: 0}
-    - target: {fileID: 8765591250758326399, guid: bc7baadef2c0beb49be83a3053a7af39,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8766234834123216771, guid: bc7baadef2c0beb49be83a3053a7af39,
         type: 3}
