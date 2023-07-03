@@ -25,7 +25,7 @@ MonoBehaviour:
   <SightRange>k__BackingField: 3
   <TotalSightDegrees>k__BackingField: 180
   <Damage>k__BackingField: 10
-  <DistanceToAttack>k__BackingField: 0.5
+  <DistanceToAttack>k__BackingField: 0.8
   <CooldownToAttack>k__BackingField: 1
   <TimeForSearchPlayer>k__BackingField: 1
   <TargetLayer>k__BackingField:
