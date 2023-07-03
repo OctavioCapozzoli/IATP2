@@ -522,7 +522,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1255214926
 Transform:
   m_ObjectHideFlags: 0
@@ -2261,7 +2261,7 @@ MonoBehaviour:
   punchPosition: {fileID: 0}
   guitarPrefab: {fileID: 2098238751654798982}
   manaSlider: {fileID: 0}
-  projectileSpeed: 0
+  projectileSpeed: 10
   sightRange: 0
   sightMask:
     serializedVersion: 2

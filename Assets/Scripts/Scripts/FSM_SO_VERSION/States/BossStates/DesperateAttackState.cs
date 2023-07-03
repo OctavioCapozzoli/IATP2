@@ -13,25 +13,32 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
     public class DesperateAttackState : State
     {
         BossEnemyModel bossModel;
-        float timer = 0f, attackCooldownTimer = 0f, attackMaxCooldownTimer = .5f;
+        float timer = 0, rouletteMaxCooldown = 1.5f, rouletteCooldownTimer = 0;
         public override void EnterState(EntityModel model)
         {
             bossModel = model as BossEnemyModel;
-            timer = 0;
+            bossModel.EnemyView.PlayWalkAnimation(false);
+            bossModel.GetRigidbody().velocity = Vector3.zero;
+            bossModel.GetData().IsInvulnerable = false;
         }
         public override void ExecuteState(EntityModel model)
         {
             Debug.Log("Boss State Desperate Execute");
-            if (!bossModel.GetData().IsAttackDone)
-            {
                 timer += Time.deltaTime;
-                if (timer <= bossModel.GetData().AttackStateTimer)
+                if (timer <= bossModel.GetData().AttackStateTimer && !bossModel.GetData().IsAttackDone)
+                {
+                    rouletteCooldownTimer += Time.deltaTime;
+                if (rouletteCooldownTimer >= rouletteMaxCooldown)
                 {
                     bossModel.Controller.BossEnemyRoulette.EnemyDesperateAttacksRouletteAction();
-                    attackCooldownTimer += Time.deltaTime;
-                    if (attackCooldownTimer >= attackMaxCooldownTimer) attackCooldownTimer = 0;
+                    rouletteCooldownTimer = 0;
+                
                 }
-                else bossModel.GetData().IsAttackDone = true;
+                else
+                {
+                    timer = 0;
+                    bossModel.GetData().IsAttackDone = true;
+                }
             }
         }
 

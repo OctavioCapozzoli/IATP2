@@ -18,13 +18,10 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
             bossModel.GetRigidbody().velocity = Vector3.zero;
             bossModel.EnemyView.PlayWalkAnimation(false);
             bossModel.EnemyView.PlayBlockAnimation(false);
+            bossModel.GetData().IsInvulnerable = false;
 
-            if(!bossModel.GetData().IsAttackDone)
-            {
-                if (bossModel.BoidsCount == 0) bossModel.GetData().CanSummon = true;
-
-                if (bossModel.GetData().CanSummon) SummonBoids();
-            }
+            if (bossModel.BoidsCount == 0) bossModel.GetData().CanSummon = true;
+            if (bossModel.GetData().CanSummon) SummonBoids();
 
         }
 
@@ -33,9 +30,12 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
             //Debug.Log("Boss State Summon Execute" + bossModel.GetData().IsAttackDone);
             Debug.Log("Boss State Summon Execute");
             timer += Time.deltaTime;
-            if(timer >= 2f)
+            if(timer <= bossModel.GetData().AttackStateTimer && !bossModel.GetData().IsAttackDone)
             {
-                Debug.Log("boss state summon done. Paso a block");
+                Debug.Log("boss state summon timer: " + timer);
+            }
+            else
+            {
                 timer = 0;
                 bossModel.GetData().IsAttackDone = true;
             }
@@ -44,6 +44,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
         public override void ExitState(EntityModel model)
         {
             Debug.Log("Salgo del summon state");
+
         }
 
         void SummonBoids()

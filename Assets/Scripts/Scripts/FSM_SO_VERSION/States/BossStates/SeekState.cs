@@ -28,13 +28,10 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
                 Debug.Log("Enemy puede moverse");
                 bossModel.Move(dir);
             }
-            //else bossModel.IsChasing = false;
         }
 
         public override void ExitState(EntityModel model)
         {
-            //bossModel.IsChasing = false;
-
         }
     }
 }

@@ -11,7 +11,6 @@ namespace _Main.Scripts.FSM_SO_VERSION.LogicGates
         
         public override bool CompleteCondition(EntityModel model)
         {
-            Debug.Log("Boss state para pasar a block" + conditionOne.CompleteCondition(model) + conditionTwo.CompleteCondition(model));
             return conditionOne.CompleteCondition(model) && conditionTwo.CompleteCondition(model);
         }
     }

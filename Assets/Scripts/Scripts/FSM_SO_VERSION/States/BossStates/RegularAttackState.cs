@@ -18,6 +18,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
             bossModel = model as BossEnemyModel;
             bossModel.EnemyView.PlayWalkAnimation(false);
             bossModel.GetRigidbody().velocity = Vector3.zero;
+            bossModel.GetData().IsInvulnerable = false;
 
         }
 
@@ -43,7 +44,6 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
 
         public override void ExitState(EntityModel model)
         {
-            //bossModel.EnemyView.PlayBlockAnimation(false);
         }
     }
 }

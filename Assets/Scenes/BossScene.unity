@@ -1153,10 +1153,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1255214925, guid: cf9c22b7fe5d0de4f8d2b214df05793a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2716930330966076625, guid: cf9c22b7fe5d0de4f8d2b214df05793a,
         type: 3}
       propertyPath: m_RootOrder
@@ -1216,11 +1212,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bocchi
-      objectReference: {fileID: 0}
-    - target: {fileID: 8310361122902013613, guid: cf9c22b7fe5d0de4f8d2b214df05793a,
-        type: 3}
-      propertyPath: projectileSpeed
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf9c22b7fe5d0de4f8d2b214df05793a, type: 3}
@@ -1840,54 +1831,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 264105412, guid: bc7baadef2c0beb49be83a3053a7af39, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1333798544, guid: bc7baadef2c0beb49be83a3053a7af39, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 651871798367471995, guid: bc7baadef2c0beb49be83a3053a7af39,
-        type: 3}
-      propertyPath: m_Name
-      value: Baseball Left Bate Handler
-      objectReference: {fileID: 0}
-    - target: {fileID: 651871798367471995, guid: bc7baadef2c0beb49be83a3053a7af39,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1596933307176864629, guid: bc7baadef2c0beb49be83a3053a7af39,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.7061397
-      objectReference: {fileID: 0}
-    - target: {fileID: 1596933307176864629, guid: bc7baadef2c0beb49be83a3053a7af39,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 1596933307176864629, guid: bc7baadef2c0beb49be83a3053a7af39,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.003
-      objectReference: {fileID: 0}
-    - target: {fileID: 1596933307176864629, guid: bc7baadef2c0beb49be83a3053a7af39,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 6691374602353819174, guid: bc7baadef2c0beb49be83a3053a7af39,
-        type: 3}
-      propertyPath: m_Name
-      value: Baseball Right Bate Handler
-      objectReference: {fileID: 0}
-    - target: {fileID: 6691374602353819174, guid: bc7baadef2c0beb49be83a3053a7af39,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8765591250758326339, guid: bc7baadef2c0beb49be83a3053a7af39,
         type: 3}
       propertyPath: m_RootOrder
@@ -1973,79 +1916,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
-    - target: {fileID: 9138974612538733280, guid: bc7baadef2c0beb49be83a3053a7af39,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.7061397
-      objectReference: {fileID: 0}
-    - target: {fileID: 9138974612538733280, guid: bc7baadef2c0beb49be83a3053a7af39,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.038
-      objectReference: {fileID: 0}
-    - target: {fileID: 9138974612538733280, guid: bc7baadef2c0beb49be83a3053a7af39,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9138974612538733280, guid: bc7baadef2c0beb49be83a3053a7af39,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.002
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc7baadef2c0beb49be83a3053a7af39, type: 3}
---- !u!1 &1802823604 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 651871798367471995, guid: bc7baadef2c0beb49be83a3053a7af39,
-    type: 3}
-  m_PrefabInstance: {fileID: 1802823603}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1802823605 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6691374602353819174, guid: bc7baadef2c0beb49be83a3053a7af39,
-    type: 3}
-  m_PrefabInstance: {fileID: 1802823603}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1802823606
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1802823604}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.731122, y: 0.15890475, z: 0.24103129}
-  m_Center: {x: -1.0157746, y: -0.029452397, z: 0.045515966}
---- !u!114 &1802823607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1802823604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcf4771d9fc438f4ea7f207fbf4031ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 15
---- !u!114 &1802823613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1802823605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcf4771d9fc438f4ea7f207fbf4031ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 15
 --- !u!1001 &1825599798
 PrefabInstance:
   m_ObjectHideFlags: 0

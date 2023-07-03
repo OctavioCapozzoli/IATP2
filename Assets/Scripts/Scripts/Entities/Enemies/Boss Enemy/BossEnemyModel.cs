@@ -91,6 +91,8 @@ namespace _Main.Scripts.Entities.Enemies
 
         private void Update()
         {
+            Debug.Log("boss state health check: " + HealthController.CurrentHealth);
+            Debug.Log("Boss state pasa a desperate: " + (HealthController.CurrentHealth <= GetData().SummoningAttackHealthThreshold));
         }
 
         public override void Die()

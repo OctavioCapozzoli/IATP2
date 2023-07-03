@@ -17,6 +17,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
         {
             bossEnemyModel = model as BossEnemyModel;
             bossEnemyModel.GetRigidbody().velocity = Vector3.zero;
+            bossEnemyModel.GetData().IsAttackDone = true;
         }
 
         public override void ExecuteState(EntityModel model)

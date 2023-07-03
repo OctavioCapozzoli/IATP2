@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d626f229597984d995e88da515ed1a, type: 3}
   m_Name: Boss Desperation Attack State Data
   m_EditorClassIdentifier: 
-  <State>k__BackingField: {fileID: 11400000, guid: 3ee5c2fe576d08d43afccad5c6c2d05e,
+  <State>k__BackingField: {fileID: 11400000, guid: 867841462e019354f877e7549f73a675,
     type: 2}
   <StateConditions>k__BackingField:
   - {fileID: 11400000, guid: 66e6e76f856c45241aff6dfef0b2ae13, type: 2}
