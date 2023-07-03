@@ -19,12 +19,11 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
             bossModel.EnemyView.PlayWalkAnimation(false);
             bossModel.EnemyView.PlayBlockAnimation(false);
 
-            if (bossModel.BoidsCount == 0) bossModel.GetData().CanSummon = true;
-
-            if (bossModel.GetData().CanSummon)
+            if(!bossModel.GetData().IsAttackDone)
             {
-                SummonBoids();
-              
+                if (bossModel.BoidsCount == 0) bossModel.GetData().CanSummon = true;
+
+                if (bossModel.GetData().CanSummon) SummonBoids();
             }
 
         }
@@ -34,11 +33,9 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
             //Debug.Log("Boss State Summon Execute" + bossModel.GetData().IsAttackDone);
             Debug.Log("Boss State Summon Execute");
             timer += Time.deltaTime;
-            if (timer <= 2f && !bossModel.GetData().IsAttackDone)
+            if(timer >= 2f)
             {
-            }
-            else
-            {
+                Debug.Log("boss state summon done. Paso a block");
                 timer = 0;
                 bossModel.GetData().IsAttackDone = true;
             }

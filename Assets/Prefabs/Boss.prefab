@@ -297,11 +297,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 651871798367471995}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ddd60378a121934784fc55b2b097c00, type: 3}
+  m_Script: {fileID: 11500000, guid: bcf4771d9fc438f4ea7f207fbf4031ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
-  gizmosRadius: 0.15
+  damage: 15
 --- !u!1 &1807522011632041587
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,7 +580,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4365327749567618840}
   - component: {fileID: 1802823608}
-  - component: {fileID: 1802823609}
+  - component: {fileID: 1802823613}
   m_Layer: 0
   m_Name: Baseball Right Bate Handler
   m_TagString: Untagged
@@ -619,7 +618,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.72694725, y: 0.16376865, z: 0.23763695}
   m_Center: {x: 0.99881095, y: -0.010628284, z: 0.04381844}
---- !u!114 &1802823609
+--- !u!114 &1802823613
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -628,11 +627,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6691374602353819174}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ddd60378a121934784fc55b2b097c00, type: 3}
+  m_Script: {fileID: 11500000, guid: bcf4771d9fc438f4ea7f207fbf4031ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
-  gizmosRadius: 0.15
+  damage: 15
 --- !u!1 &8765591250758326399
 GameObject:
   m_ObjectHideFlags: 0

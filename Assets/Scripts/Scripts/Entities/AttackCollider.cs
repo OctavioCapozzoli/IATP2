@@ -30,8 +30,10 @@ public class AttackCollider : MonoBehaviour
         }
         else if (other.gameObject.tag == "Boss")
         {
+            var boss = other.gameObject.GetComponent<BossEnemyModel>();
             //other.gameObject.GetComponent<BossEnemyModel>().HealthController.TakeDamage(damage);
-            other.gameObject.GetComponent<BossEnemyModel>().GetDamage(damage);
+            if (!boss.GetData().IsInvulnerable)
+                boss.GetDamage(damage);
             Debug.Log("Enemy was damaged, current health is: " + other.gameObject.GetComponent<BossEnemyModel>().HealthController.CurrentHealth);
             other.gameObject.GetComponent<EntityModel>().IsDamaged = true;
         }
