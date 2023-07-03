@@ -53,7 +53,7 @@ public class EnemyMinion : EntityModel, IBoid
         Gizmos.DrawWireSphere(Position, radius);
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
@@ -101,8 +101,8 @@ public class EnemyMinion : EntityModel, IBoid
     }
     public override void Die()
     {
+        
         bossEnemyModel.BoidsCount--;
-        StartCoroutine(WaitToDestroy());
         Destroy(gameObject);
     }
 
