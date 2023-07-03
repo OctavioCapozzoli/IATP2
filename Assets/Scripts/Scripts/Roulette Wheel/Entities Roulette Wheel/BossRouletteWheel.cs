@@ -119,7 +119,7 @@ namespace _Main.Scripts.Roulette_Wheel.EntitiesRouletteWheel
         #region Desperate Attacks Roulette Wheel
         void DesperateAttackRouletteSetUp()
         {
-            _enhancedAttacksRouletteWheel = new Roulette();
+            _desperateAttacksRouletteWheel = new Roulette();
 
             ActionNode DesperateAttack1 = new ActionNode(PlayDesperateAttack1);
             ActionNode DesperateAttack2 = new ActionNode(PlayDesperateAttack2);

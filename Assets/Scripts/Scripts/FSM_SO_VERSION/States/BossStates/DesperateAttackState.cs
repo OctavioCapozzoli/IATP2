@@ -13,10 +13,18 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
     public class DesperateAttackState : State
     {
         BossEnemyModel bossModel;
-        float timer = 0, rouletteMaxCooldown = 1.5f, rouletteCooldownTimer = 0;
+        float timer = 0, rouletteMaxCooldown = .75f, rouletteCooldownTimer = 0;
         public override void EnterState(EntityModel model)
         {
             bossModel = model as BossEnemyModel;
+            bossModel.LineOfSight(bossModel.GetTarget().transform);
+            bossModel.EnemyView.PlayDesperateAttackActivator();
+            if (bossModel.IsSeeingTarget)
+            {
+                Debug.Log("Target is in sight, executing look dir");
+                Vector3 dir = bossModel.GetTarget().transform.position - bossModel.transform.position;
+                bossModel.LookDir(dir);
+            }
             bossModel.EnemyView.PlayWalkAnimation(false);
             bossModel.GetRigidbody().velocity = Vector3.zero;
             bossModel.GetData().IsInvulnerable = false;
@@ -24,21 +32,13 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
         public override void ExecuteState(EntityModel model)
         {
             Debug.Log("Boss State Desperate Execute");
-                timer += Time.deltaTime;
-                if (timer <= bossModel.GetData().AttackStateTimer && !bossModel.GetData().IsAttackDone)
-                {
-                    rouletteCooldownTimer += Time.deltaTime;
-                if (rouletteCooldownTimer >= rouletteMaxCooldown)
-                {
-                    bossModel.Controller.BossEnemyRoulette.EnemyDesperateAttacksRouletteAction();
-                    rouletteCooldownTimer = 0;
-                
-                }
-                else
-                {
-                    timer = 0;
-                    bossModel.GetData().IsAttackDone = true;
-                }
+            rouletteCooldownTimer += Time.deltaTime;
+
+            if (rouletteCooldownTimer >= rouletteMaxCooldown)
+            {
+                Debug.Log("Boss state enemy is doing desperate attacka");
+                bossModel.Controller.BossEnemyRoulette.EnemyDesperateAttacksRouletteAction();
+                rouletteCooldownTimer = 0;
             }
         }
 

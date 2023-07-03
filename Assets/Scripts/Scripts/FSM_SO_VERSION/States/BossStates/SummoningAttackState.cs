@@ -59,7 +59,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
                     return;
                 }
                 Debug.Log("Boid instanced");
-                //Instantiate(bossModel.FlockingBoidPrefab, bossModel.FlockingSpawnPositions[i]);
+                Instantiate(bossModel.FlockingBoidPrefab, bossModel.FlockingSpawnPositions[i]);
                 bossModel.BoidsCount++;
             }
 
