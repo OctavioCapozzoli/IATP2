@@ -19,7 +19,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
             bossModel.LineOfSight(bossModel.GetTarget().transform);
             if (bossModel.IsSeeingTarget)
             {
-                Debug.Log("Target is in sight, executing look dir");
+                Debug.Log("Boss Target is in sight, executing look dir");
                 Vector3 dir = bossModel.GetTarget().transform.position - bossModel.transform.position;
                 bossModel.LookDir(dir);
             }

@@ -2342,6 +2342,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8765591250758326397, guid: bc7baadef2c0beb49be83a3053a7af39,
         type: 3}
+      propertyPath: rotSpeed
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 8765591250758326397, guid: bc7baadef2c0beb49be83a3053a7af39,
+        type: 3}
       propertyPath: flockingSpawnPositions.Array.data[0]
       value: 
       objectReference: {fileID: 771262221}

@@ -35,14 +35,14 @@ MonoBehaviour:
     m_Bits: 256
   <FleeHealthValue>k__BackingField: 2
   <IdleTimer>k__BackingField: 1
-  <IsInBossRoom>k__BackingField: 0
-  <AttackRange>k__BackingField: 1
+  <IsInBossRoom>k__BackingField: 1
+  <AttackRange>k__BackingField: 2
   <RegularAttackHealthThreshold>k__BackingField: 100
   <EnhancedAttackHealthThreshold>k__BackingField: 80
   <SummoningAttackHealthThreshold>k__BackingField: 80
   <DesperationAttackHealthThreshold>k__BackingField: 40
   <IsInvulnerable>k__BackingField: 0
-  <IsAttackDone>k__BackingField: 0
+  <IsAttackDone>k__BackingField: 1
   <CanSummon>k__BackingField: 0
   <AttackStateTimer>k__BackingField: 4
   <BlockStateTimer>k__BackingField: 3
