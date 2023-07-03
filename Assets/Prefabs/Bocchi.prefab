@@ -175,6 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  gizmosRadius: 0
 --- !u!135 &438159737
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -235,6 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  gizmosRadius: 0
 --- !u!135 &546390896
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -489,6 +491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  gizmosRadius: 0
 --- !u!135 &1247968784
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -549,6 +552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  gizmosRadius: 0
 --- !u!135 &1255214928
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2470,7 +2474,7 @@ MonoBehaviour:
   lastSpecialAtk: 0
   manaCost: 10
   jumpForce: 1
-  maxLife: 100
+  maxLife: 300
   groundMask:
     serializedVersion: 2
     m_Bits: 8

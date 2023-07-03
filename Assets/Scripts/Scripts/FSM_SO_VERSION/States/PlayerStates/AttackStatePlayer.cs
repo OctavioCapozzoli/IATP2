@@ -25,9 +25,12 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.PlayerStates
             playerModel.LineOfSight();
             if(playerModel.IsSeeingTarget && playerModel.IsAttacking)
             {
-                Debug.Log("Target is in sight, executing look dir");
-                Vector3 dir = playerModel.Target.position - playerModel.transform.position;
-                playerModel.LookDir(dir);
+                if(playerModel.Target != null)
+                {
+                    Debug.Log("Target is in sight, executing look dir");
+                    Vector3 dir = playerModel.Target.position - playerModel.transform.position;
+                    playerModel.LookDir(dir);
+                }
             }
             CheckComboAnim();
             ResetCombo();
