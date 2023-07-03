@@ -19,7 +19,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
         }
         public override void ExecuteState(EntityModel model)
         {
-            Debug.Log("Boss Enhanced Attack State Execute");
+            Debug.Log("Boss State Enhanced Execute");
             if (!bossModel.GetData().IsAttackDone)
             {
                 timer += Time.deltaTime;

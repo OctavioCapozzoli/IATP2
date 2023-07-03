@@ -21,12 +21,11 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
 
         public override void ExecuteState(EntityModel model)
         {
-            Debug.Log("Boss Block State Execute");
+            Debug.Log("Boss State Block Execute");
             bossEnemyModel.GetData().IsInvulnerable = true;
             timer += Time.deltaTime;
             if (timer <= bossEnemyModel.GetData().BlockStateTimer && bossEnemyModel.GetData().IsAttackDone)
             {
-                Debug.Log("Block timer" + timer);
                 bossEnemyModel.EnemyView.PlayBlockAnimation(true);
                 Debug.Log("Boss is blocking attacks");
             }

@@ -35,6 +35,9 @@ namespace _Main.Scripts.Entities.Enemies
         [SerializeField] GameObject flockingBoidPrefab;
         [SerializeField] List<Transform> flockingSpawnPositions;
 
+        public GameObject leftHandBat;
+        public GameObject rightHandBat;
+
         public BossEnemyController Controller { get => _controller; set => _controller = value; }
         public BossEnemyView EnemyView { get => _enemyView; set => _enemyView = value; }
         public bool TargetInSight { get => targetInSight; set => targetInSight = value; }
@@ -44,6 +47,24 @@ namespace _Main.Scripts.Entities.Enemies
         public GameObject FlockingBoidPrefab { get => flockingBoidPrefab; set => flockingBoidPrefab = value; }
         public int BoidsCount { get => boidsCount; set => boidsCount = value; }
 
+        #region Attack Colliders Activation/Deactivation
+        public void TurnOnLeftHandBat()
+        {
+            leftHandCollider.SetActive(true);
+        }
+        public void TurnOffLeftHandBat()
+        {
+            leftHandCollider.SetActive(false);
+        }
+        public void TurnOnRightHandBat()
+        {
+            rightHandCollider.SetActive(true);
+        }
+        public void TurnOffRightHandBat()
+        {
+            rightHandCollider.SetActive(false);
+        }
+        #endregion
         private void Awake()
         {
 

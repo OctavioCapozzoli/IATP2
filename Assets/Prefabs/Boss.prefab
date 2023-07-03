@@ -9,13 +9,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 264105413}
+  - component: {fileID: 264105416}
+  - component: {fileID: 264105417}
   m_Layer: 0
   m_Name: Boss Right Hand Attack Collider
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &264105413
 Transform:
   m_ObjectHideFlags: 0
@@ -31,6 +33,33 @@ Transform:
   m_Father: {fileID: 5353097085182705250}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &264105416
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264105412}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &264105417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264105412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddd60378a121934784fc55b2b097c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  gizmosRadius: 0.15
 --- !u!1 &456934631
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,13 +69,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 456934632}
+  - component: {fileID: 456934635}
+  - component: {fileID: 456934636}
   m_Layer: 0
   m_Name: Boss Left Foot Attack Collider
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &456934632
 Transform:
   m_ObjectHideFlags: 0
@@ -62,6 +93,33 @@ Transform:
   m_Father: {fileID: 2317453800677045959}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &456934635
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456934631}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &456934636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456934631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddd60378a121934784fc55b2b097c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  gizmosRadius: 0.15
 --- !u!1 &1333798544
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,13 +129,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1333798545}
+  - component: {fileID: 1333798548}
+  - component: {fileID: 1333798549}
   m_Layer: 0
   m_Name: Boss Left Hand Attack Collider
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1333798545
 Transform:
   m_ObjectHideFlags: 0
@@ -93,6 +153,33 @@ Transform:
   m_Father: {fileID: 7769388819530026373}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1333798548
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333798544}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1333798549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333798544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddd60378a121934784fc55b2b097c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  gizmosRadius: 0.15
 --- !u!1 &1723338054
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,13 +189,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1723338055}
+  - component: {fileID: 1723338058}
+  - component: {fileID: 1723338059}
   m_Layer: 0
   m_Name: Boss Right Foot Attack Collider
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1723338055
 Transform:
   m_ObjectHideFlags: 0
@@ -124,6 +213,95 @@ Transform:
   m_Father: {fileID: 5898624194456178881}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1723338058
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723338054}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1723338059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723338054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddd60378a121934784fc55b2b097c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  gizmosRadius: 0.15
+--- !u!1 &651871798367471995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9138974612538733280}
+  - component: {fileID: 1802823606}
+  - component: {fileID: 1802823607}
+  m_Layer: 0
+  m_Name: Baseball Left Bate Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &9138974612538733280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651871798367471995}
+  m_LocalRotation: {x: 0.000000012566411, y: -0.000000009880746, z: -0.000000046074348,
+    w: 1}
+  m_LocalPosition: {x: 0.038, y: 0, z: -0.002}
+  m_LocalScale: {x: 0.7061397, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1086083155161062534}
+  m_Father: {fileID: 5353097085182705250}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1802823606
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651871798367471995}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.731122, y: 0.15890475, z: 0.24103129}
+  m_Center: {x: -1.0157746, y: -0.029452397, z: 0.045515966}
+--- !u!114 &1802823607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651871798367471995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddd60378a121934784fc55b2b097c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  gizmosRadius: 0.15
 --- !u!1 &1807522011632041587
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,6 +571,68 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &6691374602353819174
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4365327749567618840}
+  - component: {fileID: 1802823608}
+  - component: {fileID: 1802823609}
+  m_Layer: 0
+  m_Name: Baseball Right Bate Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4365327749567618840
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6691374602353819174}
+  m_LocalRotation: {x: 0.00000001583248, y: 0.00000002756132, z: -0.000000018307897,
+    w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1596933307176864629}
+  m_Father: {fileID: 7769388819530026373}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1802823608
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6691374602353819174}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.72694725, y: 0.16376865, z: 0.23763695}
+  m_Center: {x: 0.99881095, y: -0.010628284, z: 0.04381844}
+--- !u!114 &1802823609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6691374602353819174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddd60378a121934784fc55b2b097c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  gizmosRadius: 0.15
 --- !u!1 &8765591250758326399
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +648,7 @@ GameObject:
   - component: {fileID: 8765591250758326337}
   - component: {fileID: 8765591250758326338}
   - component: {fileID: 8765591250758326336}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Boss
   m_TagString: Boss
   m_Icon: {fileID: 0}
@@ -424,7 +664,7 @@ Transform:
   m_GameObject: {fileID: 8765591250758326399}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.00008755922, y: 0.90737915, z: -0.026568055}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9092516622934712706}
@@ -486,6 +726,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  leftHandBat: {fileID: 651871798367471995}
+  rightHandBat: {fileID: 6691374602353819174}
 --- !u!114 &8765591250758326398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -548,6 +790,186 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!1001 &5361603726130853788
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 9138974612538733280}
+    m_Modifications:
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.598
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.026
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.111
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.70678496
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.70694375
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.015255089
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.021278666
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_Name
+      value: Bat_Right_Hand
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 43f1b590a736f8240bb1d4e2f9a6a678, type: 3}
+--- !u!4 &1086083155161062534 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+    type: 3}
+  m_PrefabInstance: {fileID: 5361603726130853788}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6004361184375857263
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4365327749567618840}
+    m_Modifications:
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7061397
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.38
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.003
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.010608246
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0106064435
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70702803
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7070265
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+        type: 3}
+      propertyPath: m_Name
+      value: Bat_Left_Hand
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 43f1b590a736f8240bb1d4e2f9a6a678, type: 3}
+--- !u!4 &1596933307176864629 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 43f1b590a736f8240bb1d4e2f9a6a678,
+    type: 3}
+  m_PrefabInstance: {fileID: 6004361184375857263}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8765591250006361705
 PrefabInstance:
   m_ObjectHideFlags: 0

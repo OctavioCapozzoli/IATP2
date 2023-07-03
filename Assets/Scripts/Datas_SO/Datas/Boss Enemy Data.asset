@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Boss Enemy Data
   m_EditorClassIdentifier: 
   <FsmStates>k__BackingField:
+  - {fileID: 11400000, guid: 34a3e709d1d693342ab847cc5498aadc, type: 2}
+  - {fileID: 11400000, guid: 5dac275f1ff25c14a88ec384efc2e9c6, type: 2}
+  - {fileID: 11400000, guid: 9a4b439ae12899a4a91f865fc9dbc03b, type: 2}
   - {fileID: 11400000, guid: 3190ae4b11e30a44eaab4d53c7f157dc, type: 2}
+  - {fileID: 11400000, guid: 1f8f965e08b8adf4c88e93138a1604bf, type: 2}
+  - {fileID: 11400000, guid: b7cf77f3950e91944a9804eb23f6e90d, type: 2}
   - {fileID: 11400000, guid: 1e538d5d518f4b041ac420e366f23928, type: 2}
   - {fileID: 11400000, guid: ca10708769391bd418a65ef83b3e2bba, type: 2}
-  - {fileID: 11400000, guid: b7cf77f3950e91944a9804eb23f6e90d, type: 2}
-  - {fileID: 11400000, guid: 34a3e709d1d693342ab847cc5498aadc, type: 2}
-  - {fileID: 11400000, guid: 9a4b439ae12899a4a91f865fc9dbc03b, type: 2}
-  - {fileID: 11400000, guid: 5dac275f1ff25c14a88ec384efc2e9c6, type: 2}
-  - {fileID: 11400000, guid: 1f8f965e08b8adf4c88e93138a1604bf, type: 2}
   <RestPatrolTime>k__BackingField: 0
   <MaxLife>k__BackingField: 110
   <MovementSpeed>k__BackingField: 100

@@ -104974,14 +104974,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.6333333
-    functionName: TurnOnLeftHandCollider
+    functionName: TurnOnLeftHandBat
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 2.5
-    functionName: TurnOffLeftHandCollider
+    functionName: TurnOffLeftHandBat
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

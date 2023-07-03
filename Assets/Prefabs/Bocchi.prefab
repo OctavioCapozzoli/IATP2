@@ -175,6 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  gizmosRadius: 0
 --- !u!135 &438159737
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -235,6 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  gizmosRadius: 0
 --- !u!135 &546390896
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -489,6 +491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  gizmosRadius: 0
 --- !u!135 &1247968784
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -549,6 +552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  gizmosRadius: 0
 --- !u!135 &1255214928
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2254,8 +2258,19 @@ MonoBehaviour:
   projectileGO: {fileID: 1889822272736978065, guid: 7ac398f0afb92764b988a06955122b1f,
     type: 3}
   projectilePosition: {fileID: 78742686}
+  punchPosition: {fileID: 0}
   guitarPrefab: {fileID: 2098238751654798982}
   manaSlider: {fileID: 0}
+  projectileSpeed: 0
+  sightRange: 0
+  sightMask:
+    serializedVersion: 2
+    m_Bits: 512
+  targetInSight: 0
+  TotalSightDegrees: 0
+  obsMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &8310361122902013610
 MonoBehaviour:
   m_ObjectHideFlags: 0

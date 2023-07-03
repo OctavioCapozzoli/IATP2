@@ -19,10 +19,11 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.EnemyStates
 
         public override void ExecuteState(EntityModel model)
         {
-            Debug.Log("Enemy damage state execute");
+            Debug.Log("Boss State Damage Execute");
         }
         public override void ExitState(EntityModel model)
         {
+            bossModel.IsDamaged = false;
         }
     }
 }

@@ -11,21 +11,37 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
     public class SummoningAttackState : State
     {
         BossEnemyModel bossModel;
+        float timer = 0;
         public override void EnterState(EntityModel model)
         {
             bossModel = model as BossEnemyModel;
-            bossModel.EnemyView.PlayWalkAnimation(false);
             bossModel.GetRigidbody().velocity = Vector3.zero;
+            bossModel.EnemyView.PlayWalkAnimation(false);
+            bossModel.EnemyView.PlayBlockAnimation(false);
 
             if (bossModel.BoidsCount == 0) bossModel.GetData().CanSummon = true;
 
-            if (bossModel.GetData().CanSummon) SummonBoids();
+            if (bossModel.GetData().CanSummon)
+            {
+                SummonBoids();
+              
+            }
 
         }
 
         public override void ExecuteState(EntityModel model)
         {
-            Debug.Log("Boss Summon State Execute");
+            //Debug.Log("Boss State Summon Execute" + bossModel.GetData().IsAttackDone);
+            Debug.Log("Boss State Summon Execute");
+            timer += Time.deltaTime;
+            if (timer <= 2f && !bossModel.GetData().IsAttackDone)
+            {
+            }
+            else
+            {
+                timer = 0;
+                bossModel.GetData().IsAttackDone = true;
+            }
         }
 
         public override void ExitState(EntityModel model)
@@ -45,7 +61,7 @@ namespace _Main.Scripts.FSM_SO_VERSION.States.BossStates
                     return;
                 }
                 Debug.Log("Boid instanced");
-                Instantiate(bossModel.FlockingBoidPrefab, bossModel.FlockingSpawnPositions[i]);
+                //Instantiate(bossModel.FlockingBoidPrefab, bossModel.FlockingSpawnPositions[i]);
                 bossModel.BoidsCount++;
             }
 

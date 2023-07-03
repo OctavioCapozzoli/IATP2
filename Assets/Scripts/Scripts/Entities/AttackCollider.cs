@@ -8,7 +8,7 @@ using UnityEngine;
 public class AttackCollider : MonoBehaviour
 {
     [SerializeField] int damage;
-    bool isFirstCollision = true;
+    [SerializeField] float gizmosRadius;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -37,5 +37,11 @@ public class AttackCollider : MonoBehaviour
         }
         //    isFirstCollision = false;
         //}
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, gizmosRadius);
     }
 }
