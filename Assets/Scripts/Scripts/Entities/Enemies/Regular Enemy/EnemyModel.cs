@@ -19,7 +19,7 @@ namespace _Main.Scripts.Entities.Enemies
         [SerializeField] private Transform[] patrolPoints;
         [SerializeField] private PlayerModel playerModel;
         [SerializeField] private LayerMask obsMask;
-        [SerializeField] float obsAvoidanceRadius = 4;
+        [SerializeField] float obsAvoidanceRadius = 2;
         [SerializeField] int obsAvoidanceMaxObs = 10;
         bool isMoving;
         EnemyView _enemyView;
@@ -193,6 +193,9 @@ namespace _Main.Scripts.Entities.Enemies
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, data.SightRange);
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, obsAvoidanceRadius);
 
             Gizmos.color = Color.blue;
             Vector3 rightLimit = Quaternion.AngleAxis(data.TotalSightDegrees, Vector3.up) * Vector3.forward;

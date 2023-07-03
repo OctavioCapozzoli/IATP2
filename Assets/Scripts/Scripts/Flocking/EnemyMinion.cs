@@ -53,15 +53,15 @@ public class EnemyMinion : EntityModel, IBoid
         Gizmos.DrawWireSphere(Position, radius);
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             isCollidingWithPlayer = true;
-            other.gameObject.GetComponent<PlayerModel>().HealthController.TakeDamage(damage);
+            other.gameObject.GetComponent<PlayerModel>().GetDamage(damage);
             Instantiate(explosionVFX, transform.position, transform.rotation);
             Debug.Log("Player was damaged, current health is: " + other.gameObject.GetComponent<PlayerModel>().HealthController.CurrentHealth);
-            other.gameObject.GetComponent<EntityModel>().IsDamaged = true;
+            //other.gameObject.GetComponent<EntityModel>().IsDamaged = true;
         }
     }
     //private void OnTriggerEnter(Collider other)
@@ -101,8 +101,8 @@ public class EnemyMinion : EntityModel, IBoid
     }
     public override void Die()
     {
+        
         bossEnemyModel.BoidsCount--;
-        StartCoroutine(WaitToDestroy());
         Destroy(gameObject);
     }
 

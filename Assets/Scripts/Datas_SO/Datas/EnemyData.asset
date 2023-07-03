@@ -21,12 +21,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 162f18484a859c9429eb3fed18dea786, type: 2}
   <RestPatrolTime>k__BackingField: 2
   <MaxLife>k__BackingField: 30
-  <MovementSpeed>k__BackingField: 45
+  <MovementSpeed>k__BackingField: 200
   <SightRange>k__BackingField: 3
-  <TotalSightDegrees>k__BackingField: 180
+  <TotalSightDegrees>k__BackingField: 360
   <Damage>k__BackingField: 10
-  <DistanceToAttack>k__BackingField: 1
-  <CooldownToAttack>k__BackingField: 1
+  <DistanceToAttack>k__BackingField: 0.8
+  <CooldownToAttack>k__BackingField: 2
   <TimeForSearchPlayer>k__BackingField: 1
   <TargetLayer>k__BackingField:
     serializedVersion: 2

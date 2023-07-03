@@ -34,6 +34,7 @@ namespace _Main.Scripts.Entities.Player
         [SerializeField] private float TotalSightDegrees;
         [SerializeField] private LayerMask obsMask;
         private Transform target;
+        [SerializeField] private HealthBarScript _healthBar;
 
 
 
@@ -58,6 +59,7 @@ namespace _Main.Scripts.Entities.Player
             _controller = GetComponent<PlayerController>();
             _healthController = new HealthController(maxLife);
             _healthController.OnDie += Die;
+            if (_healthBar != null) _healthBar.UpdateHealthBar(_healthController.MaxHealth, _healthController.CurrentHealth);
             //meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         }
 
@@ -95,6 +97,7 @@ namespace _Main.Scripts.Entities.Player
         public override void GetDamage(int damage)
         {
             //StartCoroutine(FlashRed());
+            _healthBar.UpdateHealthBar(_healthController.MaxHealth, _healthController.CurrentHealth);
             _healthController.TakeDamage(damage);
 
         }

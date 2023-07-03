@@ -696,7 +696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b60abde537a5bca43848a7b1c8ba96ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotSpeed: 5
+  rotSpeed: 8
   leftHandCollider: {fileID: 1333798544}
   rightHandCollider: {fileID: 264105412}
   leftFootCollider: {fileID: 456934631}

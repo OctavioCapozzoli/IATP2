@@ -12,8 +12,8 @@ namespace _Main.Scripts.FSM_SO_VERSION.Conditions.EnemyConditions
         public override bool CompleteCondition(EntityModel model)
         {
             var enemyModel = model as EnemyModel;
-            enemyModel.IsAttacking = Vector3.Distance(enemyModel.GetTarget().transform.position, model.transform.position) < enemyModel.GetData().DistanceToAttack ? true : false;
-            return enemyModel.IsAttacking;
+            //enemyModel.IsAttacking = Vector3.Distance(enemyModel.GetTarget().transform.position, enemyModel.transform.position) < enemyModel.GetData().DistanceToAttack ? true : false;
+            return Vector3.Distance(enemyModel.GetTarget().transform.position, enemyModel.transform.position) < enemyModel.GetData().DistanceToAttack;
         }
     }
 }

@@ -30,23 +30,23 @@ namespace _Main.Scripts.Steering_Behaviours.Steering_Behaviours
                 var currObs = _allObs[i];
                 var closestPoint = currObs.ClosestPointOnBounds(_origin.transform.position);
                 var diffToPoint = closestPoint - _origin.position;
-                
+
                 var angleToPoint = Vector3.Angle(_origin.forward, diffToPoint.normalized);
-                
-                if(angleToPoint > _viewAngle/2) continue;
+
+                if (angleToPoint > _viewAngle / 2) continue;
                 float dist = diffToPoint.magnitude;
-                
+
                 trueObs++;
                 dirToAvoid += -(diffToPoint).normalized * (_radius - dist);
 
             }
-            
-            if(trueObs != 0)
+
+            if (trueObs != 0)
                 dirToAvoid = dirToAvoid / trueObs;
 
             return dirToAvoid;
         }
-        
-        
+
+
     }
 }
