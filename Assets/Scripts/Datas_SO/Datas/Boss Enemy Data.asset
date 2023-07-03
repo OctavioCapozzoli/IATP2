@@ -42,7 +42,7 @@ MonoBehaviour:
   <SummoningAttackHealthThreshold>k__BackingField: 80
   <DesperationAttackHealthThreshold>k__BackingField: 40
   <IsInvulnerable>k__BackingField: 0
-  <IsAttackDone>k__BackingField: 1
+  <IsAttackDone>k__BackingField: 0
   <CanSummon>k__BackingField: 0
   <AttackStateTimer>k__BackingField: 4
   <BlockStateTimer>k__BackingField: 3
