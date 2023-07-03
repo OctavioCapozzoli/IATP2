@@ -5,10 +5,7 @@ using _Main.Scripts.Steering_Behaviours.Steering_Behaviours;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.Rendering.UI;
-using static UnityEngine.GraphicsBuffer;
 
 namespace _Main.Scripts.Entities.Enemies
 {
